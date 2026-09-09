@@ -59,10 +59,16 @@ class Studio3DViewer {
     this.camera = new THREE.PerspectiveCamera(45, width / height, 0.5, 2000);
     this.camera.position.set(32, 28, 42);
 
-    // 3. Renderer with Cinematic ACES Tone Mapping & Soft PCF Shadows
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+    // 3. Adaptive High-Performance Renderer (Mobile-Optimized)
+    const isMobile = window.innerWidth <= 768;
+    this.renderer = new THREE.WebGLRenderer({
+      antialias: !isMobile, // High-PPI mobile screens don't need expensive antialiasing
+      alpha: true,
+      preserveDrawingBuffer: true,
+      powerPreference: isMobile ? 'low-power' : 'high-performance'
+    });
     this.renderer.setSize(width, height);
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.renderer.setPixelRatio(isMobile ? Math.min(window.devicePixelRatio, 1.35) : Math.min(window.devicePixelRatio, 2));
     if (typeof THREE.sRGBEncoding !== 'undefined') {
       this.renderer.outputEncoding = THREE.sRGBEncoding;
     }
@@ -70,8 +76,10 @@ class Studio3DViewer {
       this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
       this.renderer.toneMappingExposure = 1.16;
     }
-    this.renderer.shadowMap.enabled = true;
-    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    this.renderer.shadowMap.enabled = !isMobile; // Disable heavy PCF shadow calculations on mobile
+    if (!isMobile) {
+      this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    }
     this.renderer.domElement.id = 'threeCanvas';
     this.container.appendChild(this.renderer.domElement);
 
@@ -106,21 +114,24 @@ class Studio3DViewer {
     this.hemiLight = new THREE.HemisphereLight(0xffffff, 0x18181b, 0.55);
     this.scene.add(this.hemiLight);
 
+    const isMobileLighting = window.innerWidth <= 768;
     this.sunLight = new THREE.DirectionalLight(0xffffff, 1.05);
     this.sunLight.position.set(45, 60, 35);
-    this.sunLight.castShadow = true;
-    this.sunLight.shadow.mapSize.width = 2048;
-    this.sunLight.shadow.mapSize.height = 2048;
-    this.sunLight.shadow.camera.near = 0.5;
-    this.sunLight.shadow.camera.far = 300;
-    const d = 50;
-    this.sunLight.shadow.camera.left = -d;
-    this.sunLight.shadow.camera.right = d;
-    this.sunLight.shadow.camera.top = d;
-    this.sunLight.shadow.camera.bottom = -d;
-    this.sunLight.shadow.bias = -0.00015;
-    if (this.sunLight.shadow.normalBias !== undefined) {
-      this.sunLight.shadow.normalBias = 0.02;
+    this.sunLight.castShadow = !isMobileLighting;
+    if (!isMobileLighting) {
+      this.sunLight.shadow.mapSize.width = 2048;
+      this.sunLight.shadow.mapSize.height = 2048;
+      this.sunLight.shadow.camera.near = 0.5;
+      this.sunLight.shadow.camera.far = 300;
+      const d = 50;
+      this.sunLight.shadow.camera.left = -d;
+      this.sunLight.shadow.camera.right = d;
+      this.sunLight.shadow.camera.top = d;
+      this.sunLight.shadow.camera.bottom = -d;
+      this.sunLight.shadow.bias = -0.00015;
+      if (this.sunLight.shadow.normalBias !== undefined) {
+        this.sunLight.shadow.normalBias = 0.02;
+      }
     }
     this.scene.add(this.sunLight);
 
@@ -2379,6 +2390,20 @@ class Studio3DViewer {
 
   animate() {
     requestAnimationFrame(() => this.animate());
+
+    // 1. Skip rendering if 3D viewer is hidden or 0-dimension (huge battery/GPU saving on mobile)
+    if (!this.container || this.container.clientWidth === 0 || this.container.clientHeight === 0) {
+      return;
+    }
+    const tab3d = document.getElementById('tab-3d');
+    if (tab3d && !tab3d.classList.contains('active')) {
+      return; // Not on 3D tab
+    }
+    const workspace = document.querySelector('.studio-workspace');
+    if (workspace && workspace.classList.contains('mobile-view-chat')) {
+      return; // User is in mobile Chat view
+    }
+
     if (this.controls) this.controls.update();
     if (this.renderer && this.scene && this.camera) {
       this.renderer.render(this.scene, this.camera);
