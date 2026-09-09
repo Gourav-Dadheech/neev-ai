@@ -1,0 +1,1729 @@
+[
+  {
+    "id": "proj_showcase_villa",
+    "name": "Azure Cliff Modern Villa",
+    "domain": "residential",
+    "category": "residential",
+    "client_name": "Elena & Marcus Vance",
+    "author": "Elena Rostova, AIA",
+    "notes": "Luxury 2-story sustainable residential villa with panoramic glazing, double-height living room, open modular kitchen, and cantilevered terrace.",
+    "tags": [
+      "Residential",
+      "Luxury Villa",
+      "Modern Minimalist",
+      "Sustainable"
+    ],
+    "project_data": {
+      "project_type": "residential house",
+      "plot_width": 40.0,
+      "plot_length": 60.0,
+      "road_direction": "north",
+      "floors": 2,
+      "bedrooms": 4,
+      "bathrooms": 4,
+      "living_room": "Spacious double-height living room with glass facade",
+      "dining_room": "Open concept dining adjacent to terrace patio",
+      "kitchen": "Modular island kitchen with integrated pantry",
+      "parking_cars": 2,
+      "parking_bikes": 2,
+      "residents": 5,
+      "architectural_style": "Modern Minimalist",
+      "budget": 350000,
+      "garden": "Infinity pool deck and landscaped lawn"
+    },
+    "interior": {
+      "focusedRoom": "living_room",
+      "theme": "japandi",
+      "surfaceFinish": "herringbone",
+      "wallFinish": "limewash",
+      "biophilic": true,
+      "lightingMood": "golden"
+    },
+    "timestamp": "2026-09-08 18:30",
+    "layout": {
+      "category": "residential",
+      "plot": {
+        "width": 40.0,
+        "length": 60.0,
+        "unit": "feet",
+        "road_direction": "north",
+        "setbacks": {
+          "front": 10.8,
+          "rear": 4.8,
+          "left": 3.0,
+          "right": 3.0
+        }
+      },
+      "floors": [
+        {
+          "floor_number": 0,
+          "floor_name": "Ground Floor",
+          "level_m": 0.0,
+          "carpet_area_sqft": 1286.4,
+          "total_area_sqft": 1509.6,
+          "rooms": [
+            {
+              "id": "gf_porch",
+              "name": "PARKING / PORCH",
+              "x": 3.0,
+              "y": 10.799999999999999,
+              "width": 11.0,
+              "length": 15.54,
+              "type": "porch",
+              "color": "#1e293b",
+              "furniture": []
+            },
+            {
+              "id": "gf_living",
+              "name": "LIVING ROOM",
+              "x": 14.0,
+              "y": 10.799999999999999,
+              "width": 23.0,
+              "length": 15.54,
+              "type": "living",
+              "color": "#0f172a",
+              "furniture": [
+                {
+                  "name": "Sectional Sofa",
+                  "type": "sofa",
+                  "x": 15.2,
+                  "y": 12.0,
+                  "w": 6.5,
+                  "l": 5.0
+                },
+                {
+                  "name": "Coffee Table",
+                  "type": "table",
+                  "x": 17.2,
+                  "y": 13.8,
+                  "w": 3.0,
+                  "l": 1.8
+                },
+                {
+                  "name": "TV Console",
+                  "type": "tv",
+                  "x": 15.2,
+                  "y": 24.7,
+                  "w": 6.0,
+                  "l": 1.2
+                }
+              ]
+            },
+            {
+              "id": "gf_dining",
+              "name": "DINING ROOM",
+              "x": 3.0,
+              "y": 26.34,
+              "width": 24.5,
+              "length": 13.32,
+              "type": "dining",
+              "color": "#0f172a",
+              "furniture": [
+                {
+                  "name": "6-Seater Dining Set",
+                  "type": "dining_set",
+                  "x": 12.5,
+                  "y": 31.0,
+                  "w": 5.5,
+                  "l": 4.0
+                }
+              ]
+            },
+            {
+              "id": "gf_kitchen",
+              "name": "KITCHEN & UTILITY",
+              "x": 27.5,
+              "y": 26.34,
+              "width": 9.5,
+              "length": 13.32,
+              "type": "kitchen",
+              "color": "#132338",
+              "furniture": [
+                {
+                  "name": "Modular Counter",
+                  "type": "counter",
+                  "x": 28.5,
+                  "y": 27.3,
+                  "w": 7.5,
+                  "l": 2.0
+                }
+              ]
+            },
+            {
+              "id": "gf_bed1",
+              "name": "GUEST BEDROOM 1",
+              "x": 3.0,
+              "y": 39.660000000000004,
+              "width": 27.5,
+              "length": 15.54,
+              "type": "bedroom",
+              "color": "#0f172a",
+              "furniture": [
+                {
+                  "name": "King Bed",
+                  "type": "bed",
+                  "x": 13.5,
+                  "y": 40.9,
+                  "w": 6.5,
+                  "l": 6.5
+                },
+                {
+                  "name": "Wardrobe",
+                  "type": "wardrobe",
+                  "x": 4.0,
+                  "y": 53.2,
+                  "w": 6.0,
+                  "l": 1.6
+                }
+              ]
+            },
+            {
+              "id": "gf_bath1",
+              "name": "BATHROOM 1",
+              "x": 30.5,
+              "y": 39.660000000000004,
+              "width": 6.5,
+              "length": 7.5,
+              "type": "bathroom",
+              "color": "#0e2e3b",
+              "furniture": []
+            }
+          ],
+          "stairs": {
+            "x": 29.5,
+            "y": 26.34,
+            "width": 7.5,
+            "length": 10.5,
+            "direction": "UP"
+          },
+          "svg_blueprint": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 780.0 1100.0\" width=\"100%\" height=\"100%\" style=\"background:#090d16; border-radius:12px; font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;\">\n    <defs>\n        <pattern id=\"resGrid\" width=\"16.0\" height=\"16.0\" patternUnits=\"userSpaceOnUse\">\n            <path d=\"M 16.0 0 L 0 0 0 16.0\" fill=\"none\" stroke=\"#16233b\" stroke-width=\"0.75\" opacity=\"0.6\"/>\n        </pattern>\n    </defs>\n    <rect width=\"780.0\" height=\"1100.0\" fill=\"url(#resGrid)\" />\n    <rect x=\"70.0\" y=\"70.0\" width=\"640.0\" height=\"960.0\" fill=\"none\" stroke=\"#64748b\" stroke-width=\"2\" stroke-dasharray=\"8,4\" opacity=\"0.6\"/>\n    <text x=\"390.0\" y=\"54.0\" fill=\"#94a3b8\" font-size=\"11\" font-weight=\"600\" text-anchor=\"middle\">PLOT BOUNDARY (40' x 60')</text>\n    <rect x=\"70.0\" y=\"30.0\" width=\"640.0\" height=\"32.0\" fill=\"#1e293b\" rx=\"4\" opacity=\"0.9\" />\n    <text x=\"390.0\" y=\"54.0\" fill=\"#38bdf8\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\">\u25b2 ROAD ACCESS (NORTH FACING)</text>\n    \n        <g id=\"gf_porch\">\n            <rect x=\"118.0\" y=\"242.79999999999998\" width=\"176.0\" height=\"248.64\" fill=\"#1e293b\" stroke=\"#38bdf8\" stroke-width=\"3\" opacity=\"0.92\"/>\n            <text x=\"206.0\" y=\"262.79999999999995\" fill=\"#f8fafc\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\">PARKING / PORCH</text>\n            <text x=\"206.0\" y=\"276.79999999999995\" fill=\"#94a3b8\" font-size=\"9\" font-weight=\"500\" text-anchor=\"middle\">11.0' x 15.5' \u2022 171 sq.ft</text>\n        </g>\n        <g id=\"gf_living\">\n            <rect x=\"294.0\" y=\"242.79999999999998\" width=\"368.0\" height=\"248.64\" fill=\"#0f172a\" stroke=\"#38bdf8\" stroke-width=\"3\" opacity=\"0.92\"/>\n            <text x=\"478.0\" y=\"262.79999999999995\" fill=\"#f8fafc\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\">LIVING ROOM</text>\n            <text x=\"478.0\" y=\"276.79999999999995\" fill=\"#94a3b8\" font-size=\"9\" font-weight=\"500\" text-anchor=\"middle\">23.0' x 15.5' \u2022 357 sq.ft</text>\n        </g>\n            <g>\n                <rect x=\"313.2\" y=\"262.0\" width=\"104.0\" height=\"80.0\" fill=\"#1e293b\" stroke=\"#0ea5e9\" stroke-width=\"1.2\" stroke-dasharray=\"3,2\" rx=\"3\" opacity=\"0.85\"/>\n                <text x=\"365.2\" y=\"305.0\" fill=\"#38bdf8\" font-size=\"8\" font-weight=\"600\" text-anchor=\"middle\">Sectional Sofa</text>\n            </g>\n            <g>\n                <rect x=\"345.2\" y=\"290.8\" width=\"48.0\" height=\"28.8\" fill=\"#1e293b\" stroke=\"#0ea5e9\" stroke-width=\"1.2\" stroke-dasharray=\"3,2\" rx=\"3\" opacity=\"0.85\"/>\n                <text x=\"369.2\" y=\"308.2\" fill=\"#38bdf8\" font-size=\"8\" font-weight=\"600\" text-anchor=\"middle\">Coffee Table</text>\n            </g>\n            <g>\n                <rect x=\"313.2\" y=\"465.2\" width=\"96.0\" height=\"19.2\" fill=\"#1e293b\" stroke=\"#0ea5e9\" stroke-width=\"1.2\" stroke-dasharray=\"3,2\" rx=\"3\" opacity=\"0.85\"/>\n                <text x=\"361.2\" y=\"477.8\" fill=\"#38bdf8\" font-size=\"8\" font-weight=\"600\" text-anchor=\"middle\">TV Console</text>\n            </g>\n        <g id=\"gf_dining\">\n            <rect x=\"118.0\" y=\"491.44\" width=\"392.0\" height=\"213.12\" fill=\"#0f172a\" stroke=\"#38bdf8\" stroke-width=\"3\" opacity=\"0.92\"/>\n            <text x=\"314.0\" y=\"511.44\" fill=\"#f8fafc\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\">DINING ROOM</text>\n            <text x=\"314.0\" y=\"525.44\" fill=\"#94a3b8\" font-size=\"9\" font-weight=\"500\" text-anchor=\"middle\">24.5' x 13.3' \u2022 326 sq.ft</text>\n        </g>\n            <g>\n                <rect x=\"270.0\" y=\"566.0\" width=\"88.0\" height=\"64.0\" fill=\"#1e293b\" stroke=\"#0ea5e9\" stroke-width=\"1.2\" stroke-dasharray=\"3,2\" rx=\"3\" opacity=\"0.85\"/>\n                <text x=\"314.0\" y=\"601.0\" fill=\"#38bdf8\" font-size=\"8\" font-weight=\"600\" text-anchor=\"middle\">6-Seater Dining Set</text>\n            </g>\n        <g id=\"gf_kitchen\">\n            <rect x=\"510.0\" y=\"491.44\" width=\"152.0\" height=\"213.12\" fill=\"#132338\" stroke=\"#38bdf8\" stroke-width=\"3\" opacity=\"0.92\"/>\n            <text x=\"586.0\" y=\"511.44\" fill=\"#f8fafc\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\">KITCHEN & UTILITY</text>\n            <text x=\"586.0\" y=\"525.44\" fill=\"#94a3b8\" font-size=\"9\" font-weight=\"500\" text-anchor=\"middle\">9.5' x 13.3' \u2022 127 sq.ft</text>\n        </g>\n            <g>\n                <rect x=\"526.0\" y=\"506.8\" width=\"120.0\" height=\"32.0\" fill=\"#1e293b\" stroke=\"#0ea5e9\" stroke-width=\"1.2\" stroke-dasharray=\"3,2\" rx=\"3\" opacity=\"0.85\"/>\n                <text x=\"586.0\" y=\"525.8\" fill=\"#38bdf8\" font-size=\"8\" font-weight=\"600\" text-anchor=\"middle\">Modular Counter</text>\n            </g>\n        <g id=\"gf_bed1\">\n            <rect x=\"118.0\" y=\"704.5600000000001\" width=\"440.0\" height=\"248.64\" fill=\"#0f172a\" stroke=\"#38bdf8\" stroke-width=\"3\" opacity=\"0.92\"/>\n            <text x=\"338.0\" y=\"724.5600000000001\" fill=\"#f8fafc\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\">GUEST BEDROOM 1</text>\n            <text x=\"338.0\" y=\"738.5600000000001\" fill=\"#94a3b8\" font-size=\"9\" font-weight=\"500\" text-anchor=\"middle\">27.5' x 15.5' \u2022 427 sq.ft</text>\n        </g>\n            <g>\n                <rect x=\"286.0\" y=\"724.4\" width=\"104.0\" height=\"104.0\" fill=\"#1e293b\" stroke=\"#0ea5e9\" stroke-width=\"1.2\" stroke-dasharray=\"3,2\" rx=\"3\" opacity=\"0.85\"/>\n                <text x=\"338.0\" y=\"779.4\" fill=\"#38bdf8\" font-size=\"8\" font-weight=\"600\" text-anchor=\"middle\">King Bed</text>\n            </g>\n            <g>\n                <rect x=\"134.0\" y=\"921.2\" width=\"96.0\" height=\"25.6\" fill=\"#1e293b\" stroke=\"#0ea5e9\" stroke-width=\"1.2\" stroke-dasharray=\"3,2\" rx=\"3\" opacity=\"0.85\"/>\n                <text x=\"182.0\" y=\"937.0\" fill=\"#38bdf8\" font-size=\"8\" font-weight=\"600\" text-anchor=\"middle\">Wardrobe</text>\n            </g>\n        <g id=\"gf_bath1\">\n            <rect x=\"558.0\" y=\"704.5600000000001\" width=\"104.0\" height=\"120.0\" fill=\"#0e2e3b\" stroke=\"#38bdf8\" stroke-width=\"3\" opacity=\"0.92\"/>\n            <text x=\"610.0\" y=\"724.5600000000001\" fill=\"#f8fafc\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\">BATHROOM 1</text>\n            <text x=\"610.0\" y=\"738.5600000000001\" fill=\"#94a3b8\" font-size=\"9\" font-weight=\"500\" text-anchor=\"middle\">6.5' x 7.5' \u2022 49 sq.ft</text>\n        </g><rect x=\"542.0\" y=\"491.44\" width=\"120.0\" height=\"168.0\" fill=\"#172554\" stroke=\"#60a5fa\" stroke-width=\"2\"/>\n        <text x=\"602.0\" y=\"575.44\" fill=\"#dbeafe\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">STAIRCASE</text>\n    <g transform=\"translate(530.0, 970.0)\">\n        <rect width=\"180\" height=\"60\" fill=\"#0f172a\" stroke=\"#334155\" stroke-width=\"1.5\" rx=\"6\"/>\n        <text x=\"12\" y=\"18\" fill=\"#f8fafc\" font-size=\"11\" font-weight=\"bold\">GROUND FLOOR</text>\n        <text x=\"12\" y=\"34\" fill=\"#38bdf8\" font-size=\"9\" font-weight=\"600\">BUILT-UP: 0 SQ.FT</text>\n        <text x=\"12\" y=\"48\" fill=\"#64748b\" font-size=\"8\">AI ARCHITECT \u2022 MODERN MINIMALIST</text>\n    </g>\n    </svg>"
+        },
+        {
+          "floor_number": 1,
+          "floor_name": "First Floor",
+          "level_m": 3.2,
+          "carpet_area_sqft": 1365.1,
+          "total_area_sqft": 1509.6,
+          "rooms": [
+            {
+              "id": "f1_master_bed",
+              "name": "MASTER BEDROOM",
+              "x": 3.0,
+              "y": 10.799999999999999,
+              "width": 27.5,
+              "length": 16.87,
+              "type": "bedroom",
+              "color": "#0f172a",
+              "furniture": [
+                {
+                  "name": "King Bed",
+                  "type": "bed",
+                  "x": 13.5,
+                  "y": 12.0,
+                  "w": 6.5,
+                  "l": 6.5
+                },
+                {
+                  "name": "Wardrobe",
+                  "type": "wardrobe",
+                  "x": 4.0,
+                  "y": 25.7,
+                  "w": 6.0,
+                  "l": 1.6
+                }
+              ]
+            },
+            {
+              "id": "f1_master_bath",
+              "name": "ATTACHED BATH",
+              "x": 30.5,
+              "y": 10.799999999999999,
+              "width": 6.5,
+              "length": 8.0,
+              "type": "bathroom",
+              "color": "#0e2e3b",
+              "furniture": []
+            },
+            {
+              "id": "f1_balcony",
+              "name": "FRONT BALCONY",
+              "x": 3.0,
+              "y": 6.299999999999999,
+              "width": 23.8,
+              "length": 4.5,
+              "type": "balcony",
+              "color": "#1e293b",
+              "furniture": []
+            },
+            {
+              "id": "f1_lounge",
+              "name": "FAMILY LOUNGE",
+              "x": 3.0,
+              "y": 27.672000000000004,
+              "width": 26.5,
+              "length": 11.54,
+              "type": "lounge",
+              "color": "#0f172a",
+              "furniture": []
+            },
+            {
+              "id": "f1_bed_rear1",
+              "name": "BEDROOM 2",
+              "x": 3.0,
+              "y": 39.21600000000001,
+              "width": 17.0,
+              "length": 15.98,
+              "type": "bedroom",
+              "color": "#0f172a",
+              "furniture": [
+                {
+                  "name": "King Bed",
+                  "type": "bed",
+                  "x": 8.2,
+                  "y": 40.4,
+                  "w": 6.5,
+                  "l": 6.5
+                },
+                {
+                  "name": "Wardrobe",
+                  "type": "wardrobe",
+                  "x": 4.0,
+                  "y": 53.2,
+                  "w": 6.0,
+                  "l": 1.6
+                }
+              ]
+            },
+            {
+              "id": "f1_bath_rear",
+              "name": "BATHROOM 2",
+              "x": 20.0,
+              "y": 39.21600000000001,
+              "width": 17.0,
+              "length": 15.98,
+              "type": "bathroom",
+              "color": "#0e2e3b",
+              "furniture": []
+            }
+          ],
+          "stairs": {
+            "x": 29.5,
+            "y": 26.34,
+            "width": 7.5,
+            "length": 10.5,
+            "direction": "DN / UP"
+          },
+          "svg_blueprint": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 780.0 1100.0\" width=\"100%\" height=\"100%\" style=\"background:#090d16; border-radius:12px; font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;\">\n    <defs>\n        <pattern id=\"resGrid\" width=\"16.0\" height=\"16.0\" patternUnits=\"userSpaceOnUse\">\n            <path d=\"M 16.0 0 L 0 0 0 16.0\" fill=\"none\" stroke=\"#16233b\" stroke-width=\"0.75\" opacity=\"0.6\"/>\n        </pattern>\n    </defs>\n    <rect width=\"780.0\" height=\"1100.0\" fill=\"url(#resGrid)\" />\n    <rect x=\"70.0\" y=\"70.0\" width=\"640.0\" height=\"960.0\" fill=\"none\" stroke=\"#64748b\" stroke-width=\"2\" stroke-dasharray=\"8,4\" opacity=\"0.6\"/>\n    <text x=\"390.0\" y=\"54.0\" fill=\"#94a3b8\" font-size=\"11\" font-weight=\"600\" text-anchor=\"middle\">PLOT BOUNDARY (40' x 60')</text>\n    <rect x=\"70.0\" y=\"30.0\" width=\"640.0\" height=\"32.0\" fill=\"#1e293b\" rx=\"4\" opacity=\"0.9\" />\n    <text x=\"390.0\" y=\"54.0\" fill=\"#38bdf8\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\">\u25b2 ROAD ACCESS (NORTH FACING)</text>\n    \n        <g id=\"f1_master_bed\">\n            <rect x=\"118.0\" y=\"242.79999999999998\" width=\"440.0\" height=\"269.92\" fill=\"#0f172a\" stroke=\"#38bdf8\" stroke-width=\"3\" opacity=\"0.92\"/>\n            <text x=\"338.0\" y=\"262.79999999999995\" fill=\"#f8fafc\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\">MASTER BEDROOM</text>\n            <text x=\"338.0\" y=\"276.79999999999995\" fill=\"#94a3b8\" font-size=\"9\" font-weight=\"500\" text-anchor=\"middle\">27.5' x 16.9' \u2022 464 sq.ft</text>\n        </g>\n            <g>\n                <rect x=\"286.0\" y=\"262.0\" width=\"104.0\" height=\"104.0\" fill=\"#1e293b\" stroke=\"#0ea5e9\" stroke-width=\"1.2\" stroke-dasharray=\"3,2\" rx=\"3\" opacity=\"0.85\"/>\n                <text x=\"338.0\" y=\"317.0\" fill=\"#38bdf8\" font-size=\"8\" font-weight=\"600\" text-anchor=\"middle\">King Bed</text>\n            </g>\n            <g>\n                <rect x=\"134.0\" y=\"481.2\" width=\"96.0\" height=\"25.6\" fill=\"#1e293b\" stroke=\"#0ea5e9\" stroke-width=\"1.2\" stroke-dasharray=\"3,2\" rx=\"3\" opacity=\"0.85\"/>\n                <text x=\"182.0\" y=\"497.0\" fill=\"#38bdf8\" font-size=\"8\" font-weight=\"600\" text-anchor=\"middle\">Wardrobe</text>\n            </g>\n        <g id=\"f1_master_bath\">\n            <rect x=\"558.0\" y=\"242.79999999999998\" width=\"104.0\" height=\"128.0\" fill=\"#0e2e3b\" stroke=\"#38bdf8\" stroke-width=\"3\" opacity=\"0.92\"/>\n            <text x=\"610.0\" y=\"262.79999999999995\" fill=\"#f8fafc\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\">ATTACHED BATH</text>\n            <text x=\"610.0\" y=\"276.79999999999995\" fill=\"#94a3b8\" font-size=\"9\" font-weight=\"500\" text-anchor=\"middle\">6.5' x 8.0' \u2022 52 sq.ft</text>\n        </g>\n        <g id=\"f1_balcony\">\n            <rect x=\"118.0\" y=\"170.79999999999998\" width=\"380.8\" height=\"72.0\" fill=\"#1e293b\" stroke=\"#38bdf8\" stroke-width=\"3\" opacity=\"0.92\"/>\n            <text x=\"308.4\" y=\"190.79999999999998\" fill=\"#f8fafc\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\">FRONT BALCONY</text>\n            <text x=\"308.4\" y=\"204.79999999999998\" fill=\"#94a3b8\" font-size=\"9\" font-weight=\"500\" text-anchor=\"middle\">23.8' x 4.5' \u2022 107 sq.ft</text>\n        </g>\n        <g id=\"f1_lounge\">\n            <rect x=\"118.0\" y=\"512.7520000000001\" width=\"424.0\" height=\"184.64\" fill=\"#0f172a\" stroke=\"#38bdf8\" stroke-width=\"3\" opacity=\"0.92\"/>\n            <text x=\"330.0\" y=\"532.7520000000001\" fill=\"#f8fafc\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\">FAMILY LOUNGE</text>\n            <text x=\"330.0\" y=\"546.7520000000001\" fill=\"#94a3b8\" font-size=\"9\" font-weight=\"500\" text-anchor=\"middle\">26.5' x 11.5' \u2022 306 sq.ft</text>\n        </g>\n        <g id=\"f1_bed_rear1\">\n            <rect x=\"118.0\" y=\"697.4560000000001\" width=\"272.0\" height=\"255.68\" fill=\"#0f172a\" stroke=\"#38bdf8\" stroke-width=\"3\" opacity=\"0.92\"/>\n            <text x=\"254.0\" y=\"717.4560000000001\" fill=\"#f8fafc\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\">BEDROOM 2</text>\n            <text x=\"254.0\" y=\"731.4560000000001\" fill=\"#94a3b8\" font-size=\"9\" font-weight=\"500\" text-anchor=\"middle\">17.0' x 16.0' \u2022 272 sq.ft</text>\n        </g>\n            <g>\n                <rect x=\"201.2\" y=\"716.4\" width=\"104.0\" height=\"104.0\" fill=\"#1e293b\" stroke=\"#0ea5e9\" stroke-width=\"1.2\" stroke-dasharray=\"3,2\" rx=\"3\" opacity=\"0.85\"/>\n                <text x=\"253.2\" y=\"771.4\" fill=\"#38bdf8\" font-size=\"8\" font-weight=\"600\" text-anchor=\"middle\">King Bed</text>\n            </g>\n            <g>\n                <rect x=\"134.0\" y=\"921.2\" width=\"96.0\" height=\"25.6\" fill=\"#1e293b\" stroke=\"#0ea5e9\" stroke-width=\"1.2\" stroke-dasharray=\"3,2\" rx=\"3\" opacity=\"0.85\"/>\n                <text x=\"182.0\" y=\"937.0\" fill=\"#38bdf8\" font-size=\"8\" font-weight=\"600\" text-anchor=\"middle\">Wardrobe</text>\n            </g>\n        <g id=\"f1_bath_rear\">\n            <rect x=\"390.0\" y=\"697.4560000000001\" width=\"272.0\" height=\"255.68\" fill=\"#0e2e3b\" stroke=\"#38bdf8\" stroke-width=\"3\" opacity=\"0.92\"/>\n            <text x=\"526.0\" y=\"717.4560000000001\" fill=\"#f8fafc\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\">BATHROOM 2</text>\n            <text x=\"526.0\" y=\"731.4560000000001\" fill=\"#94a3b8\" font-size=\"9\" font-weight=\"500\" text-anchor=\"middle\">17.0' x 16.0' \u2022 272 sq.ft</text>\n        </g><rect x=\"542.0\" y=\"491.44\" width=\"120.0\" height=\"168.0\" fill=\"#172554\" stroke=\"#60a5fa\" stroke-width=\"2\"/>\n        <text x=\"602.0\" y=\"575.44\" fill=\"#dbeafe\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">STAIRCASE</text>\n    <g transform=\"translate(530.0, 970.0)\">\n        <rect width=\"180\" height=\"60\" fill=\"#0f172a\" stroke=\"#334155\" stroke-width=\"1.5\" rx=\"6\"/>\n        <text x=\"12\" y=\"18\" fill=\"#f8fafc\" font-size=\"11\" font-weight=\"bold\">FIRST FLOOR</text>\n        <text x=\"12\" y=\"34\" fill=\"#38bdf8\" font-size=\"9\" font-weight=\"600\">BUILT-UP: 0 SQ.FT</text>\n        <text x=\"12\" y=\"48\" fill=\"#64748b\" font-size=\"8\">AI ARCHITECT \u2022 MODERN MINIMALIST</text>\n    </g>\n    </svg>"
+        },
+        {
+          "floor_number": 2,
+          "floor_name": "Terrace / Roof",
+          "level_m": 6.4,
+          "carpet_area_sqft": 78.8,
+          "total_area_sqft": 377.4,
+          "rooms": [
+            {
+              "id": "terrace_open",
+              "name": "OPEN TERRACE / ROOF GARDEN",
+              "x": 3.0,
+              "y": 10.799999999999999,
+              "width": 34.0,
+              "length": 44.4,
+              "type": "terrace",
+              "color": "#1e293b",
+              "furniture": []
+            },
+            {
+              "id": "stair_cabin",
+              "name": "STAIR CABIN & WATER TANK ZONE",
+              "x": 29.5,
+              "y": 26.34,
+              "width": 7.5,
+              "length": 10.5,
+              "type": "cabin",
+              "color": "#0f172a",
+              "furniture": []
+            }
+          ],
+          "stairs": {
+            "x": 29.5,
+            "y": 26.34,
+            "width": 7.5,
+            "length": 10.5,
+            "direction": "DN"
+          },
+          "svg_blueprint": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 780.0 1100.0\" width=\"100%\" height=\"100%\" style=\"background:#090d16; border-radius:12px; font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;\">\n    <defs>\n        <pattern id=\"resGrid\" width=\"16.0\" height=\"16.0\" patternUnits=\"userSpaceOnUse\">\n            <path d=\"M 16.0 0 L 0 0 0 16.0\" fill=\"none\" stroke=\"#16233b\" stroke-width=\"0.75\" opacity=\"0.6\"/>\n        </pattern>\n    </defs>\n    <rect width=\"780.0\" height=\"1100.0\" fill=\"url(#resGrid)\" />\n    <rect x=\"70.0\" y=\"70.0\" width=\"640.0\" height=\"960.0\" fill=\"none\" stroke=\"#64748b\" stroke-width=\"2\" stroke-dasharray=\"8,4\" opacity=\"0.6\"/>\n    <text x=\"390.0\" y=\"54.0\" fill=\"#94a3b8\" font-size=\"11\" font-weight=\"600\" text-anchor=\"middle\">PLOT BOUNDARY (40' x 60')</text>\n    <rect x=\"70.0\" y=\"30.0\" width=\"640.0\" height=\"32.0\" fill=\"#1e293b\" rx=\"4\" opacity=\"0.9\" />\n    <text x=\"390.0\" y=\"54.0\" fill=\"#38bdf8\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\">\u25b2 ROAD ACCESS (NORTH FACING)</text>\n    \n        <g id=\"terrace_open\">\n            <rect x=\"118.0\" y=\"242.79999999999998\" width=\"544.0\" height=\"710.4\" fill=\"#1e293b\" stroke=\"#38bdf8\" stroke-width=\"3\" opacity=\"0.92\"/>\n            <text x=\"390.0\" y=\"262.79999999999995\" fill=\"#f8fafc\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\">OPEN TERRACE / ROOF GARDEN</text>\n            <text x=\"390.0\" y=\"276.79999999999995\" fill=\"#94a3b8\" font-size=\"9\" font-weight=\"500\" text-anchor=\"middle\">34.0' x 44.4' \u2022 1510 sq.ft</text>\n        </g>\n        <g id=\"stair_cabin\">\n            <rect x=\"542.0\" y=\"491.44\" width=\"120.0\" height=\"168.0\" fill=\"#0f172a\" stroke=\"#38bdf8\" stroke-width=\"3\" opacity=\"0.92\"/>\n            <text x=\"602.0\" y=\"511.44\" fill=\"#f8fafc\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\">STAIR CABIN & WATER TANK ZONE</text>\n            <text x=\"602.0\" y=\"525.44\" fill=\"#94a3b8\" font-size=\"9\" font-weight=\"500\" text-anchor=\"middle\">7.5' x 10.5' \u2022 79 sq.ft</text>\n        </g><rect x=\"542.0\" y=\"491.44\" width=\"120.0\" height=\"168.0\" fill=\"#172554\" stroke=\"#60a5fa\" stroke-width=\"2\"/>\n        <text x=\"602.0\" y=\"575.44\" fill=\"#dbeafe\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">STAIRCASE</text>\n    <g transform=\"translate(530.0, 970.0)\">\n        <rect width=\"180\" height=\"60\" fill=\"#0f172a\" stroke=\"#334155\" stroke-width=\"1.5\" rx=\"6\"/>\n        <text x=\"12\" y=\"18\" fill=\"#f8fafc\" font-size=\"11\" font-weight=\"bold\">TERRACE / ROOF</text>\n        <text x=\"12\" y=\"34\" fill=\"#38bdf8\" font-size=\"9\" font-weight=\"600\">BUILT-UP: 0 SQ.FT</text>\n        <text x=\"12\" y=\"48\" fill=\"#64748b\" font-size=\"8\">AI ARCHITECT \u2022 MODERN MINIMALIST</text>\n    </g>\n    </svg>"
+        }
+      ],
+      "summary": {
+        "total_floors": 2,
+        "total_builtup_sqft": 3396.6,
+        "total_carpet_sqft": 2730.2,
+        "bedrooms": 4,
+        "bathrooms": 4,
+        "architectural_style": "Modern Minimalist"
+      },
+      "scene_3d": {
+        "domain": "residential",
+        "plot_dimensions_m": {
+          "width": 12.19,
+          "length": 18.29
+        },
+        "floor_height_m": 3.0,
+        "levels": [
+          {
+            "floor_number": 0,
+            "floor_name": "Ground Floor",
+            "elevation_y_m": 0.0,
+            "rooms": [
+              {
+                "id": "gf_porch",
+                "name": "PARKING / PORCH",
+                "type": "porch",
+                "bounds_m": {
+                  "x": 0.91,
+                  "z": 3.29,
+                  "width": 3.35,
+                  "depth": 4.74,
+                  "height": 3.0
+                },
+                "furniture": [],
+                "color": "#1e293b"
+              },
+              {
+                "id": "gf_living",
+                "name": "LIVING ROOM",
+                "type": "living",
+                "bounds_m": {
+                  "x": 4.27,
+                  "z": 3.29,
+                  "width": 7.01,
+                  "depth": 4.74,
+                  "height": 3.0
+                },
+                "furniture": [
+                  {
+                    "name": "Sectional Sofa",
+                    "type": "sofa",
+                    "x": 4.63,
+                    "z": 3.66,
+                    "w": 1.98,
+                    "d": 1.52
+                  },
+                  {
+                    "name": "Coffee Table",
+                    "type": "table",
+                    "x": 5.24,
+                    "z": 4.21,
+                    "w": 0.91,
+                    "d": 0.55
+                  },
+                  {
+                    "name": "TV Console",
+                    "type": "tv",
+                    "x": 4.63,
+                    "z": 7.53,
+                    "w": 1.83,
+                    "d": 0.37
+                  }
+                ],
+                "color": "#0f172a"
+              },
+              {
+                "id": "gf_dining",
+                "name": "DINING ROOM",
+                "type": "dining",
+                "bounds_m": {
+                  "x": 0.91,
+                  "z": 8.03,
+                  "width": 7.47,
+                  "depth": 4.06,
+                  "height": 3.0
+                },
+                "furniture": [
+                  {
+                    "name": "6-Seater Dining Set",
+                    "type": "dining_set",
+                    "x": 3.81,
+                    "z": 9.45,
+                    "w": 1.68,
+                    "d": 1.22
+                  }
+                ],
+                "color": "#0f172a"
+              },
+              {
+                "id": "gf_kitchen",
+                "name": "KITCHEN & UTILITY",
+                "type": "kitchen",
+                "bounds_m": {
+                  "x": 8.38,
+                  "z": 8.03,
+                  "width": 2.9,
+                  "depth": 4.06,
+                  "height": 3.0
+                },
+                "furniture": [
+                  {
+                    "name": "Modular Counter",
+                    "type": "counter",
+                    "x": 8.69,
+                    "z": 8.32,
+                    "w": 2.29,
+                    "d": 0.61
+                  }
+                ],
+                "color": "#132338"
+              },
+              {
+                "id": "gf_bed1",
+                "name": "GUEST BEDROOM 1",
+                "type": "bedroom",
+                "bounds_m": {
+                  "x": 0.91,
+                  "z": 12.09,
+                  "width": 8.38,
+                  "depth": 4.74,
+                  "height": 3.0
+                },
+                "furniture": [
+                  {
+                    "name": "King Bed",
+                    "type": "bed",
+                    "x": 4.11,
+                    "z": 12.47,
+                    "w": 1.98,
+                    "d": 1.98
+                  },
+                  {
+                    "name": "Wardrobe",
+                    "type": "wardrobe",
+                    "x": 1.22,
+                    "z": 16.22,
+                    "w": 1.83,
+                    "d": 0.49
+                  }
+                ],
+                "color": "#0f172a"
+              },
+              {
+                "id": "gf_bath1",
+                "name": "BATHROOM 1",
+                "type": "bathroom",
+                "bounds_m": {
+                  "x": 9.3,
+                  "z": 12.09,
+                  "width": 1.98,
+                  "depth": 2.29,
+                  "height": 3.0
+                },
+                "furniture": [],
+                "color": "#0e2e3b"
+              }
+            ],
+            "has_roof": false
+          },
+          {
+            "floor_number": 1,
+            "floor_name": "First Floor",
+            "elevation_y_m": 3.0,
+            "rooms": [
+              {
+                "id": "f1_master_bed",
+                "name": "MASTER BEDROOM",
+                "type": "bedroom",
+                "bounds_m": {
+                  "x": 0.91,
+                  "z": 3.29,
+                  "width": 8.38,
+                  "depth": 5.14,
+                  "height": 3.0
+                },
+                "furniture": [
+                  {
+                    "name": "King Bed",
+                    "type": "bed",
+                    "x": 4.11,
+                    "z": 3.66,
+                    "w": 1.98,
+                    "d": 1.98
+                  },
+                  {
+                    "name": "Wardrobe",
+                    "type": "wardrobe",
+                    "x": 1.22,
+                    "z": 7.83,
+                    "w": 1.83,
+                    "d": 0.49
+                  }
+                ],
+                "color": "#0f172a"
+              },
+              {
+                "id": "f1_master_bath",
+                "name": "ATTACHED BATH",
+                "type": "bathroom",
+                "bounds_m": {
+                  "x": 9.3,
+                  "z": 3.29,
+                  "width": 1.98,
+                  "depth": 2.44,
+                  "height": 3.0
+                },
+                "furniture": [],
+                "color": "#0e2e3b"
+              },
+              {
+                "id": "f1_balcony",
+                "name": "FRONT BALCONY",
+                "type": "balcony",
+                "bounds_m": {
+                  "x": 0.91,
+                  "z": 1.92,
+                  "width": 7.25,
+                  "depth": 1.37,
+                  "height": 3.0
+                },
+                "furniture": [],
+                "color": "#1e293b"
+              },
+              {
+                "id": "f1_lounge",
+                "name": "FAMILY LOUNGE",
+                "type": "lounge",
+                "bounds_m": {
+                  "x": 0.91,
+                  "z": 8.43,
+                  "width": 8.08,
+                  "depth": 3.52,
+                  "height": 3.0
+                },
+                "furniture": [],
+                "color": "#0f172a"
+              },
+              {
+                "id": "f1_bed_rear1",
+                "name": "BEDROOM 2",
+                "type": "bedroom",
+                "bounds_m": {
+                  "x": 0.91,
+                  "z": 11.95,
+                  "width": 5.18,
+                  "depth": 4.87,
+                  "height": 3.0
+                },
+                "furniture": [
+                  {
+                    "name": "King Bed",
+                    "type": "bed",
+                    "x": 2.5,
+                    "z": 12.31,
+                    "w": 1.98,
+                    "d": 1.98
+                  },
+                  {
+                    "name": "Wardrobe",
+                    "type": "wardrobe",
+                    "x": 1.22,
+                    "z": 16.22,
+                    "w": 1.83,
+                    "d": 0.49
+                  }
+                ],
+                "color": "#0f172a"
+              },
+              {
+                "id": "f1_bath_rear",
+                "name": "BATHROOM 2",
+                "type": "bathroom",
+                "bounds_m": {
+                  "x": 6.1,
+                  "z": 11.95,
+                  "width": 5.18,
+                  "depth": 4.87,
+                  "height": 3.0
+                },
+                "furniture": [],
+                "color": "#0e2e3b"
+              }
+            ],
+            "has_roof": false
+          },
+          {
+            "floor_number": 2,
+            "floor_name": "Terrace / Roof",
+            "elevation_y_m": 6.0,
+            "rooms": [
+              {
+                "id": "terrace_open",
+                "name": "OPEN TERRACE / ROOF GARDEN",
+                "type": "terrace",
+                "bounds_m": {
+                  "x": 0.91,
+                  "z": 3.29,
+                  "width": 10.36,
+                  "depth": 13.53,
+                  "height": 3.0
+                },
+                "furniture": [],
+                "color": "#1e293b"
+              },
+              {
+                "id": "stair_cabin",
+                "name": "STAIR CABIN & WATER TANK ZONE",
+                "type": "cabin",
+                "bounds_m": {
+                  "x": 8.99,
+                  "z": 8.03,
+                  "width": 2.29,
+                  "depth": 3.2,
+                  "height": 3.0
+                },
+                "furniture": [],
+                "color": "#0f172a"
+              }
+            ],
+            "has_roof": true
+          }
+        ]
+      }
+    },
+    "boq": {
+      "domain": "residential",
+      "project_metrics": {
+        "plot_area_sqft": 2400.0,
+        "total_builtup_area_sqft": 3396.6,
+        "carpet_area_sqft": 2730.3,
+        "floors": 2,
+        "bedrooms": 4,
+        "bathrooms": 4,
+        "estimated_completion_months": 9.5
+      },
+      "civil_materials": {
+        "cement": {
+          "total_bags": 1461,
+          "total_metric_tons": 73.0
+        },
+        "steel_rebar": {
+          "total_kg": 12907.1,
+          "total_metric_tons": 12.91
+        },
+        "bricks": {
+          "total_bricks": 32268
+        },
+        "sand": {
+          "cubic_feet": 6793.2
+        },
+        "aggregate": {
+          "cubic_feet": 4585.4
+        }
+      },
+      "electrical_system": {
+        "total_electrical_wire_meters": 4177.8,
+        "total_electrical_wire_feet": 13706.7,
+        "wire_lighting_1_0mm_meters": 1528.5,
+        "wire_power_sockets_2_5mm_meters": 1086.9,
+        "wire_heavy_load_ac_4_0mm_meters": 611.4,
+        "wire_grounding_earth_meters": 951.0,
+        "pvc_conduit_pipe_meters": 1086.9,
+        "modular_switch_plates": 91
+      },
+      "plumbing_system": {
+        "total_pipeline_length_meters": 308.6,
+        "total_pipeline_length_feet": 1012.5,
+        "freshwater_cpvc_pipelines_meters": 147.0,
+        "drainage_pvc_pipelines_meters": 161.6,
+        "overhead_water_tank_capacity_liters": 1500,
+        "toilets_ewc_count": 4,
+        "wash_basins_count": 5
+      },
+      "cost_estimation": {
+        "currency": "USD",
+        "total_estimated_cost": 116694,
+        "cost_in_inr_equivalent": 9802296,
+        "cost_per_sqft": 34.4,
+        "materials_total": 61886,
+        "labor_total": 49251,
+        "itemized": [
+          {
+            "item": "Cement (Foundation, Slabs, Masonry, Plaster)",
+            "qty": "1,461 Bags",
+            "cost": 8766
+          },
+          {
+            "item": "Steel Rebar (TMT Fe550D)",
+            "qty": "12,907 kg",
+            "cost": 11616
+          },
+          {
+            "item": "Bricks & AAC Blocks",
+            "qty": "32,268 Pieces",
+            "cost": 4518
+          },
+          {
+            "item": "Sand & Coarse Aggregate",
+            "qty": "6,793 cft",
+            "cost": 7736
+          },
+          {
+            "item": "Flooring Tiles & Paint",
+            "qty": "2,730 sq.ft",
+            "cost": 10375
+          },
+          {
+            "item": "Electrical System (Copper Wire & Conduits)",
+            "qty": "4,178m Wire (13,707 ft)",
+            "cost": 10486
+          },
+          {
+            "item": "Plumbing System (CPVC Water & Drainage Pipes)",
+            "qty": "309m Pipe (1,012 ft)",
+            "cost": 3589
+          },
+          {
+            "item": "Civil & Masonry Construction Labor",
+            "qty": "3,397 sq.ft",
+            "cost": 49251
+          }
+        ]
+      },
+      "timeline": {
+        "total_duration_weeks": 40,
+        "phases": [
+          {
+            "phase": 1,
+            "title": "Site Prep, Excavation & Footings",
+            "duration_weeks": 3,
+            "description": "Site demarcation, soil excavation, foundation footing."
+          },
+          {
+            "phase": 2,
+            "title": "Plinth Beam & Ground Slab",
+            "duration_weeks": 3,
+            "description": "Plinth beam casting, backfilling, underground plumbing."
+          },
+          {
+            "phase": 3,
+            "title": "RCC Columns, Beams & Slabs",
+            "duration_weeks": 8,
+            "description": "Casting vertical columns and upper floor slabs."
+          },
+          {
+            "phase": 4,
+            "title": "Brick Masonry & Door Frames",
+            "duration_weeks": 4,
+            "description": "External and internal partition masonry walls."
+          },
+          {
+            "phase": 5,
+            "title": "MEP (Electrical Conduits & Plumbing Piping)",
+            "duration_weeks": 3,
+            "description": "Wall chasing, laying electrical wires and water pipelines."
+          },
+          {
+            "phase": 6,
+            "title": "Plastering, Flooring & Painting",
+            "duration_weeks": 6,
+            "description": "Smooth sponge plaster, vitrified tiling, and paint finish."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "proj_showcase_bridge",
+    "name": "Zephyr Metro Cable-Stayed Bridge",
+    "domain": "bridge",
+    "category": "bridge",
+    "client_name": "Metropolitan Transit Authority",
+    "author": "Dr. Aris Thorne, PE",
+    "notes": "160m cable-stayed river crossing engineered with twin composite aerodynamic pylon towers, 4 vehicular traffic lanes, and integrated maintenance walkways.",
+    "tags": [
+      "Bridge",
+      "Infrastructure",
+      "Cable-Stayed",
+      "Heavy Civil"
+    ],
+    "project_data": {
+      "project_type": "cable-stayed river bridge",
+      "plot_length": 160.0,
+      "plot_width": 22.0,
+      "floors": 4,
+      "architectural_style": "Cable-Stayed Girder Bridge",
+      "budget": 12500000
+    },
+    "interior": {},
+    "timestamp": "2026-09-07 14:15",
+    "layout": {
+      "category": "bridge",
+      "plot": {
+        "width": 22.0,
+        "length": 160.0,
+        "unit": "meters",
+        "bridge_type": "Cable-Stayed Girder Bridge",
+        "piers": 5,
+        "vertical_clearance_m": 12.0
+      },
+      "floors": [
+        {
+          "floor_number": 0,
+          "floor_name": "Bridge Deck & Elevation Section",
+          "level_m": 12.0,
+          "total_area_sqft": 37888.9,
+          "carpet_area_sqft": 32205.6,
+          "rooms": [
+            {
+              "id": "deck_lanes",
+              "name": "Cable-Stayed Girder Bridge (4 Lanes)",
+              "x": 0,
+              "y": 0,
+              "width": 524.8,
+              "length": 72.16,
+              "type": "deck"
+            }
+          ],
+          "svg_blueprint": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1000 600\" width=\"100%\" height=\"100%\" style=\"background:#090d16; border-radius:12px; font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;\">\n    <defs>\n        <pattern id=\"brGrid\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n            <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"#16233b\" stroke-width=\"0.75\" opacity=\"0.6\"/>\n        </pattern>\n        <linearGradient id=\"waterGrad\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">\n            <stop offset=\"0%\" stop-color=\"#0284c7\" stop-opacity=\"0.3\"/>\n            <stop offset=\"100%\" stop-color=\"#0369a1\" stop-opacity=\"0.6\"/>\n        </linearGradient>\n    </defs>\n    <rect width=\"1000\" height=\"600\" fill=\"url(#brGrid)\"/>\n\n    <!-- TITLE & ENGINEERING STAMP -->\n    <text x=\"40\" y=\"42\" fill=\"#38bdf8\" font-size=\"16\" font-weight=\"bold\" letter-spacing=\"1\">CIVIL INFRASTRUCTURE: CABLE-STAYED GIRDER BRIDGE</text>\n    <text x=\"40\" y=\"62\" fill=\"#94a3b8\" font-size=\"11\">SPAN: 160.0 METERS \u2022 DECK WIDTH: 22.0 METERS \u2022 PIERS: 5 UNITS</text>\n\n    <!-- SECTION 1: TOP PLAN VIEW (DECK) -->\n    <g transform=\"translate(60, 90)\">\n        <text x=\"0\" y=\"-12\" fill=\"#38bdf8\" font-size=\"11\" font-weight=\"700\">\u25b2 PLAN VIEW (ROADWAY DECK & TRAFFIC LANES)</text>\n        <!-- Deck Base -->\n        <rect x=\"0\" y=\"0\" width=\"880\" height=\"90\" fill=\"#1e293b\" stroke=\"#38bdf8\" stroke-width=\"2\" rx=\"4\"/>\n        <!-- Road Lanes -->\n        <line x1=\"0\" y1=\"22\" x2=\"880\" y2=\"22\" stroke=\"#ffffff\" stroke-width=\"1.2\" stroke-dasharray=\"8,6\"/>\n        <line x1=\"0\" y1=\"45\" x2=\"880\" y2=\"45\" stroke=\"#f59e0b\" stroke-width=\"2.5\"/> <!-- Centerline -->\n        <line x1=\"0\" y1=\"68\" x2=\"880\" y2=\"68\" stroke=\"#ffffff\" stroke-width=\"1.2\" stroke-dasharray=\"8,6\"/>\n        <!-- Pedestrian Barriers & Sidewalks -->\n        <rect x=\"0\" y=\"0\" width=\"880\" height=\"8\" fill=\"#334155\" stroke=\"#64748b\" stroke-width=\"1\"/>\n        <rect x=\"0\" y=\"82\" width=\"880\" height=\"8\" fill=\"#334155\" stroke=\"#64748b\" stroke-width=\"1\"/>\n        <text x=\"440\" y=\"38\" fill=\"#94a3b8\" font-size=\"10\" text-anchor=\"middle\" font-weight=\"600\">\u25c4 LANE 1 &amp; 2 (WESTBOUND) \u2022 LANE 3 &amp; 4 (EASTBOUND) \u25ba</text>\n        <text x=\"890\" y=\"48\" fill=\"#38bdf8\" font-size=\"9\">WIDTH: 22.0m</text>\n    </g>\n\n    <!-- SECTION 2: LONGITUDINAL ELEVATION SECTION -->\n    <g transform=\"translate(60, 270)\">\n        <text x=\"0\" y=\"-14\" fill=\"#38bdf8\" font-size=\"11\" font-weight=\"700\">\u25b2 LONGITUDINAL STRUCTURAL ELEVATION &amp; PIER PROFILE</text>\n        <!-- River / Water Body -->\n        <rect x=\"80\" y=\"160\" width=\"720\" height=\"60\" fill=\"url(#waterGrad)\" rx=\"6\"/>\n        <text x=\"440\" y=\"196\" fill=\"#38bdf8\" font-size=\"11\" text-anchor=\"middle\" opacity=\"0.8\">RIVER / WATERWAY CHANNEL (HIGH WATER LEVEL)</text>\n\n        <!-- Abutments at Left & Right -->\n        <polygon points=\"0,70 80,70 80,180 0,220\" fill=\"#334155\" stroke=\"#64748b\" stroke-width=\"2\"/>\n        <text x=\"35\" y=\"140\" fill=\"#e2e8f0\" font-size=\"9\" font-weight=\"bold\">ABUTMENT A1</text>\n\n        <polygon points=\"800,70 880,70 880,220 800,180\" fill=\"#334155\" stroke=\"#64748b\" stroke-width=\"2\"/>\n        <text x=\"815\" y=\"140\" fill=\"#e2e8f0\" font-size=\"9\" font-weight=\"bold\">ABUTMENT A2</text>\n\n        <!-- Horizontal Deck Girder -->\n        <rect x=\"0\" y=\"65\" width=\"880\" height=\"18\" fill=\"#1e293b\" stroke=\"#38bdf8\" stroke-width=\"2.5\" rx=\"3\"/>\n\n        <!-- Concrete Piers & Piles -->\n        \n        <g id=\"pier_1\">\n            <!-- Pier Column -->\n            <rect x=\"119.33333333333334\" y=\"83\" width=\"28\" height=\"110\" fill=\"#475569\" stroke=\"#94a3b8\" stroke-width=\"1.5\"/>\n            <!-- Elastomeric Bearings -->\n            <rect x=\"123.33333333333334\" y=\"80\" width=\"20\" height=\"4\" fill=\"#f59e0b\"/>\n            <!-- Pile Cap & Deep Foundation -->\n            <rect x=\"107.33333333333334\" y=\"193\" width=\"52\" height=\"24\" fill=\"#1e293b\" stroke=\"#38bdf8\" stroke-width=\"1.5\"/>\n            <line x1=\"117.33333333333334\" y1=\"217\" x2=\"117.33333333333334\" y2=\"245\" stroke=\"#64748b\" stroke-width=\"3\"/>\n            <line x1=\"149.33333333333334\" y1=\"217\" x2=\"149.33333333333334\" y2=\"245\" stroke=\"#64748b\" stroke-width=\"3\"/>\n            <text x=\"133.33333333333334\" y=\"145\" fill=\"#f8fafc\" font-size=\"9\" text-anchor=\"middle\" font-weight=\"bold\">PIER P1</text>\n        </g>\n        <g id=\"pier_2\">\n            <!-- Pier Column -->\n            <rect x=\"252.66666666666669\" y=\"83\" width=\"28\" height=\"110\" fill=\"#475569\" stroke=\"#94a3b8\" stroke-width=\"1.5\"/>\n            <!-- Elastomeric Bearings -->\n            <rect x=\"256.6666666666667\" y=\"80\" width=\"20\" height=\"4\" fill=\"#f59e0b\"/>\n            <!-- Pile Cap & Deep Foundation -->\n            <rect x=\"240.66666666666669\" y=\"193\" width=\"52\" height=\"24\" fill=\"#1e293b\" stroke=\"#38bdf8\" stroke-width=\"1.5\"/>\n            <line x1=\"250.66666666666669\" y1=\"217\" x2=\"250.66666666666669\" y2=\"245\" stroke=\"#64748b\" stroke-width=\"3\"/>\n            <line x1=\"282.6666666666667\" y1=\"217\" x2=\"282.6666666666667\" y2=\"245\" stroke=\"#64748b\" stroke-width=\"3\"/>\n            <text x=\"266.6666666666667\" y=\"145\" fill=\"#f8fafc\" font-size=\"9\" text-anchor=\"middle\" font-weight=\"bold\">PIER P2</text>\n        </g>\n        <g id=\"pier_3\">\n            <!-- Pier Column -->\n            <rect x=\"386.0\" y=\"83\" width=\"28\" height=\"110\" fill=\"#475569\" stroke=\"#94a3b8\" stroke-width=\"1.5\"/>\n            <!-- Elastomeric Bearings -->\n            <rect x=\"390.0\" y=\"80\" width=\"20\" height=\"4\" fill=\"#f59e0b\"/>\n            <!-- Pile Cap & Deep Foundation -->\n            <rect x=\"374.0\" y=\"193\" width=\"52\" height=\"24\" fill=\"#1e293b\" stroke=\"#38bdf8\" stroke-width=\"1.5\"/>\n            <line x1=\"384.0\" y1=\"217\" x2=\"384.0\" y2=\"245\" stroke=\"#64748b\" stroke-width=\"3\"/>\n            <line x1=\"416.0\" y1=\"217\" x2=\"416.0\" y2=\"245\" stroke=\"#64748b\" stroke-width=\"3\"/>\n            <text x=\"400.0\" y=\"145\" fill=\"#f8fafc\" font-size=\"9\" text-anchor=\"middle\" font-weight=\"bold\">PIER P3</text>\n        </g>\n        <g id=\"pier_4\">\n            <!-- Pier Column -->\n            <rect x=\"519.3333333333334\" y=\"83\" width=\"28\" height=\"110\" fill=\"#475569\" stroke=\"#94a3b8\" stroke-width=\"1.5\"/>\n            <!-- Elastomeric Bearings -->\n            <rect x=\"523.3333333333334\" y=\"80\" width=\"20\" height=\"4\" fill=\"#f59e0b\"/>\n            <!-- Pile Cap & Deep Foundation -->\n            <rect x=\"507.33333333333337\" y=\"193\" width=\"52\" height=\"24\" fill=\"#1e293b\" stroke=\"#38bdf8\" stroke-width=\"1.5\"/>\n            <line x1=\"517.3333333333334\" y1=\"217\" x2=\"517.3333333333334\" y2=\"245\" stroke=\"#64748b\" stroke-width=\"3\"/>\n            <line x1=\"549.3333333333334\" y1=\"217\" x2=\"549.3333333333334\" y2=\"245\" stroke=\"#64748b\" stroke-width=\"3\"/>\n            <text x=\"533.3333333333334\" y=\"145\" fill=\"#f8fafc\" font-size=\"9\" text-anchor=\"middle\" font-weight=\"bold\">PIER P4</text>\n        </g>\n        <g id=\"pier_5\">\n            <!-- Pier Column -->\n            <rect x=\"652.6666666666667\" y=\"83\" width=\"28\" height=\"110\" fill=\"#475569\" stroke=\"#94a3b8\" stroke-width=\"1.5\"/>\n            <!-- Elastomeric Bearings -->\n            <rect x=\"656.6666666666667\" y=\"80\" width=\"20\" height=\"4\" fill=\"#f59e0b\"/>\n            <!-- Pile Cap & Deep Foundation -->\n            <rect x=\"640.6666666666667\" y=\"193\" width=\"52\" height=\"24\" fill=\"#1e293b\" stroke=\"#38bdf8\" stroke-width=\"1.5\"/>\n            <line x1=\"650.6666666666667\" y1=\"217\" x2=\"650.6666666666667\" y2=\"245\" stroke=\"#64748b\" stroke-width=\"3\"/>\n            <line x1=\"682.6666666666667\" y1=\"217\" x2=\"682.6666666666667\" y2=\"245\" stroke=\"#64748b\" stroke-width=\"3\"/>\n            <text x=\"666.6666666666667\" y=\"145\" fill=\"#f8fafc\" font-size=\"9\" text-anchor=\"middle\" font-weight=\"bold\">PIER P5</text>\n        </g>\n        <!-- Central Cable Pylon -->\n        <polygon points=\"428,83 434,-70 446,-70 452,83\" fill=\"#334155\" stroke=\"#38bdf8\" stroke-width=\"2\"/>\n        <line x1=\"440\" y1=\"-60\" x2=\"160\" y2=\"65\" stroke=\"#38bdf8\" stroke-width=\"1.5\" opacity=\"0.85\"/>\n        <line x1=\"440\" y1=\"-45\" x2=\"240\" y2=\"65\" stroke=\"#38bdf8\" stroke-width=\"1.5\" opacity=\"0.85\"/>\n        <line x1=\"440\" y1=\"-30\" x2=\"320\" y2=\"65\" stroke=\"#38bdf8\" stroke-width=\"1.5\" opacity=\"0.85\"/>\n        <line x1=\"440\" y1=\"-60\" x2=\"720\" y2=\"65\" stroke=\"#38bdf8\" stroke-width=\"1.5\" opacity=\"0.85\"/>\n        <line x1=\"440\" y1=\"-45\" x2=\"640\" y2=\"65\" stroke=\"#38bdf8\" stroke-width=\"1.5\" opacity=\"0.85\"/>\n        <line x1=\"440\" y1=\"-30\" x2=\"560\" y2=\"65\" stroke=\"#38bdf8\" stroke-width=\"1.5\" opacity=\"0.85\"/>\n        <text x=\"440\" y=\"-80\" fill=\"#38bdf8\" font-size=\"10\" text-anchor=\"middle\" font-weight=\"bold\">MAIN CABLE PYLON</text>\n        \n        <!-- Span Dimension Line -->\n        <line x1=\"0\" y1=\"240\" x2=\"880\" y2=\"240\" stroke=\"#94a3b8\" stroke-width=\"1.2\"/>\n        <line x1=\"0\" y1=\"235\" x2=\"0\" y2=\"245\" stroke=\"#94a3b8\" stroke-width=\"1.5\"/>\n        <line x1=\"880\" y1=\"235\" x2=\"880\" y2=\"245\" stroke=\"#94a3b8\" stroke-width=\"1.5\"/>\n        <text x=\"440\" y=\"255\" fill=\"#f8fafc\" font-size=\"11\" text-anchor=\"middle\" font-weight=\"bold\">TOTAL CLEAR SPAN: 160.0 METERS</text>\n    </g>\n    </svg>"
+        }
+      ],
+      "summary": {
+        "total_floors": 1,
+        "project_category": "Civil Infrastructure Bridge",
+        "span_length": "160.0 meters (525 ft)",
+        "deck_width": "22.0 meters (4 Travel Lanes + Sidewalks)",
+        "piers_count": 5,
+        "architectural_style": "Cable-Stayed Girder Bridge"
+      },
+      "scene_3d": {
+        "domain": "bridge",
+        "span_m": 160.0,
+        "width_m": 22.0,
+        "piers_count": 5,
+        "clearance_m": 12.0,
+        "bridge_type": "Cable-Stayed Girder Bridge",
+        "pylon_height_m": 28.0
+      }
+    },
+    "boq": {
+      "domain": "bridge",
+      "project_metrics": {
+        "span_length_m": 160.0,
+        "deck_width_m": 22.0,
+        "deck_area_sqm": 3520.0,
+        "piers_count": 5,
+        "clearance_height_m": 12.0,
+        "estimated_completion_months": 18
+      },
+      "civil_materials": {
+        "high_grade_concrete_cum": 2632.0,
+        "cement": {
+          "total_bags": 22372,
+          "total_metric_tons": 1118.6
+        },
+        "steel_rebar": {
+          "total_metric_tons": 342.2,
+          "total_kg": 342200
+        },
+        "structural_steel_girders_mt": 422.4,
+        "deck_asphalt_metric_tons": 633.6,
+        "elastomeric_bearings_units": 40,
+        "modular_expansion_joints_m": 44.0,
+        "crash_barriers_linear_m": 320.0
+      },
+      "electrical_system": {
+        "bridge_lighting_poles": 12,
+        "total_electrical_wire_meters": 720.0,
+        "total_electrical_wire_feet": 2362.2,
+        "aviation_marine_nav_beacons": 4
+      },
+      "plumbing_system": {
+        "total_pipeline_length_meters": 352.0,
+        "total_pipeline_length_feet": 1154.9,
+        "drainage_pvc_pipelines_meters": 352.0,
+        "freshwater_cpvc_pipelines_meters": 0.0
+      },
+      "cost_estimation": {
+        "currency": "USD",
+        "total_estimated_cost": 1850564,
+        "cost_in_inr_equivalent": 155447376,
+        "materials_total": 1376804,
+        "labor_total": 473760,
+        "itemized": [
+          {
+            "item": "High-Performance Concrete (M40/M50 Piers, Abutments, Deck)",
+            "qty": "2632.0 m\u00b3 (22,372 Cement Bags)",
+            "cost": 368480
+          },
+          {
+            "item": "Structural Steel Girders & TMT Rebar Reinforcement",
+            "qty": "764.6 Metric Tons",
+            "cost": 841060
+          },
+          {
+            "item": "Bridge Deck Asphalt Pavement (Wearing Surface)",
+            "qty": "633.6 Metric Tons",
+            "cost": 72864
+          },
+          {
+            "item": "Elastomeric Pot Bearings & Modular Expansion Joints",
+            "qty": "40 Bearings \u2022 44.0m Joints",
+            "cost": 45800
+          },
+          {
+            "item": "Crash Barriers & Bridge Highway Lighting",
+            "qty": "320.0m Barrier \u2022 12 Poles",
+            "cost": 48600
+          },
+          {
+            "item": "Deep Pile Foundation & Civil Engineering Labor",
+            "qty": "5 River Piers \u2022 2 Abutments",
+            "cost": 473760
+          }
+        ]
+      },
+      "timeline": {
+        "total_duration_weeks": 72,
+        "phases": [
+          {
+            "phase": 1,
+            "title": "Geotechnical Survey & Riverbed Soil Testing",
+            "duration_weeks": 6,
+            "description": "Bathymetric survey, borehole soil mechanics, river flow modeling."
+          },
+          {
+            "phase": 2,
+            "title": "Cofferdam & Deep Pile Foundations",
+            "duration_weeks": 16,
+            "description": "Driving deep bored cast-in-situ piles, pile caps below water level."
+          },
+          {
+            "phase": 3,
+            "title": "RCC Pier Columns & Abutment Casting",
+            "duration_weeks": 14,
+            "description": "Formwork and casting of high-strength M50 reinforced concrete piers."
+          },
+          {
+            "phase": 4,
+            "title": "Girder Fabrication & Launching",
+            "duration_weeks": 16,
+            "description": "Precast prestressed concrete girders or structural steel girder erection."
+          },
+          {
+            "phase": 5,
+            "title": "Deck Slab Casting & Cable Stay Tensioning",
+            "duration_weeks": 10,
+            "description": "Casting reinforced deck slab, tensioning stay cables."
+          },
+          {
+            "phase": 6,
+            "title": "Expansion Joints, Asphalt & Handover",
+            "duration_weeks": 10,
+            "description": "Deck waterproofing, mastic asphalt, crash barriers, lighting."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "proj_showcase_highway",
+    "name": "AeroLink 6-Lane Expressway Interchange",
+    "domain": "road",
+    "category": "road",
+    "client_name": "Federal Highway Administration",
+    "author": "Sarah Jenkins, PE",
+    "notes": "6-lane high-speed expressway segment featuring dual reinforced medians, smart LED highway illumination masts, and heavy-duty storm drainage culverts.",
+    "tags": [
+      "Highway",
+      "Road",
+      "Transportation",
+      "Civil"
+    ],
+    "project_data": {
+      "project_type": "6-lane divided highway expressway",
+      "plot_length": 8.5,
+      "floors": 6,
+      "architectural_style": "Super-Elevation Asphalt Expressway",
+      "budget": 18500000
+    },
+    "interior": {},
+    "timestamp": "2026-09-06 11:45",
+    "layout": {
+      "category": "road",
+      "plot": {
+        "width": 27.5,
+        "length": 8500.0,
+        "unit": "meters",
+        "lanes": 6,
+        "road_type": "4-Lane Divided Highway"
+      },
+      "floors": [
+        {
+          "floor_number": 0,
+          "floor_name": "Roadway Alignment & Pavement Cross-Section",
+          "level_m": 0.0,
+          "total_area_sqft": 2516061.6,
+          "carpet_area_sqft": 1921356.1,
+          "rooms": [
+            {
+              "id": "road_lanes",
+              "name": "6-Lane Highway Alignment",
+              "x": 0,
+              "y": 0,
+              "width": 90.19999999999999,
+              "length": 100,
+              "type": "roadway"
+            }
+          ],
+          "svg_blueprint": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1000 600\" width=\"100%\" height=\"100%\" style=\"background:#090d16; border-radius:12px; font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;\">\n    <defs>\n        <pattern id=\"roadGrid\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n            <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"#16233b\" stroke-width=\"0.75\" opacity=\"0.6\"/>\n        </pattern>\n    </defs>\n    <rect width=\"1000\" height=\"600\" fill=\"url(#roadGrid)\"/>\n\n    <!-- TITLE -->\n    <text x=\"40\" y=\"42\" fill=\"#38bdf8\" font-size=\"16\" font-weight=\"bold\" letter-spacing=\"1\">TRANSPORTATION: 6-LANE DIVIDED HIGHWAY</text>\n    <text x=\"40\" y=\"62\" fill=\"#94a3b8\" font-size=\"11\">TOTAL LENGTH: 8.5 KM \u2022 RIGHT-OF-WAY: 27.5 METERS \u2022 STANDARDS: AASHTO / IRC</text>\n\n    <!-- SECTION 1: TOP ALIGNMENT PLAN -->\n    <g transform=\"translate(60, 95)\">\n        <text x=\"0\" y=\"-12\" fill=\"#38bdf8\" font-size=\"11\" font-weight=\"700\">\u25b2 PLAN VIEW (HIGHWAY CORRIDOR &amp; STRIPING)</text>\n        <!-- Outer Shoulders -->\n        <rect x=\"0\" y=\"0\" width=\"880\" height=\"130\" fill=\"#1e293b\" stroke=\"#475569\" stroke-width=\"2\" rx=\"4\"/>\n        <!-- Northbound Carriage (Lanes 1 & 2) -->\n        <rect x=\"0\" y=\"15\" width=\"880\" height=\"42\" fill=\"#0f172a\"/>\n        <line x1=\"0\" y1=\"36\" x2=\"880\" y2=\"36\" stroke=\"#ffffff\" stroke-width=\"1.5\" stroke-dasharray=\"10,8\"/>\n        <!-- Central Raised Median Barrier -->\n        <rect x=\"0\" y=\"57\" width=\"880\" height=\"16\" fill=\"#10b981\" stroke=\"#059669\" stroke-width=\"1.5\"/>\n        <text x=\"440\" y=\"69\" fill=\"#ffffff\" font-size=\"8\" text-anchor=\"middle\" font-weight=\"bold\">LANDSCAPED GREEN MEDIAN</text>\n        <!-- Southbound Carriage (Lanes 3 & 4) -->\n        <rect x=\"0\" y=\"73\" width=\"880\" height=\"42\" fill=\"#0f172a\"/>\n        <line x1=\"0\" y1=\"94\" x2=\"880\" y2=\"94\" stroke=\"#ffffff\" stroke-width=\"1.5\" stroke-dasharray=\"10,8\"/>\n\n        <!-- Street Lighting Poles -->\n        \n        <circle cx=\"40\" cy=\"8\" r=\"4\" fill=\"#f59e0b\" stroke=\"#ffffff\" stroke-width=\"1\"/>\n        <circle cx=\"40\" cy=\"122\" r=\"4\" fill=\"#f59e0b\" stroke=\"#ffffff\" stroke-width=\"1\"/>\n        \n        <circle cx=\"160\" cy=\"8\" r=\"4\" fill=\"#f59e0b\" stroke=\"#ffffff\" stroke-width=\"1\"/>\n        <circle cx=\"160\" cy=\"122\" r=\"4\" fill=\"#f59e0b\" stroke=\"#ffffff\" stroke-width=\"1\"/>\n        \n        <circle cx=\"280\" cy=\"8\" r=\"4\" fill=\"#f59e0b\" stroke=\"#ffffff\" stroke-width=\"1\"/>\n        <circle cx=\"280\" cy=\"122\" r=\"4\" fill=\"#f59e0b\" stroke=\"#ffffff\" stroke-width=\"1\"/>\n        \n        <circle cx=\"400\" cy=\"8\" r=\"4\" fill=\"#f59e0b\" stroke=\"#ffffff\" stroke-width=\"1\"/>\n        <circle cx=\"400\" cy=\"122\" r=\"4\" fill=\"#f59e0b\" stroke=\"#ffffff\" stroke-width=\"1\"/>\n        \n        <circle cx=\"520\" cy=\"8\" r=\"4\" fill=\"#f59e0b\" stroke=\"#ffffff\" stroke-width=\"1\"/>\n        <circle cx=\"520\" cy=\"122\" r=\"4\" fill=\"#f59e0b\" stroke=\"#ffffff\" stroke-width=\"1\"/>\n        \n        <circle cx=\"640\" cy=\"8\" r=\"4\" fill=\"#f59e0b\" stroke=\"#ffffff\" stroke-width=\"1\"/>\n        <circle cx=\"640\" cy=\"122\" r=\"4\" fill=\"#f59e0b\" stroke=\"#ffffff\" stroke-width=\"1\"/>\n        \n        <circle cx=\"760\" cy=\"8\" r=\"4\" fill=\"#f59e0b\" stroke=\"#ffffff\" stroke-width=\"1\"/>\n        <circle cx=\"760\" cy=\"122\" r=\"4\" fill=\"#f59e0b\" stroke=\"#ffffff\" stroke-width=\"1\"/>\n        \n        <text x=\"440\" y=\"28\" fill=\"#94a3b8\" font-size=\"10\" text-anchor=\"middle\">\u25c4 NORTHBOUND CARRIAGEWAY (80 KM/H SPEED LIMIT)</text>\n        <text x=\"440\" y=\"106\" fill=\"#94a3b8\" font-size=\"10\" text-anchor=\"middle\">SOUTHBOUND CARRIAGEWAY (80 KM/H SPEED LIMIT) \u25ba</text>\n    </g>\n\n    <!-- SECTION 2: TYPICAL PAVEMENT CROSS-SECTION -->\n    <g transform=\"translate(60, 310)\">\n        <text x=\"0\" y=\"-14\" fill=\"#38bdf8\" font-size=\"11\" font-weight=\"700\">\u25b2 TYPICAL STRUCTURAL PAVEMENT CROSS-SECTION &amp; STRATA</text>\n\n        <!-- Subgrade Soil -->\n        <rect x=\"80\" y=\"140\" width=\"720\" height=\"50\" fill=\"#332415\" stroke=\"#52391e\" stroke-width=\"1\"/>\n        <text x=\"440\" y=\"170\" fill=\"#d7b899\" font-size=\"10\" text-anchor=\"middle\" font-weight=\"bold\">COMPACTED SUBGRADE SOIL (CBR &gt; 8%)</text>\n\n        <!-- Granular Sub-Base (GSB - 150mm) -->\n        <rect x=\"80\" y=\"105\" width=\"720\" height=\"35\" fill=\"#475569\" stroke=\"#64748b\" stroke-width=\"1\"/>\n        <text x=\"440\" y=\"127\" fill=\"#f8fafc\" font-size=\"9\" text-anchor=\"middle\">GRANULAR SUB-BASE (GSB 150mm CRUSHED AGGREGATE)</text>\n\n        <!-- Wet Mix Macadam (WMM - 150mm) -->\n        <rect x=\"90\" y=\"70\" width=\"700\" height=\"35\" fill=\"#334155\" stroke=\"#475569\" stroke-width=\"1\"/>\n        <text x=\"440\" y=\"92\" fill=\"#cbd5e1\" font-size=\"9\" text-anchor=\"middle\">WET MIX MACADAM BASE COURSE (WMM 150mm)</text>\n\n        <!-- Bituminous Layers (DBM 75mm + BC 40mm) -->\n        <rect x=\"100\" y=\"30\" width=\"680\" height=\"40\" fill=\"#0f172a\" stroke=\"#38bdf8\" stroke-width=\"2\"/>\n        <text x=\"440\" y=\"54\" fill=\"#38bdf8\" font-size=\"10\" text-anchor=\"middle\" font-weight=\"bold\">ASPHALT CONCRETE WEARING COURSE (40mm BC) + (75mm DBM)</text>\n\n        <!-- Concrete Stormwater Ditch at Left & Right -->\n        <polygon points=\"40,30 80,30 65,110 30,110\" fill=\"#1e293b\" stroke=\"#38bdf8\" stroke-width=\"1.5\"/>\n        <text x=\"25\" y=\"75\" fill=\"#38bdf8\" font-size=\"8\" transform=\"rotate(-90 25 75)\">DRAIN CULVERT</text>\n\n        <polygon points=\"800,30 840,30 850,110 815,110\" fill=\"#1e293b\" stroke=\"#38bdf8\" stroke-width=\"1.5\"/>\n        <text x=\"860\" y=\"75\" fill=\"#38bdf8\" font-size=\"8\" transform=\"rotate(90 860 75)\">DRAIN CULVERT</text>\n\n        <!-- Dimension Line -->\n        <line x1=\"80\" y1=\"210\" x2=\"800\" y2=\"210\" stroke=\"#94a3b8\" stroke-width=\"1.2\"/>\n        <line x1=\"80\" y1=\"205\" x2=\"80\" y2=\"215\" stroke=\"#94a3b8\" stroke-width=\"1.5\"/>\n        <line x1=\"800\" y1=\"205\" x2=\"800\" y2=\"215\" stroke=\"#94a3b8\" stroke-width=\"1.5\"/>\n        <text x=\"440\" y=\"226\" fill=\"#ffffff\" font-size=\"10\" text-anchor=\"middle\" font-weight=\"bold\">TOTAL CARRIAGEWAY WIDTH: 27.5 METERS</text>\n    </g>\n    </svg>"
+        }
+      ],
+      "summary": {
+        "total_floors": 1,
+        "project_category": "Transportation Highway",
+        "road_length": "8.5 km (5.3 miles)",
+        "lanes_count": "6 Travel Lanes (3 each direction)",
+        "right_of_way_width": "27.5 meters",
+        "architectural_style": "High-Speed Asphalt Expressway"
+      },
+      "scene_3d": {
+        "domain": "road",
+        "length_km": 8.5,
+        "lanes": 6,
+        "total_width_m": 27.5,
+        "lane_width_m": 3.5,
+        "has_median": true,
+        "has_streetlights": true
+      }
+    },
+    "boq": {
+      "domain": "road",
+      "project_metrics": {
+        "road_length_km": 8.5,
+        "road_length_m": 8500.0,
+        "lanes_count": 6,
+        "carriageway_width_m": 27.5,
+        "pavement_area_sqm": 233750.0,
+        "estimated_completion_months": 18.7
+      },
+      "civil_materials": {
+        "earthwork_excavation_cum": 140250.0,
+        "granular_subbase_gsb_mt": 77137.5,
+        "wet_mix_macadam_wmm_mt": 80643.8,
+        "asphalt_bitumen_metric_tons": 64515.0,
+        "concrete_drainage_culverts_m": 17000.0,
+        "w_beam_guardrails_m": 17000.0,
+        "thermoplastic_markings_sqm": 6800.0
+      },
+      "electrical_system": {
+        "highway_streetlights_count": 424,
+        "total_electrical_wire_meters": 18700.0,
+        "total_electrical_wire_feet": 61351.7,
+        "high_mast_interchange_lighting": 8
+      },
+      "plumbing_system": {
+        "total_pipeline_length_meters": 17000.0,
+        "total_pipeline_length_feet": 55774.3,
+        "drainage_pvc_pipelines_meters": 17000.0,
+        "catch_basin_chambers_count": 282
+      },
+      "cost_estimation": {
+        "currency": "USD",
+        "total_estimated_cost": 14840563,
+        "cost_in_inr_equivalent": 1246607292,
+        "materials_total": 12035563,
+        "labor_total": 2805000,
+        "itemized": [
+          {
+            "item": "Earthwork & Subgrade Compaction (Cut & Fill)",
+            "qty": "140,250.0 m\u00b3",
+            "cost": 1192125
+          },
+          {
+            "item": "Granular Sub-Base (GSB) & WMM Aggregate Base",
+            "qty": "157,781 Metric Tons",
+            "cost": 2840063
+          },
+          {
+            "item": "Bituminous Asphalt Pavement (DBM + Asphalt Concrete)",
+            "qty": "64,515 Metric Tons",
+            "cost": 5483775
+          },
+          {
+            "item": "Stormwater Drainage Concrete Culverts & Catch Basins",
+            "qty": "17,000 Linear Meters (55,774 ft)",
+            "cost": 1105000
+          },
+          {
+            "item": "Highway Lighting & 3-Phase Underground Power Cabling",
+            "qty": "424 Poles \u2022 18,700m Cable",
+            "cost": 500000
+          },
+          {
+            "item": "Galvanized W-Beam Crash Barriers & Thermoplastic Markings",
+            "qty": "17,000m Guardrails",
+            "cost": 914600
+          },
+          {
+            "item": "Heavy Machinery Paving & Civil Construction Labor",
+            "qty": "233,750 m\u00b2 Paving Area",
+            "cost": 2805000
+          }
+        ]
+      },
+      "timeline": {
+        "total_duration_weeks": 68,
+        "phases": [
+          {
+            "phase": 1,
+            "title": "Topographical Survey & Centerline Alignment",
+            "duration_weeks": 4,
+            "description": "Surveying, soil CBR testing, establishing benchmark pillars."
+          },
+          {
+            "phase": 2,
+            "title": "Earthwork, Clearing & Grubbing",
+            "duration_weeks": 17,
+            "description": "Stripping topsoil, embankment cut & fill, subgrade compaction."
+          },
+          {
+            "phase": 3,
+            "title": "Sub-Base & Base Course Laying",
+            "duration_weeks": 17,
+            "description": "Spreading GSB (150mm) and Wet Mix Macadam with vibratory rollers."
+          },
+          {
+            "phase": 4,
+            "title": "Stormwater Culverts & Drainage Channels",
+            "duration_weeks": 13,
+            "description": "Laying precast concrete pipe culverts and road cross-drains."
+          },
+          {
+            "phase": 5,
+            "title": "Bituminous Asphalt Paving",
+            "duration_weeks": 17,
+            "description": "Laying DBM binder course and high-friction asphalt wearing course."
+          },
+          {
+            "phase": 6,
+            "title": "Signage, Road Markings & Lighting Commissioning",
+            "duration_weeks": 3,
+            "description": "Thermoplastic paint, reflective studs, streetlights, and final testing."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "proj_showcase_mall",
+    "name": "Lumina Galleria & Commercial Atrium",
+    "domain": "mall",
+    "category": "mall",
+    "client_name": "Vanguard Retail Properties REIT",
+    "author": "Kavita Nair, Director of Commercial Design",
+    "notes": "3-level retail galleria boasting a monumental skylight atrium, anchor department stores, boutique arcades, cinema complex, and smart central HVAC & fire safety.",
+    "tags": [
+      "Commercial",
+      "Shopping Mall",
+      "Retail",
+      "Mixed-Use"
+    ],
+    "project_data": {
+      "project_type": "commercial shopping mall galleria",
+      "plot_width": 150.0,
+      "plot_length": 240.0,
+      "floors": 3,
+      "architectural_style": "Contemporary Glass Galleria",
+      "budget": 45000000
+    },
+    "interior": {},
+    "timestamp": "2026-09-05 09:20",
+    "layout": {
+      "category": "mall",
+      "plot": {
+        "width": 150.0,
+        "length": 240.0,
+        "unit": "feet",
+        "floors": 3
+      },
+      "floors": [
+        {
+          "floor_number": 0,
+          "floor_name": "Ground Floor (Grand Galleria)",
+          "level_m": 0.0,
+          "total_area_sqft": 28080.0,
+          "carpet_area_sqft": 23400.0,
+          "rooms": [
+            {
+              "id": "m_atrium_0",
+              "name": "CENTRAL GLASS ATRIUM & PLAZA",
+              "x": 48.8,
+              "y": 72.0,
+              "width": 52.5,
+              "length": 96.0,
+              "type": "atrium",
+              "color": "#0369a1"
+            },
+            {
+              "id": "m_anchor_l_0",
+              "name": "ANCHOR STORE A (FASHION DEPT)",
+              "x": 8.0,
+              "y": 15.0,
+              "width": 42.0,
+              "length": 84.0,
+              "type": "anchor",
+              "color": "#1e293b"
+            },
+            {
+              "id": "m_anchor_r_0",
+              "name": "ANCHOR STORE B (LIFESTYLE / TECH)",
+              "x": 100.0,
+              "y": 15.0,
+              "width": 42.0,
+              "length": 84.0,
+              "type": "anchor",
+              "color": "#1e293b"
+            },
+            {
+              "id": "m_shop_0_0",
+              "name": "RETAIL UNIT 001",
+              "x": 8.0,
+              "y": 15.0,
+              "width": 27.0,
+              "length": 24.0,
+              "type": "shop",
+              "color": "#0f172a"
+            },
+            {
+              "id": "m_shop_0_1",
+              "name": "RETAIL UNIT 002",
+              "x": 8.0,
+              "y": 43.0,
+              "width": 27.0,
+              "length": 24.0,
+              "type": "shop",
+              "color": "#0f172a"
+            },
+            {
+              "id": "m_shop_0_2",
+              "name": "RETAIL UNIT 003",
+              "x": 8.0,
+              "y": 71.0,
+              "width": 27.0,
+              "length": 24.0,
+              "type": "shop",
+              "color": "#0f172a"
+            },
+            {
+              "id": "m_shop_0_3",
+              "name": "RETAIL UNIT 004",
+              "x": 8.0,
+              "y": 99.0,
+              "width": 27.0,
+              "length": 24.0,
+              "type": "shop",
+              "color": "#0f172a"
+            },
+            {
+              "id": "m_shop_0_4",
+              "name": "RETAIL UNIT 005",
+              "x": 8.0,
+              "y": 127.0,
+              "width": 27.0,
+              "length": 24.0,
+              "type": "shop",
+              "color": "#0f172a"
+            },
+            {
+              "id": "m_shop_0_5",
+              "name": "RETAIL UNIT 006",
+              "x": 8.0,
+              "y": 155.0,
+              "width": 27.0,
+              "length": 24.0,
+              "type": "shop",
+              "color": "#0f172a"
+            },
+            {
+              "id": "m_services_0",
+              "name": "PUBLIC RESTROOMS & ESCALATOR BANK",
+              "x": 114.0,
+              "y": 205.0,
+              "width": 28.0,
+              "length": 25.0,
+              "type": "services",
+              "color": "#0e2e3b"
+            }
+          ],
+          "svg_blueprint": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640.0 964.0\" width=\"100%\" height=\"100%\" style=\"background:#090d16; border-radius:12px; font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;\">\n    <defs>\n        <pattern id=\"mGrid\" width=\"18\" height=\"18\" patternUnits=\"userSpaceOnUse\">\n            <path d=\"M 18 0 L 0 0 0 18\" fill=\"none\" stroke=\"#16233b\" stroke-width=\"0.75\" opacity=\"0.6\"/>\n        </pattern>\n    </defs>\n    <rect width=\"640.0\" height=\"964.0\" fill=\"url(#mGrid)\"/>\n\n    <!-- Perimeter Boundary -->\n    <rect x=\"50.0\" y=\"50.0\" width=\"540.0\" height=\"864.0\" fill=\"none\" stroke=\"#64748b\" stroke-width=\"2\" stroke-dasharray=\"6,4\"/>\n    <text x=\"320.0\" y=\"36.0\" fill=\"#38bdf8\" font-size=\"12\" font-weight=\"bold\" text-anchor=\"middle\">COMMERCIAL COMPLEX: GROUND FLOOR (GRAND GALLERIA)</text>\n    \n        <g id=\"m_atrium_0\">\n            <rect x=\"225.68\" y=\"309.2\" width=\"189.0\" height=\"345.6\" fill=\"#0369a1\" stroke=\"#38bdf8\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"320.18\" y=\"482.0\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">CENTRAL GLASS ATRIUM & PLAZA</text>\n        </g>\n        <g id=\"m_anchor_l_0\">\n            <rect x=\"78.8\" y=\"104.0\" width=\"151.20000000000002\" height=\"302.40000000000003\" fill=\"#1e293b\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"154.4\" y=\"255.20000000000002\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">ANCHOR STORE A (FASHION DEPT)</text>\n        </g>\n        <g id=\"m_anchor_r_0\">\n            <rect x=\"410.0\" y=\"104.0\" width=\"151.20000000000002\" height=\"302.40000000000003\" fill=\"#1e293b\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"485.6\" y=\"255.20000000000002\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">ANCHOR STORE B (LIFESTYLE / TECH)</text>\n        </g>\n        <g id=\"m_shop_0_0\">\n            <rect x=\"78.8\" y=\"104.0\" width=\"97.2\" height=\"86.4\" fill=\"#0f172a\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"127.4\" y=\"147.2\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">RETAIL UNIT 001</text>\n        </g>\n        <g id=\"m_shop_0_1\">\n            <rect x=\"78.8\" y=\"204.8\" width=\"97.2\" height=\"86.4\" fill=\"#0f172a\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"127.4\" y=\"248.0\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">RETAIL UNIT 002</text>\n        </g>\n        <g id=\"m_shop_0_2\">\n            <rect x=\"78.8\" y=\"305.6\" width=\"97.2\" height=\"86.4\" fill=\"#0f172a\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"127.4\" y=\"348.8\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">RETAIL UNIT 003</text>\n        </g>\n        <g id=\"m_shop_0_3\">\n            <rect x=\"78.8\" y=\"406.40000000000003\" width=\"97.2\" height=\"86.4\" fill=\"#0f172a\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"127.4\" y=\"449.6\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">RETAIL UNIT 004</text>\n        </g>\n        <g id=\"m_shop_0_4\">\n            <rect x=\"78.8\" y=\"507.2\" width=\"97.2\" height=\"86.4\" fill=\"#0f172a\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"127.4\" y=\"550.4\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">RETAIL UNIT 005</text>\n        </g>\n        <g id=\"m_shop_0_5\">\n            <rect x=\"78.8\" y=\"608.0\" width=\"97.2\" height=\"86.4\" fill=\"#0f172a\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"127.4\" y=\"651.2\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">RETAIL UNIT 006</text>\n        </g>\n        <g id=\"m_services_0\">\n            <rect x=\"460.40000000000003\" y=\"788.0\" width=\"100.8\" height=\"90.0\" fill=\"#0e2e3b\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"510.8\" y=\"833.0\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">PUBLIC RESTROOMS & ESCALATOR BANK</text>\n        </g>\n    <g transform=\"translate(390.0, 864.0)\">\n        <rect width=\"200\" height=\"50\" fill=\"#0f172a\" stroke=\"#334155\" stroke-width=\"1.5\" rx=\"6\"/>\n        <text x=\"12\" y=\"20\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\">AI ARCHITECT COMMERCIAL</text>\n        <text x=\"12\" y=\"36\" fill=\"#38bdf8\" font-size=\"9\">NFPA &amp; IBC COMPLIANT CAD</text>\n    </g>\n    </svg>"
+        },
+        {
+          "floor_number": 1,
+          "floor_name": "Level 1 (Fashion & Retail)",
+          "level_m": 4.5,
+          "total_area_sqft": 28080.0,
+          "carpet_area_sqft": 23400.0,
+          "rooms": [
+            {
+              "id": "m_atrium_1",
+              "name": "CENTRAL GLASS ATRIUM & PLAZA",
+              "x": 48.8,
+              "y": 72.0,
+              "width": 52.5,
+              "length": 96.0,
+              "type": "atrium",
+              "color": "#0369a1"
+            },
+            {
+              "id": "m_anchor_l_1",
+              "name": "ANCHOR STORE A (FASHION DEPT)",
+              "x": 8.0,
+              "y": 15.0,
+              "width": 42.0,
+              "length": 84.0,
+              "type": "anchor",
+              "color": "#1e293b"
+            },
+            {
+              "id": "m_anchor_r_1",
+              "name": "ANCHOR STORE B (LIFESTYLE / TECH)",
+              "x": 100.0,
+              "y": 15.0,
+              "width": 42.0,
+              "length": 84.0,
+              "type": "anchor",
+              "color": "#1e293b"
+            },
+            {
+              "id": "m_shop_1_0",
+              "name": "RETAIL UNIT 101",
+              "x": 8.0,
+              "y": 15.0,
+              "width": 27.0,
+              "length": 24.0,
+              "type": "shop",
+              "color": "#0f172a"
+            },
+            {
+              "id": "m_shop_1_1",
+              "name": "RETAIL UNIT 102",
+              "x": 8.0,
+              "y": 43.0,
+              "width": 27.0,
+              "length": 24.0,
+              "type": "shop",
+              "color": "#0f172a"
+            },
+            {
+              "id": "m_shop_1_2",
+              "name": "RETAIL UNIT 103",
+              "x": 8.0,
+              "y": 71.0,
+              "width": 27.0,
+              "length": 24.0,
+              "type": "shop",
+              "color": "#0f172a"
+            },
+            {
+              "id": "m_shop_1_3",
+              "name": "RETAIL UNIT 104",
+              "x": 8.0,
+              "y": 99.0,
+              "width": 27.0,
+              "length": 24.0,
+              "type": "shop",
+              "color": "#0f172a"
+            },
+            {
+              "id": "m_shop_1_4",
+              "name": "RETAIL UNIT 105",
+              "x": 8.0,
+              "y": 127.0,
+              "width": 27.0,
+              "length": 24.0,
+              "type": "shop",
+              "color": "#0f172a"
+            },
+            {
+              "id": "m_shop_1_5",
+              "name": "RETAIL UNIT 106",
+              "x": 8.0,
+              "y": 155.0,
+              "width": 27.0,
+              "length": 24.0,
+              "type": "shop",
+              "color": "#0f172a"
+            },
+            {
+              "id": "m_services_1",
+              "name": "PUBLIC RESTROOMS & ESCALATOR BANK",
+              "x": 114.0,
+              "y": 205.0,
+              "width": 28.0,
+              "length": 25.0,
+              "type": "services",
+              "color": "#0e2e3b"
+            }
+          ],
+          "svg_blueprint": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640.0 964.0\" width=\"100%\" height=\"100%\" style=\"background:#090d16; border-radius:12px; font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;\">\n    <defs>\n        <pattern id=\"mGrid\" width=\"18\" height=\"18\" patternUnits=\"userSpaceOnUse\">\n            <path d=\"M 18 0 L 0 0 0 18\" fill=\"none\" stroke=\"#16233b\" stroke-width=\"0.75\" opacity=\"0.6\"/>\n        </pattern>\n    </defs>\n    <rect width=\"640.0\" height=\"964.0\" fill=\"url(#mGrid)\"/>\n\n    <!-- Perimeter Boundary -->\n    <rect x=\"50.0\" y=\"50.0\" width=\"540.0\" height=\"864.0\" fill=\"none\" stroke=\"#64748b\" stroke-width=\"2\" stroke-dasharray=\"6,4\"/>\n    <text x=\"320.0\" y=\"36.0\" fill=\"#38bdf8\" font-size=\"12\" font-weight=\"bold\" text-anchor=\"middle\">COMMERCIAL COMPLEX: LEVEL 1 (FASHION & RETAIL)</text>\n    \n        <g id=\"m_atrium_1\">\n            <rect x=\"225.68\" y=\"309.2\" width=\"189.0\" height=\"345.6\" fill=\"#0369a1\" stroke=\"#38bdf8\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"320.18\" y=\"482.0\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">CENTRAL GLASS ATRIUM & PLAZA</text>\n        </g>\n        <g id=\"m_anchor_l_1\">\n            <rect x=\"78.8\" y=\"104.0\" width=\"151.20000000000002\" height=\"302.40000000000003\" fill=\"#1e293b\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"154.4\" y=\"255.20000000000002\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">ANCHOR STORE A (FASHION DEPT)</text>\n        </g>\n        <g id=\"m_anchor_r_1\">\n            <rect x=\"410.0\" y=\"104.0\" width=\"151.20000000000002\" height=\"302.40000000000003\" fill=\"#1e293b\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"485.6\" y=\"255.20000000000002\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">ANCHOR STORE B (LIFESTYLE / TECH)</text>\n        </g>\n        <g id=\"m_shop_1_0\">\n            <rect x=\"78.8\" y=\"104.0\" width=\"97.2\" height=\"86.4\" fill=\"#0f172a\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"127.4\" y=\"147.2\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">RETAIL UNIT 101</text>\n        </g>\n        <g id=\"m_shop_1_1\">\n            <rect x=\"78.8\" y=\"204.8\" width=\"97.2\" height=\"86.4\" fill=\"#0f172a\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"127.4\" y=\"248.0\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">RETAIL UNIT 102</text>\n        </g>\n        <g id=\"m_shop_1_2\">\n            <rect x=\"78.8\" y=\"305.6\" width=\"97.2\" height=\"86.4\" fill=\"#0f172a\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"127.4\" y=\"348.8\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">RETAIL UNIT 103</text>\n        </g>\n        <g id=\"m_shop_1_3\">\n            <rect x=\"78.8\" y=\"406.40000000000003\" width=\"97.2\" height=\"86.4\" fill=\"#0f172a\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"127.4\" y=\"449.6\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">RETAIL UNIT 104</text>\n        </g>\n        <g id=\"m_shop_1_4\">\n            <rect x=\"78.8\" y=\"507.2\" width=\"97.2\" height=\"86.4\" fill=\"#0f172a\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"127.4\" y=\"550.4\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">RETAIL UNIT 105</text>\n        </g>\n        <g id=\"m_shop_1_5\">\n            <rect x=\"78.8\" y=\"608.0\" width=\"97.2\" height=\"86.4\" fill=\"#0f172a\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"127.4\" y=\"651.2\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">RETAIL UNIT 106</text>\n        </g>\n        <g id=\"m_services_1\">\n            <rect x=\"460.40000000000003\" y=\"788.0\" width=\"100.8\" height=\"90.0\" fill=\"#0e2e3b\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"510.8\" y=\"833.0\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">PUBLIC RESTROOMS & ESCALATOR BANK</text>\n        </g>\n    <g transform=\"translate(390.0, 864.0)\">\n        <rect width=\"200\" height=\"50\" fill=\"#0f172a\" stroke=\"#334155\" stroke-width=\"1.5\" rx=\"6\"/>\n        <text x=\"12\" y=\"20\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\">AI ARCHITECT COMMERCIAL</text>\n        <text x=\"12\" y=\"36\" fill=\"#38bdf8\" font-size=\"9\">NFPA &amp; IBC COMPLIANT CAD</text>\n    </g>\n    </svg>"
+        },
+        {
+          "floor_number": 2,
+          "floor_name": "Level 2 (Food Court & Cinema)",
+          "level_m": 9.0,
+          "total_area_sqft": 28080.0,
+          "carpet_area_sqft": 23400.0,
+          "rooms": [
+            {
+              "id": "m_atrium_2",
+              "name": "CENTRAL GLASS ATRIUM & PLAZA",
+              "x": 48.8,
+              "y": 72.0,
+              "width": 52.5,
+              "length": 96.0,
+              "type": "atrium",
+              "color": "#0369a1"
+            },
+            {
+              "id": "m_anchor_l_2",
+              "name": "ANCHOR STORE A (FASHION DEPT)",
+              "x": 8.0,
+              "y": 15.0,
+              "width": 42.0,
+              "length": 84.0,
+              "type": "anchor",
+              "color": "#1e293b"
+            },
+            {
+              "id": "m_anchor_r_2",
+              "name": "ANCHOR STORE B (LIFESTYLE / TECH)",
+              "x": 100.0,
+              "y": 15.0,
+              "width": 42.0,
+              "length": 84.0,
+              "type": "anchor",
+              "color": "#1e293b"
+            },
+            {
+              "id": "m_shop_2_0",
+              "name": "RETAIL UNIT 201",
+              "x": 8.0,
+              "y": 15.0,
+              "width": 27.0,
+              "length": 24.0,
+              "type": "shop",
+              "color": "#0f172a"
+            },
+            {
+              "id": "m_shop_2_1",
+              "name": "RETAIL UNIT 202",
+              "x": 8.0,
+              "y": 43.0,
+              "width": 27.0,
+              "length": 24.0,
+              "type": "shop",
+              "color": "#0f172a"
+            },
+            {
+              "id": "m_shop_2_2",
+              "name": "RETAIL UNIT 203",
+              "x": 8.0,
+              "y": 71.0,
+              "width": 27.0,
+              "length": 24.0,
+              "type": "shop",
+              "color": "#0f172a"
+            },
+            {
+              "id": "m_shop_2_3",
+              "name": "RETAIL UNIT 204",
+              "x": 8.0,
+              "y": 99.0,
+              "width": 27.0,
+              "length": 24.0,
+              "type": "shop",
+              "color": "#0f172a"
+            },
+            {
+              "id": "m_shop_2_4",
+              "name": "RETAIL UNIT 205",
+              "x": 8.0,
+              "y": 127.0,
+              "width": 27.0,
+              "length": 24.0,
+              "type": "shop",
+              "color": "#0f172a"
+            },
+            {
+              "id": "m_shop_2_5",
+              "name": "RETAIL UNIT 206",
+              "x": 8.0,
+              "y": 155.0,
+              "width": 27.0,
+              "length": 24.0,
+              "type": "shop",
+              "color": "#0f172a"
+            },
+            {
+              "id": "m_services_2",
+              "name": "PUBLIC RESTROOMS & ESCALATOR BANK",
+              "x": 114.0,
+              "y": 205.0,
+              "width": 28.0,
+              "length": 25.0,
+              "type": "services",
+              "color": "#0e2e3b"
+            }
+          ],
+          "svg_blueprint": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640.0 964.0\" width=\"100%\" height=\"100%\" style=\"background:#090d16; border-radius:12px; font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;\">\n    <defs>\n        <pattern id=\"mGrid\" width=\"18\" height=\"18\" patternUnits=\"userSpaceOnUse\">\n            <path d=\"M 18 0 L 0 0 0 18\" fill=\"none\" stroke=\"#16233b\" stroke-width=\"0.75\" opacity=\"0.6\"/>\n        </pattern>\n    </defs>\n    <rect width=\"640.0\" height=\"964.0\" fill=\"url(#mGrid)\"/>\n\n    <!-- Perimeter Boundary -->\n    <rect x=\"50.0\" y=\"50.0\" width=\"540.0\" height=\"864.0\" fill=\"none\" stroke=\"#64748b\" stroke-width=\"2\" stroke-dasharray=\"6,4\"/>\n    <text x=\"320.0\" y=\"36.0\" fill=\"#38bdf8\" font-size=\"12\" font-weight=\"bold\" text-anchor=\"middle\">COMMERCIAL COMPLEX: LEVEL 2 (FOOD COURT & CINEMA)</text>\n    \n        <g id=\"m_atrium_2\">\n            <rect x=\"225.68\" y=\"309.2\" width=\"189.0\" height=\"345.6\" fill=\"#0369a1\" stroke=\"#38bdf8\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"320.18\" y=\"482.0\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">CENTRAL GLASS ATRIUM & PLAZA</text>\n        </g>\n        <g id=\"m_anchor_l_2\">\n            <rect x=\"78.8\" y=\"104.0\" width=\"151.20000000000002\" height=\"302.40000000000003\" fill=\"#1e293b\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"154.4\" y=\"255.20000000000002\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">ANCHOR STORE A (FASHION DEPT)</text>\n        </g>\n        <g id=\"m_anchor_r_2\">\n            <rect x=\"410.0\" y=\"104.0\" width=\"151.20000000000002\" height=\"302.40000000000003\" fill=\"#1e293b\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"485.6\" y=\"255.20000000000002\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">ANCHOR STORE B (LIFESTYLE / TECH)</text>\n        </g>\n        <g id=\"m_shop_2_0\">\n            <rect x=\"78.8\" y=\"104.0\" width=\"97.2\" height=\"86.4\" fill=\"#0f172a\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"127.4\" y=\"147.2\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">RETAIL UNIT 201</text>\n        </g>\n        <g id=\"m_shop_2_1\">\n            <rect x=\"78.8\" y=\"204.8\" width=\"97.2\" height=\"86.4\" fill=\"#0f172a\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"127.4\" y=\"248.0\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">RETAIL UNIT 202</text>\n        </g>\n        <g id=\"m_shop_2_2\">\n            <rect x=\"78.8\" y=\"305.6\" width=\"97.2\" height=\"86.4\" fill=\"#0f172a\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"127.4\" y=\"348.8\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">RETAIL UNIT 203</text>\n        </g>\n        <g id=\"m_shop_2_3\">\n            <rect x=\"78.8\" y=\"406.40000000000003\" width=\"97.2\" height=\"86.4\" fill=\"#0f172a\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"127.4\" y=\"449.6\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">RETAIL UNIT 204</text>\n        </g>\n        <g id=\"m_shop_2_4\">\n            <rect x=\"78.8\" y=\"507.2\" width=\"97.2\" height=\"86.4\" fill=\"#0f172a\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"127.4\" y=\"550.4\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">RETAIL UNIT 205</text>\n        </g>\n        <g id=\"m_shop_2_5\">\n            <rect x=\"78.8\" y=\"608.0\" width=\"97.2\" height=\"86.4\" fill=\"#0f172a\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"127.4\" y=\"651.2\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">RETAIL UNIT 206</text>\n        </g>\n        <g id=\"m_services_2\">\n            <rect x=\"460.40000000000003\" y=\"788.0\" width=\"100.8\" height=\"90.0\" fill=\"#0e2e3b\" stroke=\"#0ea5e9\" stroke-width=\"2.5\" rx=\"3\" opacity=\"0.95\"/>\n            <text x=\"510.8\" y=\"833.0\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">PUBLIC RESTROOMS & ESCALATOR BANK</text>\n        </g>\n    <g transform=\"translate(390.0, 864.0)\">\n        <rect width=\"200\" height=\"50\" fill=\"#0f172a\" stroke=\"#334155\" stroke-width=\"1.5\" rx=\"6\"/>\n        <text x=\"12\" y=\"20\" fill=\"#f8fafc\" font-size=\"10\" font-weight=\"bold\">AI ARCHITECT COMMERCIAL</text>\n        <text x=\"12\" y=\"36\" fill=\"#38bdf8\" font-size=\"9\">NFPA &amp; IBC COMPLIANT CAD</text>\n    </g>\n    </svg>"
+        }
+      ],
+      "summary": {
+        "total_floors": 3,
+        "project_category": "Commercial Shopping Complex",
+        "total_builtup_sqft": 84240.0,
+        "anchor_stores": 6,
+        "retail_shops_count": 54,
+        "architectural_style": "Contemporary Glass Galleria"
+      },
+      "scene_3d": {
+        "domain": "mall",
+        "plot_w": 150.0,
+        "plot_l": 240.0,
+        "floors_count": 3,
+        "atrium": {
+          "width": 52.5,
+          "length": 96.0
+        },
+        "floor_height_m": 4.5
+      }
+    },
+    "boq": {
+      "domain": "mall",
+      "project_metrics": {
+        "total_builtup_area_sqft": 84240.0,
+        "carpet_area_sqft": 60652.8,
+        "floors_count": 3,
+        "hvac_cooling_capacity_tr": 241,
+        "estimated_completion_months": 24
+      },
+      "civil_materials": {
+        "cement": {
+          "total_bags": 40435,
+          "total_metric_tons": 2021.8
+        },
+        "steel_rebar": {
+          "total_kg": 387500,
+          "total_metric_tons": 387.5
+        },
+        "structural_steel_atrium_mt": 135.0,
+        "commercial_flooring_sqft": 60652.8
+      },
+      "electrical_system": {
+        "total_electrical_wire_meters": 80028.0,
+        "total_electrical_wire_feet": 262559.1,
+        "commercial_substations_count": 1,
+        "diesel_generator_dg_sets": 2,
+        "led_commercial_luminaires": 1685
+      },
+      "plumbing_system": {
+        "total_pipeline_length_meters": 15703.2,
+        "total_pipeline_length_feet": 51519.7,
+        "fire_sprinkler_pipeline_meters": 15163.2,
+        "public_restroom_pipeline_meters": 540.0,
+        "underground_fire_sump_liters": 150000,
+        "escalators_units": 4,
+        "passenger_elevators_units": 6
+      },
+      "cost_estimation": {
+        "currency": "USD",
+        "total_estimated_cost": 6917090,
+        "cost_in_inr_equivalent": 581035560,
+        "cost_per_sqft": 82.1,
+        "materials_total": 5063810,
+        "labor_total": 1853280,
+        "itemized": [
+          {
+            "item": "Commercial RCC Core & Superstructure",
+            "qty": "84,240 sq.ft Built-up (40,435 Bags)",
+            "cost": 2190240
+          },
+          {
+            "item": "Structural Steel & Skylight Glass Atrium",
+            "qty": "135.0 MT Steel \u2022 Architectural Skylight",
+            "cost": 285000
+          },
+          {
+            "item": "Central HVAC Chiller Plant & Ventilation Ductwork",
+            "qty": "241 TR Cooling Capacity",
+            "cost": 204850
+          },
+          {
+            "item": "Commercial 3-Phase Power Distribution & Cabling",
+            "qty": "80,028m Power Cabling (262,559 ft)",
+            "cost": 625182
+          },
+          {
+            "item": "NFPA Fire Sprinkler Network & Restroom Plumbing",
+            "qty": "15,703m Total Pipelines (51,520 ft)",
+            "cost": 357658
+          },
+          {
+            "item": "Vertical Transportation (Escalators & Glass Elevators)",
+            "qty": "4 Escalators \u2022 6 High-Speed Elevators",
+            "cost": 390000
+          },
+          {
+            "item": "Commercial Vitrified Flooring, Facades & Lighting",
+            "qty": "60,653 sq.ft Finishes",
+            "cost": 1010880
+          },
+          {
+            "item": "Commercial Civil Engineering & MEP Labor",
+            "qty": "Specialized MEP & Civil Teams",
+            "cost": 1853280
+          }
+        ]
+      },
+      "timeline": {
+        "total_duration_weeks": 96,
+        "phases": [
+          {
+            "phase": 1,
+            "title": "Basement Excavation & Diaphragm Retaining Walls",
+            "duration_weeks": 16,
+            "description": "Deep multi-level basement excavation, anchor tiebacks, foundation rafting."
+          },
+          {
+            "phase": 2,
+            "title": "RCC Frame & Multi-Floor Superstructure",
+            "duration_weeks": 26,
+            "description": "High-capacity column grids, post-tensioned floor slabs, core shear walls."
+          },
+          {
+            "phase": 3,
+            "title": "Central Atrium Steel Truss & Skylight Glazing",
+            "duration_weeks": 12,
+            "description": "Erection of grand roof steel trusses and safety laminated atrium glass."
+          },
+          {
+            "phase": 4,
+            "title": "Commercial MEP (HVAC, Fire Sprinklers, High Voltage)",
+            "duration_weeks": 20,
+            "description": "Central chiller piping, sprinkler risers, 11kV substation cabling."
+          },
+          {
+            "phase": 5,
+            "title": "Vertical Transportation & Storefront Partitions",
+            "duration_weeks": 12,
+            "description": "Escalator and elevator hoistway installation, glass storefronts."
+          },
+          {
+            "phase": 6,
+            "title": "Testing, Commissioning & Fire Safety NOC",
+            "duration_weeks": 10,
+            "description": "Testing life safety systems, smoke evacuation, final handover."
+          }
+        ]
+      }
+    }
+  }
+]

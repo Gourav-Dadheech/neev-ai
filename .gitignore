@@ -1,0 +1,13 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+*.log
+feedbacks.json
+.DS_Store
+dist/
+build/
+scratch/
+scratch_*.py
+
+

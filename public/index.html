@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeeV.ai — Autonomous Spatial Architecture &amp; BIM Studio</title>
+  <meta name="description" content="NeeV.ai is an intelligent generative spatial CAD platform that creates 2D blueprints, interactive 3D WebGL models, and civil BOQ engineering estimations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/app.css">
+  <!-- Three.js & OrbitControls from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+  <!-- Main Studio Header -->
+  <header class="studio-header">
+    <div class="header-brand">
+      <div class="brand-logo" title="NeeV.ai - Spatial Intelligence Studio">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 20h16"/>
+          <path d="M6 20V5l8 15V5"/>
+        </svg>
+      </div>
+      <div class="brand-info">
+        <span class="brand-title">NeeV<span style="color:#38bdf8;">.ai</span></span>
+        <span class="brand-badge-ai">SPATIAL BIM</span>
+        <span id="headerProBadge" class="header-pro-badge" style="display:none;">PRO</span>
+      </div>
+    </div>
+
+    <div class="header-center">
+      <div class="sample-loader-box">
+        <select id="selectDomainPreset" class="preset-dropdown" title="Select sample project template">
+          <option value="house">Example: 30×50 Villa</option>
+          <option value="bridge">Example: River Bridge</option>
+          <option value="road">Example: Highway</option>
+          <option value="mall">Example: Shopping Mall</option>
+        </select>
+        <button id="btnLoadPreset" class="btn btn-primary btn-sm btn-load-action" title="Load sample architectural project">
+          Load
+        </button>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <div class="btn-group-segmented">
+        <button id="btnNewProject" class="btn btn-secondary btn-sm" title="New Project">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          <span>New</span>
+        </button>
+        <button id="btnSaveProject" class="btn btn-secondary btn-sm" title="Save Project">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>
+          <span>Save</span>
+        </button>
+        <button id="btnShareProject" class="btn btn-secondary btn-sm" title="Share Project with Friends &amp; Architects">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          <span>Share</span>
+        </button>
+        <button id="btnMyProjects" class="btn btn-secondary btn-sm" title="Projects Library">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          <span>Library</span>
+        </button>
+      </div>
+
+      <div class="header-v-divider"></div>
+
+      <!-- Feedback Review Button -->
+      <button id="btnOpenFeedback" class="btn btn-primary btn-sm btn-feedback-header" title="Leave feedback or architectural critique">
+        <span style="font-size:12px;">💬</span> <span>Feedback</span>
+      </button>
+
+      <!-- PRO Plans -->
+      <button id="btnProPlans" class="btn btn-pro btn-sm" title="Unlock Pro Features">
+        <span class="pro-sparkle">⚡</span> <span>PRO</span>
+      </button>
+
+      <!-- User Account / Login Button -->
+      <button id="btnLogin" class="btn btn-user btn-sm" title="User Account">
+        <div class="user-avatar-pill" id="userAvatarPill">NV</div>
+        <span id="userAccountName">Sign In</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Workspace Container (Split Screen) -->
+  <main class="studio-workspace">
+    <!-- Left Column: Conversational AI Consultant -->
+    <section class="panel panel-consultant">
+      <div class="panel-header">
+        <div class="panel-title-wrap">
+          <div class="panel-icon-badge">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div>
+            <h2 class="panel-title">NeeV Assistant</h2>
+            <p class="panel-subtitle">Spatial Intelligence &amp; Generative Design</p>
+          </div>
+        </div>
+        <button id="btnToggleSpecs" class="badge badge-interactive" title="View collected requirements">
+          <span id="specCountBadge">Specs (0)</span> ▼
+        </button>
+      </div>
+
+      <!-- Live Specification Checklist Drawer -->
+      <div id="specDrawer" class="spec-drawer collapsed">
+        <div class="spec-grid" id="specGridContent">
+          <div class="spec-item"><span class="spec-label">Category:</span> <span class="spec-val" id="spec-project_type">—</span></div>
+          <div class="spec-item"><span class="spec-label">Dimensions:</span> <span class="spec-val" id="spec-plot_dimensions">—</span></div>
+          <div class="spec-item"><span class="spec-label">Floors:</span> <span class="spec-val" id="spec-floors">—</span></div>
+          <div class="spec-item"><span class="spec-label">Program:</span> <span class="spec-val" id="spec-bed_bath">—</span></div>
+          <div class="spec-item"><span class="spec-label">Facing:</span> <span class="spec-val" id="spec-road_direction">—</span></div>
+          <div class="spec-item"><span class="spec-label">Style:</span> <span class="spec-val" id="spec-architectural_style">—</span></div>
+        </div>
+      </div>
+
+      <!-- Chat History Container -->
+      <div class="chat-viewport" id="chatViewport">
+        <!-- Initial Welcome Message -->
+        <div class="chat-message ai-message">
+          <div class="avatar ai-avatar">NV</div>
+          <div class="message-bubble welcome-card">
+            <div class="welcome-header">
+              <span class="welcome-badge">NeeV Spatial AI</span>
+              <p class="welcome-heading">What would you like to build?</p>
+              <p class="welcome-desc">Describe your project vision, or pick a starter concept below:</p>
+            </div>
+            
+            <div class="starter-grid">
+              <button class="starter-card" onclick="quickSend('I want to build a modern 2-floor courtyard villa on a 30x50 feet plot with 3 bedrooms.')">
+                <span class="starter-title">30×50 Courtyard Villa</span>
+                <span class="starter-sub">2 Floors • 3 Beds • Central Garden</span>
+              </button>
+              <button class="starter-card" onclick="quickSend('Design an L-shaped patio home with private outdoor garden deck on a 35x55 plot.')">
+                <span class="starter-title">L-Shaped Patio Villa</span>
+                <span class="starter-sub">Wrap Deck • Living &amp; Dining</span>
+              </button>
+              <button class="starter-card" onclick="quickSend('Plan a contemporary symmetrical manor with central double-height foyer and pitched roof.')">
+                <span class="starter-title">Symmetrical Manor</span>
+                <span class="starter-sub">Grand Foyer • Pitched Gable Roof</span>
+              </button>
+              <button class="starter-card" onclick="quickSend('Design a 120-meter cable-stayed river bridge with 4 travel lanes.')">
+                <span class="starter-title">120m River Bridge</span>
+                <span class="starter-sub">Civil Infrastructure • 4 Lanes</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Suggested Next Action Prompts -->
+      <div id="dynamicSuggestions" class="dynamic-suggestions" style="display:none;"></div>
+
+      <!-- Quick Architect Prompts Strip for Friends & Visiting Architects -->
+      <div class="quick-agent-chips" id="quickAgentChips">
+        <button class="agent-chip" onclick="quickSend('its 30*50 rajasthan north 3 4 2 5')">🏰 30x50 Haveli</button>
+        <button class="agent-chip" onclick="quickSend('in balcony add doors')">🚪 Balcony Doors</button>
+        <button class="agent-chip" onclick="quickSend('change the terrace of house to pergola garden')">🌿 Pergola Terrace</button>
+        <button class="agent-chip" onclick="quickSend('check all mistakes which is possible then surprise me')">✨ Audit Mistakes</button>
+        <button class="agent-chip" onclick="quickSend('reverse the last step')">↩️ Undo</button>
+      </div>
+
+      <!-- Chat Input Area -->
+      <div class="chat-input-wrapper">
+        <form id="chatForm" class="chat-form" onsubmit="return false;">
+          <input 
+            type="text" 
+            id="chatInput" 
+            class="chat-input" 
+            placeholder="Type your design ideas or requirements..." 
+            autocomplete="off"
+          />
+          <button type="button" id="btnForceGenerate" class="btn btn-secondary btn-quick-draft" title="Quick Draft Plan">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Draft
+          </button>
+          <button type="submit" id="btnSendChat" class="btn btn-primary btn-icon-send" title="Send message">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Right Column: Visual CAD, 3D & Engineering Studio -->
+    <section class="panel panel-studio">
+      <!-- Studio Tabs Navigation -->
+      <nav class="studio-nav">
+        <button class="nav-tab active" data-tab="tab-blueprint">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          2D Blueprint
+        </button>
+        <button class="nav-tab" data-tab="tab-3d">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          3D Model
+        </button>
+        <button class="nav-tab" data-tab="tab-interior">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V10z"/><path d="M7 10V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4"/><path d="M10 14h4"/></svg>
+          Interiors
+        </button>
+        <button class="nav-tab" data-tab="tab-mep">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          MEP Wiring
+        </button>
+        <button class="nav-tab" data-tab="tab-boq">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Cost &amp; BOQ
+        </button>
+        <button class="nav-tab" data-tab="tab-timeline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Timeline
+        </button>
+      </nav>
+
+      <!-- Tab Content Area -->
+      <div class="tab-viewport">
+        <!-- 1. 2D Blueprint Tab -->
+        <div id="tab-blueprint" class="tab-pane active">
+          <div class="tab-pane-toolbar">
+            <div class="toolbar-section">
+              <div class="floor-selector" id="blueprintFloorSelector">
+                <button class="btn-chip active" data-floor="0">Ground</button>
+                <button class="btn-chip" data-floor="1">Level 1</button>
+                <button class="btn-chip" data-floor="2">Terrace</button>
+              </div>
+
+              <div class="variant-bar-wrap" id="blueprintVariantWrap">
+                <span class="variant-bar-label">Variant</span>
+                <div class="variant-pills" id="blueprintVariantPills">
+                  <button class="btn-variant active" data-variant="courtyard" title="Courtyard Villa">Courtyard</button>
+                  <button class="btn-variant" data-variant="l_shaped" title="L-Shaped Patio">L-Shape</button>
+                  <button class="btn-variant" data-variant="manor" title="Symmetrical Manor">Manor</button>
+                  <button class="btn-variant" data-variant="urban_smart" title="Urban Smart">Urban</button>
+                  <button class="btn-variant" data-variant="rajasthan_heritage" title="Indo-Contemporary Rajasthan Haveli">🏛️ Haveli</button>
+                  <button class="btn-variant" data-variant="cantilever_luxury" title="Cantilevered Sky Villa">✨ Sky Villa</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="toolbar-actions">
+              <span id="blueprintMetrics" class="tag-metric">Built-up: —</span>
+              <span id="cadSealBadge" class="tag-metric seal-tag" style="display:none; color:#ffffff; border:1px solid rgba(255,255,255,0.3); background:rgba(255,255,255,0.08);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> VERIFIED SEAL</span>
+              <button id="btnDownloadSvg" class="btn btn-sm btn-secondary" title="Download Scaled SVG Blueprint">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Export CAD
+              </button>
+            </div>
+          </div>
+
+          <div class="blueprint-canvas-container" id="blueprintContainer">
+            <div class="empty-state">
+              <div class="empty-state-icon">📐</div>
+              <h3>No Floor Plan Generated Yet</h3>
+              <p>Chat with NeeV or select a template above to generate scaled blueprints and 3D scenes.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 3D Model Tab (Three.js WebGL) -->
+        <div id="tab-3d" class="tab-pane">
+          <div class="tab-pane-toolbar">
+            <div class="toolbar-section">
+              <div class="controls-3d">
+                <button class="btn-chip active" id="btn3dAll">All</button>
+                <button class="btn-chip" id="btn3dGround">Ground</button>
+                <button class="btn-chip" id="btn3dUpper">Level 1</button>
+                <button class="btn-chip" id="btn3dRoofToggle">Roof</button>
+                <button class="btn-chip" id="btn3dResetCam">Reset</button>
+              </div>
+
+              <!-- Render Presentation Style (Realistic, AutoCAD, Clay, X-Ray) -->
+              <div class="variant-bar-wrap" id="threeRenderStyleWrap">
+                <span class="variant-bar-label">Render</span>
+                <div class="variant-pills" id="threeRenderStylePills">
+                  <button class="btn-variant active" data-style3d="realistic" title="Photorealistic PBR with ACES Filmic Tone Mapping">🎨 Realistic</button>
+                  <button class="btn-variant" data-style3d="autocad" title="AutoCAD 3D Technical Linework">📐 AutoCAD 3D</button>
+                  <button class="btn-variant" data-style3d="clay" title="Architectural White Clay Presentation Model">🏛️ Clay</button>
+                  <button class="btn-variant" data-style3d="xray" title="X-Ray Blueprint Inspection">🔮 X-Ray</button>
+                </div>
+              </div>
+
+              <!-- Camera Viewpoint Presets -->
+              <div class="variant-bar-wrap" id="threeCameraPresetWrap">
+                <span class="variant-bar-label">Camera</span>
+                <div class="variant-pills" id="threeCameraPills">
+                  <button class="btn-variant active" data-cam="perspective" title="Perspective View">Perspective</button>
+                  <button class="btn-variant" data-cam="isometric" title="Axonometric Isometric View">Isometric</button>
+                  <button class="btn-variant" data-cam="top" title="Top-Down Plan View">Top Plan</button>
+                  <button class="btn-variant" data-cam="front" title="Front Elevation View">Elevation</button>
+                  <button class="btn-variant" data-cam="walkthrough" title="Eye-Level Interior Walkthrough">Walkthrough</button>
+                </div>
+              </div>
+
+              <div class="variant-bar-wrap" id="threeVariantWrap">
+                <span class="variant-bar-label">Variant</span>
+                <div class="variant-pills" id="threeVariantPills">
+                  <button class="btn-variant active" data-variant="courtyard" title="Courtyard Villa">Courtyard</button>
+                  <button class="btn-variant" data-variant="l_shaped" title="L-Shape Patio">L-Shape</button>
+                  <button class="btn-variant" data-variant="manor" title="Symmetrical Manor">Manor</button>
+                  <button class="btn-variant" data-variant="urban_smart" title="Urban Smart">Urban</button>
+                  <button class="btn-variant" data-variant="rajasthan_heritage" title="Indo-Contemporary Rajasthan Haveli">🏛️ Haveli</button>
+                  <button class="btn-variant" data-variant="cantilever_luxury" title="Cantilevered Sky Villa">✨ Sky Villa</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="toolbar-actions">
+              <button id="btn3dSnapshot" class="btn btn-sm btn-secondary" title="Capture High-Res 4K Architectural Snapshot">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                Snapshot
+              </button>
+              <span class="tag-metric">Orbit: Drag • Zoom: Scroll</span>
+            </div>
+          </div>
+
+          <div class="three-viewport-container" id="threeContainer">
+            <div class="empty-state">
+              <div class="empty-state-icon">🧊</div>
+              <h3>3D WebGL Model Ready to Render</h3>
+              <p>Enter your house requirements to generate a real-time interactive 3D model.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2b. Interior Design Studio Tab -->
+        <div id="tab-interior" class="tab-pane">
+          <div class="interior-studio-container">
+            <!-- Interior Controls & Finishes Toolbar -->
+            <div class="tab-pane-toolbar interior-toolbar-wrap">
+              <div class="interior-toolbar-cluster">
+                <span class="cluster-label">FOCUS:</span>
+                <div class="cluster-pills">
+                  <button class="btn-chip active room-focus-chip" data-room="all" id="focusRoomAll">🌐 Whole</button>
+                  <button class="btn-chip room-focus-chip" data-room="living_room" id="focusRoomLiving">🛋️ Living</button>
+                  <button class="btn-chip room-focus-chip" data-room="bedroom" id="focusRoomBedroom">🛏️ Bedroom</button>
+                  <button class="btn-chip room-focus-chip" data-room="kitchen" id="focusRoomKitchen">🍳 Kitchen</button>
+                </div>
+              </div>
+
+              <div class="interior-toolbar-cluster">
+                <span class="cluster-label">LIGHTING:</span>
+                <div class="cluster-pills">
+                  <button class="btn-chip active mood-btn" data-mood="day" id="moodDay">☀️ Daylight</button>
+                  <button class="btn-chip mood-btn" data-mood="golden" id="moodGolden">🌅 Golden</button>
+                  <button class="btn-chip mood-btn" data-mood="night" id="moodNight">🌙 Night</button>
+                  <button class="btn-chip mood-btn" data-mood="cyber" id="moodCyber">🔮 Cyber</button>
+                </div>
+              </div>
+
+              <div class="interior-toolbar-actions">
+                <button class="btn btn-sm btn-secondary active-pill-toggle" id="btnToggleBiophilic" title="Toggle biophilic indoor greenery">🌿 Plants On</button>
+                <button class="btn btn-sm btn-primary" onclick="switchTab('tab-3d')">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                  Inspect in 3D
+                </button>
+              </div>
+            </div>
+
+            <div class="interior-content-grid">
+              <!-- Left Column: Themes, Flooring, Wall Textures & Furnishing Stats -->
+              <div class="interior-controls-col">
+                <!-- Style Themes -->
+                <div class="interior-panel-card">
+                  <div class="card-heading-wrap">
+                    <span class="card-badge">CURATED THEMES</span>
+                    <h3 class="panel-section-title">Architectural Interior Aesthetics</h3>
+                    <p class="panel-section-sub">Instantly sync furnishings, color temperature, and surface materials</p>
+                  </div>
+                  <div class="style-cards-grid">
+                    <div class="style-choice-card active" data-style="luxury">
+                      <div class="style-icon">💎</div>
+                      <div class="style-meta">
+                        <div class="style-title">Modern Luxury</div>
+                        <div class="style-desc">Carrara marble, brushed brass, emerald accents, cove LED</div>
+                      </div>
+                    </div>
+                    <div class="style-choice-card" data-style="japandi">
+                      <div class="style-icon">🎍</div>
+                      <div class="style-meta">
+                        <div class="style-title">Japandi Minimalist</div>
+                        <div class="style-desc">Natural hinoki wood, low joinery, wabi-sabi linen textures</div>
+                      </div>
+                    </div>
+                    <div class="style-choice-card" data-style="nordic">
+                      <div class="style-icon">🌲</div>
+                      <div class="style-meta">
+                        <div class="style-title">Warm Scandinavian</div>
+                        <div class="style-desc">White oak flooring, boucle upholstery, ambient fluted walls</div>
+                      </div>
+                    </div>
+                    <div class="style-choice-card" data-style="industrial">
+                      <div class="style-icon">🏙️</div>
+                      <div class="style-meta">
+                        <div class="style-title">Industrial Loft</div>
+                        <div class="style-desc">Polished concrete, matte black metal, distressed leather</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Flooring Finishes -->
+                <div class="interior-panel-card">
+                  <div class="card-heading-wrap">
+                    <span class="card-badge">FLOOR SURFACES</span>
+                    <h3 class="panel-section-title">Flooring & Deck Textures</h3>
+                    <p class="panel-section-sub">Select flooring finishes applied across procedural 3D rooms</p>
+                  </div>
+                  <div class="material-swatches-grid">
+                    <div class="material-swatch-item active" data-mat="marble">
+                      <div class="swatch-preview" style="background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);"></div>
+                      <div class="swatch-info">
+                        <strong>Carrara Italian Marble</strong>
+                        <span>High-gloss white with grey veins</span>
+                      </div>
+                    </div>
+                    <div class="material-swatch-item" data-mat="wood">
+                      <div class="swatch-preview" style="background: linear-gradient(135deg, #b45309 0%, #78350f 100%);"></div>
+                      <div class="swatch-info">
+                        <strong>Herringbone Oak Parquet</strong>
+                        <span>Warm honey timber with polyurethane seal</span>
+                      </div>
+                    </div>
+                    <div class="material-swatch-item" data-mat="terrazzo">
+                      <div class="swatch-preview" style="background: linear-gradient(135deg, #94a3b8 0%, #475569 100%);"></div>
+                      <div class="swatch-info">
+                        <strong>Polished Urban Terrazzo</strong>
+                        <span>Micro-aggregate seamless stone</span>
+                      </div>
+                    </div>
+                    <div class="material-swatch-item" data-mat="concrete">
+                      <div class="swatch-preview" style="background: linear-gradient(135deg, #334155 0%, #0f172a 100%);"></div>
+                      <div class="swatch-info">
+                        <strong>Burnished Slate Concrete</strong>
+                        <span>Architectural monolithic grey finish</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Wall Textures & Accent Finishes -->
+                <div class="interior-panel-card">
+                  <div class="card-heading-wrap">
+                    <span class="card-badge">VERTICAL ACCENTS</span>
+                    <h3 class="panel-section-title">Wall Accent Textures & Finishes</h3>
+                    <p class="panel-section-sub">Procedural material treatments applied across architectural interior partitions</p>
+                  </div>
+                  <div class="wall-swatches-grid">
+                    <div class="wall-swatch-item active" data-wall="limewash">
+                      <div class="swatch-preview" style="background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);"></div>
+                      <div class="swatch-info">
+                        <strong>Smooth Limewash</strong>
+                        <span>Natural mineral breathable matte texture</span>
+                      </div>
+                    </div>
+                    <div class="wall-swatch-item" data-wall="slats">
+                      <div class="swatch-preview" style="background: repeating-linear-gradient(90deg, #78350f, #78350f 8px, #451a03 8px, #451a03 14px);"></div>
+                      <div class="swatch-info">
+                        <strong>Vertical Wood Slats</strong>
+                        <span>Acoustic fluted walnut timber paneling</span>
+                      </div>
+                    </div>
+                    <div class="wall-swatch-item" data-wall="brick">
+                      <div class="swatch-preview" style="background: repeating-linear-gradient(0deg, #9a3412, #9a3412 10px, #431407 10px, #431407 12px);"></div>
+                      <div class="swatch-info">
+                        <strong>Exposed Terracotta Brick</strong>
+                        <span>Urban architectural masonry accent</span>
+                      </div>
+                    </div>
+                    <div class="wall-swatch-item" data-wall="felt">
+                      <div class="swatch-preview" style="background: linear-gradient(135deg, #334155 0%, #1e293b 100%);"></div>
+                      <div class="swatch-info">
+                        <strong>Acoustic Felt Paneling</strong>
+                        <span>Dark sound-dampening architectural felt</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Furnishing Inventory Breakdown -->
+                <div class="interior-panel-card">
+                  <div class="card-heading-wrap" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px;">
+                    <div>
+                      <span class="card-badge">SPECIFICATION</span>
+                      <h3 class="panel-section-title">Furnishing Schedule</h3>
+                      <p class="panel-section-sub">Procedurally placed interior elements in current design</p>
+                    </div>
+                    <div class="card-actions-mini">
+                      <button class="btn btn-xs btn-secondary" id="btnToggleInteriorFurniture" title="Toggle 3D furniture models">🛋️ Furniture</button>
+                      <button class="btn btn-xs btn-secondary" id="btnToggleRoofInterior" title="Toggle architectural roof slab">🏛️ Roof</button>
+                    </div>
+                  </div>
+                  <div class="inventory-stat-grid" id="interiorInventoryGrid">
+                    <div class="inv-badge-card">
+                      <div class="inv-badge-icon">🛋️</div>
+                      <div class="inv-badge-body">
+                        <div class="inv-val" id="invCountSofas">2 Suites</div>
+                        <div class="inv-label">L-Sectional Sofas</div>
+                      </div>
+                    </div>
+                    <div class="inv-badge-card">
+                      <div class="inv-badge-icon">🛏️</div>
+                      <div class="inv-badge-body">
+                        <div class="inv-val" id="invCountBeds">3 Beds</div>
+                        <div class="inv-label">King & Queen Suites</div>
+                      </div>
+                    </div>
+                    <div class="inv-badge-card">
+                      <div class="inv-badge-icon">🍽️</div>
+                      <div class="inv-badge-body">
+                        <div class="inv-val" id="invCountDining">1 Set</div>
+                        <div class="inv-label">6-Seater Dining Suite</div>
+                      </div>
+                    </div>
+                    <div class="inv-badge-card">
+                      <div class="inv-badge-icon">🍳</div>
+                      <div class="inv-badge-body">
+                        <div class="inv-val" id="invCountKitchen">1 Fitted</div>
+                        <div class="inv-label">Island Kitchen Counter</div>
+                      </div>
+                    </div>
+                    <div class="inv-badge-card">
+                      <div class="inv-badge-icon">🌿</div>
+                      <div class="inv-badge-body">
+                        <div class="inv-val" id="invCountPlants">4 Pots</div>
+                        <div class="inv-label">Biophilic Greenery</div>
+                      </div>
+                    </div>
+                    <div class="inv-badge-card">
+                      <div class="inv-badge-icon">💡</div>
+                      <div class="inv-badge-body">
+                        <div class="inv-val" id="invCountLights">Warm 2700K</div>
+                        <div class="inv-label">Interior Luminaire Network</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Interactive Interior Hero Presentation & Turnkey Cost -->
+              <div class="interior-showcase-col">
+                <!-- PRO Interior Studio Card: AutoCAD® Blueprints & 4K Photorealistic Renders -->
+                <div class="pro-interior-hero-card">
+                  <div class="pro-interior-header">
+                    <div class="pro-interior-title-group">
+                      <div class="pro-tag-pill">
+                        <span class="pro-sparkle">⚡</span> PRO STUDIO FEATURE
+                      </div>
+                      <h3 class="pro-interior-title">AutoCAD® Interior Blueprints &amp; 4K Renders</h3>
+                      <p class="pro-interior-sub">Precision DWG technical layouts, layer dimensions, and photorealistic 3D interior perspectives</p>
+                    </div>
+                    <div class="pro-status-indicator" id="proStudioStatusBadge" onclick="openModal('modalPro')">
+                      <span class="pro-badge-dot"></span>
+                      <span id="proStudioStatusText">PRO PASS ACTIVE</span>
+                    </div>
+                  </div>
+
+                  <!-- Room Navigation Carousel -->
+                  <div class="interior-room-tabs" id="interiorRoomTabs">
+                    <button class="btn-room-tab active" data-room-id="living_room">
+                      <span class="room-tab-icon">🛋️</span>
+                      <span class="room-tab-name">Living Room</span>
+                    </button>
+                    <button class="btn-room-tab" data-room-id="master_bedroom">
+                      <span class="room-tab-icon">🛏️</span>
+                      <span class="room-tab-name">Master Suite</span>
+                    </button>
+                    <button class="btn-room-tab" data-room-id="kitchen">
+                      <span class="room-tab-icon">🍳</span>
+                      <span class="room-tab-name">Modular Kitchen</span>
+                    </button>
+                    <button class="btn-room-tab" data-room-id="bathroom">
+                      <span class="room-tab-icon">🛁</span>
+                      <span class="room-tab-name">Luxury Ensuite</span>
+                    </button>
+                    <button class="btn-room-tab" data-room-id="office">
+                      <span class="room-tab-icon">💼</span>
+                      <span class="room-tab-name">Executive Study</span>
+                    </button>
+                  </div>
+
+                  <!-- View Mode Switcher -->
+                  <div class="interior-viewmode-bar">
+                    <div class="viewmode-pills" id="interiorViewModePills">
+                      <button class="btn-viewmode active" data-viewmode="split" title="Interactive Split Slider (AutoCAD vs 3D Render)">
+                        ⚡ Split (CAD ↔ Render)
+                      </button>
+                      <button class="btn-viewmode" data-viewmode="cad_dark" title="AutoCAD Model Space (Dark CAD Viewport)">
+                        📐 AutoCAD DWG (Dark)
+                      </button>
+                      <button class="btn-viewmode" data-viewmode="cad_paper" title="AutoCAD Paper Space (White Blueprint Sheet)">
+                        📄 Paper Space Sheet
+                      </button>
+                      <button class="btn-viewmode" data-viewmode="render_4k" title="Ultra-Photorealistic 4K Render View">
+                        ✨ 4K Photo Render
+                      </button>
+                    </div>
+
+                    <div class="cad-layer-toggles" id="cadLayerToggles">
+                      <label class="cad-layer-chk" title="Toggle dimension chains">
+                        <input type="checkbox" id="chkCadDims" checked> <span>Dims</span>
+                      </label>
+                      <label class="cad-layer-chk" title="Toggle furniture blocks">
+                        <input type="checkbox" id="chkCadFurn" checked> <span>Furniture</span>
+                      </label>
+                      <label class="cad-layer-chk" title="Toggle electrical fixtures">
+                        <input type="checkbox" id="chkCadElec" checked> <span>Electrical</span>
+                      </label>
+                      <label class="cad-layer-chk" title="Toggle material hatch patterns">
+                        <input type="checkbox" id="chkCadHatch" checked> <span>Hatch</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Interactive Visual Stage: Split Slider Container -->
+                  <div class="pro-visual-stage" id="proVisualStage">
+                    <!-- Right Layer: Photorealistic 3D Render -->
+                    <div class="stage-layer stage-layer-render" id="stageRenderLayer">
+                      <img id="renderImageView" class="render-img" src="/static/renders/living_room.jpg" alt="4K Photorealistic Render">
+                      <div class="layer-badge badge-render">
+                        <span class="badge-sparkle">✨</span> 4K PHOTOREALISTIC RENDER
+                      </div>
+                    </div>
+
+                    <!-- Left Layer: AutoCAD Technical Blueprint Drawing -->
+                    <div class="stage-layer stage-layer-cad" id="stageCadLayer">
+                      <div class="cad-canvas-wrap" id="cadCanvasWrap">
+                        <!-- Generative SVG/Canvas Vector Blueprint -->
+                        <svg id="cadSvgViewport" class="cad-svg-canvas" viewBox="0 0 1000 562" preserveAspectRatio="xMidYMid meet"></svg>
+                      </div>
+                      <div class="layer-badge badge-cad">
+                        <span class="badge-cad-icon">📐</span> AUTOCAD® DWG TECHNICAL (1:50)
+                      </div>
+                    </div>
+
+                    <!-- Draggable Split Comparison Slider Divider -->
+                    <div class="stage-slider-divider" id="stageSliderDivider">
+                      <div class="slider-divider-line"></div>
+                      <div class="slider-divider-handle" id="sliderDividerHandle" title="Drag left/right to compare AutoCAD blueprint with 3D render">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                          <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                          <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                      </div>
+                    </div>
+
+                    <!-- Pro Locked Overlay Watermark (Shown when user is on Free Plan) -->
+                    <div class="pro-watermark-overlay" id="proWatermarkOverlay" style="display:none;">
+                      <div class="pro-lock-card">
+                        <div class="lock-icon-sparkle">⚡</div>
+                        <h4>NeeV PRO Architectural Interior Suite</h4>
+                        <p>AutoCAD® vector blueprints, layer dimensions, and 4K photorealistic renders are a PRO feature.</p>
+                        <div class="pro-lock-actions">
+                          <button class="btn btn-pro btn-sm" onclick="toggleProMembership()">
+                            <span class="pro-sparkle">⚡</span> Activate 1-Click PRO Pass
+                          </button>
+                          <button class="btn btn-secondary btn-sm" onclick="openModal('modalPro')">
+                            View Plans &amp; Pricing
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Pro Studio Actions & Export Toolbar -->
+                  <div class="pro-studio-actions-bar">
+                    <div class="pro-action-left">
+                      <span class="room-metric-chip" id="roomMetricDimensions">Dims: 6.2m × 4.8m (29.8 m²)</span>
+                      <span class="room-metric-chip" id="roomMetricFinish">Floor: Carrara Marble</span>
+                      <span class="room-metric-chip" id="roomMetricCeiling">Ceiling: +3.00m Cove</span>
+                    </div>
+                    <div class="pro-action-right">
+                      <button id="btnDownloadCadSheet" class="btn btn-sm btn-secondary" title="Export Scaled AutoCAD Drawing Sheet (SVG/Vector)">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        AutoCAD Sheet
+                      </button>
+                      <button id="btnDownloadRender4k" class="btn btn-sm btn-primary" title="Download 4K Photorealistic Render Image">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        4K Render
+                      </button>
+                      <button id="btnAiPromptRedesign" class="btn btn-sm btn-secondary" title="Redesign Interior with AI" onclick="quickSend('Please redesign this interior with updated luxury finishes and custom bespoke joinery.')">
+                        💬 AI Redesign
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="interior-render-specs">
+                  <h4 class="specs-title">Real-Time Lighting & Luminaire Diagnostics</h4>
+                  <div class="render-spec-rows">
+                    <div class="spec-diagnostic-row">
+                      <span>Primary Luminaire Source:</span>
+                      <strong id="luminairePrimary">Natural Daylight (5500K True Solar)</strong>
+                    </div>
+                    <div class="spec-diagnostic-row">
+                      <span>Sun Elevation & Angle:</span>
+                      <strong id="luminaireSunAngle">Solar Zenith 48° South-West (Clear Sky Simulation)</strong>
+                    </div>
+                    <div class="spec-diagnostic-row">
+                      <span>Reflectance Roughness (Flooring):</span>
+                      <strong id="luminaireRoughness">0.15 High-Polish Gloss Reflection</strong>
+                    </div>
+                    <div class="spec-diagnostic-row">
+                      <span>Ambient Occlusion & Shadow Quality:</span>
+                      <strong id="luminaireShadows">WebGL Directional Soft PCF Shadows Active</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Turnkey Interior Cost Estimation Card -->
+                <div class="interior-panel-card interior-cost-summary-card">
+                  <div class="card-heading-wrap">
+                    <span class="card-badge">FINANCIAL BREAKDOWN</span>
+                    <h3 class="panel-section-title">Turnkey Interior Cost Estimation</h3>
+                    <p class="panel-section-sub">Dynamic fit-out budget calculated from selected finishes, area & joinery</p>
+                  </div>
+                  <div class="interior-cost-breakdown">
+                    <div class="cost-row">
+                      <span>Flooring & Baseboards (<span id="interiorFlooringTypeLabel">Carrara Marble</span>):</span>
+                      <strong id="interiorFlooringCost">$14,200</strong>
+                    </div>
+                    <div class="cost-row">
+                      <span>Wall Finishes & Paneling (<span id="interiorWallTypeLabel">Smooth Limewash</span>):</span>
+                      <strong id="interiorWallCost">$9,400</strong>
+                    </div>
+                    <div class="cost-row">
+                      <span>Furnishing & Joinery Schedule (<span id="interiorThemeLabel">Modern Luxury</span>):</span>
+                      <strong id="interiorFurnishingCost">$26,500</strong>
+                    </div>
+                    <div class="cost-row">
+                      <span>Architectural Lighting & Smart Controls:</span>
+                      <strong id="interiorLightingCost">$7,800</strong>
+                    </div>
+                    <div class="cost-row cost-total-row">
+                      <span>Total Estimated Interior Fit-Out:</span>
+                      <strong id="interiorTotalBudget" class="interior-budget-highlight">$57,900</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. MEP (Electrical & Plumbing) Tab -->
+        <div id="tab-mep" class="tab-pane">
+          <div class="mep-dashboard">
+            <!-- Electrical Section -->
+            <div class="mep-card">
+              <div class="mep-card-header electrical-accent">
+                <div class="mep-header-icon">🔌</div>
+                <div>
+                  <h3>Electrical Wiring & Conduits</h3>
+                  <p>Circuit length calculations based on room perimeters & load distribution</p>
+                </div>
+              </div>
+              <div class="stat-highlight-box">
+                <div class="stat-big" id="mep-total-wire">— m</div>
+                <div class="stat-sub" id="mep-total-wire-ft">— linear feet (— Standard Bundles)</div>
+              </div>
+
+              <div class="mep-detail-list">
+                <div class="mep-row">
+                  <span>Lighting & Fan Circuits (1.0 mm²):</span>
+                  <strong id="mep-wire-1mm">—</strong>
+                </div>
+                <div class="mep-row">
+                  <span>Power Sockets 6A/16A (2.5 mm²):</span>
+                  <strong id="mep-wire-25mm">—</strong>
+                </div>
+                <div class="mep-row">
+                  <span>Heavy Load AC & Geysers (4.0 mm²):</span>
+                  <strong id="mep-wire-4mm">—</strong>
+                </div>
+                <div class="mep-row">
+                  <span>Safety Earthing Wire:</span>
+                  <strong id="mep-wire-earth">—</strong>
+                </div>
+                <div class="mep-row">
+                  <span>Embedded PVC Conduit Pipes:</span>
+                  <strong id="mep-conduits">—</strong>
+                </div>
+                <div class="mep-row">
+                  <span>Modular Switch Plates & Sockets:</span>
+                  <strong id="mep-switches">—</strong>
+                </div>
+                <div class="mep-row">
+                  <span>LED Downlights & Ceiling Fixtures:</span>
+                  <strong id="mep-lights">—</strong>
+                </div>
+                <div class="mep-row">
+                  <span>Main Distribution Boards (MDB):</span>
+                  <strong id="mep-mdb">—</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Plumbing Section -->
+            <div class="mep-card">
+              <div class="mep-card-header plumbing-accent">
+                <div class="mep-header-icon">🚰</div>
+                <div>
+                  <h3>Plumbing Pipelines & Drainage</h3>
+                  <p>Freshwater CPVC network, soil waste & drainage pipes</p>
+                </div>
+              </div>
+              <div class="stat-highlight-box">
+                <div class="stat-big" id="mep-total-pipe">— m</div>
+                <div class="stat-sub" id="mep-total-pipe-ft">— linear feet total pipeline network</div>
+              </div>
+
+              <div class="mep-detail-list">
+                <div class="mep-row">
+                  <span>Fresh Water Supply (CPVC Hot/Cold):</span>
+                  <strong id="mep-freshwater-pipe">—</strong>
+                </div>
+                <div class="mep-row">
+                  <span>Drainage & Sewerage (PVC 4" & 3"):</span>
+                  <strong id="mep-drainage-pipe">—</strong>
+                </div>
+                <div class="mep-row">
+                  <span>Overhead Water Storage Tank:</span>
+                  <strong id="mep-watertank">—</strong>
+                </div>
+                <div class="mep-row">
+                  <span>Toilets (EWCs with Dual Flush):</span>
+                  <strong id="mep-toilets">—</strong>
+                </div>
+                <div class="mep-row">
+                  <span>Wash Basins & Vanity Counters:</span>
+                  <strong id="mep-basins">—</strong>
+                </div>
+                <div class="mep-row">
+                  <span>Diverter Showers & Taps:</span>
+                  <strong id="mep-showers">—</strong>
+                </div>
+                <div class="mep-row">
+                  <span>Kitchen Double-Bowl Sink:</span>
+                  <strong id="mep-kitchen-sink">1 Unit</strong>
+                </div>
+                <div class="mep-row">
+                  <span>Water Heaters / Geysers:</span>
+                  <strong id="mep-geysers">—</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Cost & BOQ Tab -->
+        <div id="tab-boq" class="tab-pane">
+          <div class="boq-dashboard">
+            <!-- Cost Summary Hero -->
+            <div class="boq-hero">
+              <div class="cost-stat-card">
+                <span class="cost-stat-label">TOTAL ESTIMATED BUDGET</span>
+                <div class="cost-stat-value" id="boqTotalCost">$0</div>
+                <span class="cost-stat-sub" id="boqInrCost">₹0 INR Equivalent</span>
+              </div>
+              <div class="cost-stat-card">
+                <span class="cost-stat-label">COST PER SQ.FT</span>
+                <div class="cost-stat-value" id="boqCostPerSqft">$0 / sqft</div>
+                <span class="cost-stat-sub" id="boqBuiltupArea">0 sq.ft Built-up Area</span>
+              </div>
+              <div class="cost-stat-card">
+                <span class="cost-stat-label">MATERIAL VS LABOR</span>
+                <div class="cost-split-bar">
+                  <div id="splitMaterials" class="bar-fill fill-cyan" style="width: 65%;">65% Mat</div>
+                  <div id="splitLabor" class="bar-fill fill-amber" style="width: 35%;">35% Lab</div>
+                </div>
+                <span class="cost-stat-sub" id="boqLaborCost">Labor: $0</span>
+              </div>
+            </div>
+
+            <!-- Itemized Table -->
+            <div class="boq-table-wrap">
+              <div class="boq-table-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <h3 class="section-title" style="margin: 0;">Itemized Bill of Quantities (BOQ)</h3>
+                <button id="btnExportBoq" class="btn btn-sm btn-secondary" title="Export itemized BOQ to CSV spreadsheet">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                  Export BOQ (CSV)
+                </button>
+              </div>
+              <table class="boq-table">
+                <thead>
+                  <tr>
+                    <th>Item & Material Category</th>
+                    <th>Estimated Quantity</th>
+                    <th>Subtotal (USD)</th>
+                  </tr>
+                </thead>
+                <tbody id="boqTableBody">
+                  <tr><td colspan="3" class="table-empty">Generate a project plan to view itemized material quantities.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Construction Timeline Tab -->
+        <div id="tab-timeline" class="tab-pane">
+          <div class="timeline-container">
+            <div class="timeline-header-card">
+              <div>
+                <h3 class="section-title">Project Execution Roadmap</h3>
+                <p class="section-desc">Phased construction schedule from excavation to final quality snagging</p>
+              </div>
+              <div class="timeline-total-badge">
+                <span id="timelineTotalWeeks">—</span> Weeks (~<span id="timelineTotalMonths">—</span> Months)
+              </div>
+            </div>
+
+            <div class="timeline-stepper" id="timelineStepper">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Modal 0: Custom Save Project Modal -->
+  <div id="modalSaveProject" class="modal-overlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="modal-icon-badge">💾</div>
+          <div>
+            <h3 class="modal-title">Save Architectural Project</h3>
+            <p class="modal-subtitle">Commit current CAD blueprint, 3D scene & BOQ to your studio library</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('modalSaveProject')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="saveProjectForm" onsubmit="return false;">
+          <div class="form-group">
+            <label class="form-label" for="saveProjectName">Project Title *</label>
+            <input type="text" id="saveProjectName" class="form-control" placeholder="e.g. Skyline Luxury Villa 30x50" required>
+          </div>
+          <div class="form-group-row">
+            <div class="form-group flex-1">
+              <label class="form-label" for="saveProjectDomain">Engineering Domain</label>
+              <select id="saveProjectDomain" class="form-control">
+                <option value="residential">🏠 Residential Architecture</option>
+                <option value="bridge">🌉 Bridge Infrastructure</option>
+                <option value="road">🛣️ Highway & Roadway</option>
+                <option value="mall">🛍️ Commercial / Mall</option>
+              </select>
+            </div>
+            <div class="form-group flex-1">
+              <label class="form-label" for="saveProjectClient">Client / Entity Name</label>
+              <input type="text" id="saveProjectClient" class="form-control" placeholder="e.g. Private Client or Transit Authority">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="saveProjectNotes">Design Notes & Scope</label>
+            <textarea id="saveProjectNotes" class="form-control" rows="3" placeholder="Key structural specifications, client notes, materials..."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="saveProjectAuthor">Architect / Lead Engineer</label>
+            <input type="text" id="saveProjectAuthor" class="form-control" placeholder="e.g. Ar. Rajesh Sharma">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeModal('modalSaveProject')">Cancel</button>
+        <button type="button" class="btn btn-primary" id="btnConfirmSaveProject">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Save to Studio Library
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 1: User Account & Easy Sign In / Sign Up -->
+  <div id="modalLogin" class="modal-overlay">
+    <div class="modal-dialog modal-dialog-md">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="modal-icon-badge">👋</div>
+          <div>
+            <h3 class="modal-title">Welcome to NeeV</h3>
+            <p class="modal-subtitle">Sign in to save your designs, or explore everything as a guest in 1 click</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('modalLogin')">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- 1-Click Instant Guest / Demo Access Banner -->
+        <div class="guest-banner">
+          <div class="guest-banner-info">
+            <span class="guest-tag">⚡ NO REGISTRATION REQUIRED</span>
+            <div class="guest-title">Just exploring? Try everything immediately!</div>
+            <div class="guest-sub">Generate 2D blueprints, 3D WebGL models, and interior spaces without any password.</div>
+          </div>
+          <button type="button" class="btn btn-guest" id="btnQuickGuest">
+            🚀 Continue as Guest
+          </button>
+        </div>
+
+        <!-- Auth Tabs Navigation -->
+        <div class="auth-modal-tabs">
+          <button class="auth-tab-btn active" data-authtab="signin">Sign In</button>
+          <button class="auth-tab-btn" data-authtab="register">Create Free Account</button>
+          <button class="auth-tab-btn" data-authtab="demo">⚡ 1-Click Personas</button>
+        </div>
+
+        <!-- Tab Pane 1: Sign In -->
+        <div id="pane-signin" class="auth-pane active">
+          <form id="signInForm" onsubmit="return false;">
+            <div class="form-group">
+              <label class="form-label" for="loginEmail">Email Address</label>
+              <input type="email" id="loginEmail" class="form-control" placeholder="e.g. yourname@example.com" value="alex@neev.ai">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="loginPassword">Password</label>
+              <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" value="••••••••">
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+              <label style="font-size:0.8rem; color:var(--text-muted); cursor:pointer; display:flex; align-items:center; gap:6px;">
+                <input type="checkbox" checked> Remember me
+              </label>
+              <a href="#" style="font-size:0.8rem; color:var(--cyan-accent); text-decoration:none;" onclick="showToast('Password reset link sent to your email address!', 'info', '📧'); return false;">Forgot password?</a>
+            </div>
+            <button type="button" class="btn btn-primary btn-block btn-lg" id="btnSubmitSignIn">
+              🔓 Sign In to NeeV
+            </button>
+          </form>
+
+          <!-- Optional Professional Architect License & CAD Seal (Collapsible) -->
+          <details class="pro-license-accordion">
+            <summary class="pro-accordion-summary">
+              <span>🏢 Professional Architect or Engineer? <span class="muted-text">(Optional: Firm License &amp; CAD Seal)</span></span>
+              <span class="accordion-arrow">▼</span>
+            </summary>
+            <div class="pro-accordion-content">
+              <form id="profileForm" onsubmit="return false;">
+                <div class="form-group-row">
+                  <div class="form-group flex-1">
+                    <label class="form-label" for="inputUserName">Professional Name</label>
+                    <input type="text" id="inputUserName" class="form-control" placeholder="e.g. Ar. Elena Rostova" value="Ar. Elena Rostova">
+                  </div>
+                  <div class="form-group flex-1">
+                    <label class="form-label" for="inputFirmName">Firm / Studio</label>
+                    <input type="text" id="inputFirmName" class="form-control" placeholder="e.g. Apex Civil Studio" value="Apex Civil & Architectural Studio">
+                  </div>
+                </div>
+                <div class="form-group-row">
+                  <div class="form-group flex-1">
+                    <label class="form-label" for="selectUserRole">Role</label>
+                    <select id="selectUserRole" class="form-control">
+                      <option value="Principal Architect">Principal Architect</option>
+                      <option value="Structural Civil Engineer">Structural Civil Engineer</option>
+                      <option value="BIM & MEP Consultant">BIM & MEP Consultant</option>
+                      <option value="Interior Designer">Interior Architecture Specialist</option>
+                      <option value="General Contractor">General Civil Contractor</option>
+                      <option value="Homeowner / Client">Property Owner / Client</option>
+                    </select>
+                  </div>
+                  <div class="form-group flex-1">
+                    <label class="form-label" for="inputCouncilReg">Council / License Registration</label>
+                    <input type="text" id="inputCouncilReg" class="form-control" placeholder="e.g. CA/2021/89412" value="CA/2021/89412">
+                  </div>
+                </div>
+                <div class="seal-config-card">
+                  <div class="seal-config-header">
+                    <div class="seal-config-info">
+                      <span class="seal-title">Verified CAD Digital Seal Stamping</span>
+                      <p class="seal-desc">Affixes verified license stamp onto exported CAD SVG blueprints and BOQ spreadsheets.</p>
+                    </div>
+                    <label class="switch">
+                      <input type="checkbox" id="toggleDigitalSeal" checked>
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                  <div class="seal-preview-box" id="cadSealPreviewBox">
+                    <div class="seal-stamp-graphic" id="cadSealGraphic">
+                      <svg width="50" height="50" viewBox="0 0 100 100" class="seal-svg">
+                        <circle cx="50" cy="50" r="46" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="4,2"/>
+                        <circle cx="50" cy="50" r="38" fill="rgba(255,255,255,0.06)" stroke="#ffffff" stroke-width="1.5"/>
+                        <path d="M50 20 L58 38 L78 38 L62 50 L68 70 L50 58 L32 70 L38 50 L22 38 L42 38 Z" fill="rgba(255,255,255,0.18)" stroke="#ffffff" stroke-width="1.5"/>
+                        <text x="50" y="86" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="700" letter-spacing="1">CERTIFIED CAD</text>
+                      </svg>
+                      <div class="seal-meta">
+                        <div class="seal-meta-firm" id="sealPreviewFirm">NeeV Studio Partner</div>
+                        <div class="seal-meta-name" id="sealPreviewName">Ar. Elena Rostova • Reg: CA/2021/89412</div>
+                        <div class="seal-meta-status">Status: <span style="color:#ffffff; font-weight:700;">DIGITAL STAMP ACTIVE</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div style="margin-top:12px; display:flex; justify-content:flex-end;">
+                  <button type="button" class="btn btn-emerald btn-sm" id="btnSaveProfile">💾 Save License &amp; Seal</button>
+                </div>
+              </form>
+            </div>
+          </details>
+        </div>
+
+        <!-- Tab Pane 2: Create Account -->
+        <div id="pane-register" class="auth-pane">
+          <form id="registerForm" onsubmit="return false;">
+            <div class="form-group">
+              <label class="form-label" for="regName">Your Full Name</label>
+              <input type="text" id="regName" class="form-control" placeholder="e.g. Alex Johnson">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="regEmail">Email Address</label>
+              <input type="email" id="regEmail" class="form-control" placeholder="e.g. alex@example.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="regPassword">Create Password</label>
+              <input type="password" id="regPassword" class="form-control" placeholder="Choose a secure password">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="regPurpose">I am using NeeV to:</label>
+              <select id="regPurpose" class="form-control">
+                <option value="homeowner">🏠 Design my dream home / Personal project</option>
+                <option value="student">🎓 Learn architecture or civil engineering (Student)</option>
+                <option value="architect">🏢 Professional architectural drafting (Firm / Architect)</option>
+                <option value="builder">🔨 Construction &amp; BOQ estimation (Builder / Contractor)</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-emerald btn-block btn-lg" id="btnSubmitRegister">
+              ✨ Create Free Account
+            </button>
+          </form>
+        </div>
+
+        <!-- Tab Pane 3: 1-Click Demo Profiles -->
+        <div id="pane-demo" class="auth-pane">
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:14px;">Select any persona below to test the studio with pre-configured settings:</p>
+          <div class="demo-personas-grid">
+            <div class="demo-persona-card" data-persona="homeowner">
+              <div class="demo-persona-header">
+                <div class="demo-persona-avatar">🏠</div>
+                <div>
+                  <div class="demo-persona-name">Alex Morgan</div>
+                  <div class="demo-persona-role">Property Owner / Homeowner</div>
+                </div>
+              </div>
+              <p class="demo-persona-desc">Designing a 2-floor modern villa with custom interior living & kitchen spaces.</p>
+              <button type="button" class="btn btn-secondary btn-sm btn-block demo-persona-select-btn" data-persona="homeowner">
+                Switch to Homeowner Mode
+              </button>
+            </div>
+
+            <div class="demo-persona-card" data-persona="elena">
+              <div class="demo-persona-header">
+                <div class="demo-persona-avatar">🏢</div>
+                <div>
+                  <div class="demo-persona-name">Ar. Elena Rostova</div>
+                  <div class="demo-persona-role">Principal Architect • Apex Studio</div>
+                </div>
+              </div>
+              <p class="demo-persona-desc">Licensed professional with certified CAD digital seal stamping (Reg: CA/2021/89412).</p>
+              <button type="button" class="btn btn-secondary btn-sm btn-block demo-persona-select-btn" data-persona="elena">
+                Switch to Architect Mode
+              </button>
+            </div>
+
+            <div class="demo-persona-card" data-persona="student">
+              <div class="demo-persona-header">
+                <div class="demo-persona-avatar">🎓</div>
+                <div>
+                  <div class="demo-persona-name">Jordan Lee</div>
+                  <div class="demo-persona-role">Civil Engineering Student</div>
+                </div>
+              </div>
+              <p class="demo-persona-desc">Exploring bridge structural spans, highway alignments, and BOQ calculations.</p>
+              <button type="button" class="btn btn-secondary btn-sm btn-block demo-persona-select-btn" data-persona="student">
+                Switch to Student Mode
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:0.75rem; color:var(--text-dim);">🛡️ Safe &amp; private session • All standard generative tools are free</span>
+        <button type="button" class="btn btn-secondary" onclick="closeModal('modalLogin')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Saved Projects Library -->
+  <div id="modalProjects" class="modal-overlay">
+    <div class="modal-dialog modal-dialog-lg">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="modal-icon-badge">📁</div>
+          <div>
+            <h3 class="modal-title">Project Library & Cloud Saves</h3>
+            <p class="modal-subtitle">Quickly reload, manage, and export your saved architectural blueprints, 3D scenes & BOQ</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('modalProjects')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Projects Filter Pills & Toolbar -->
+        <div class="projects-filter-pills" id="projectsFilterPills">
+          <button class="filter-pill active" data-filter="all">All Projects <span class="pill-count" id="countAll">0</span></button>
+          <button class="filter-pill" data-filter="residential">🏠 Residential <span class="pill-count" id="countRes">0</span></button>
+          <button class="filter-pill" data-filter="bridge">🌉 Bridges <span class="pill-count" id="countBridge">0</span></button>
+          <button class="filter-pill" data-filter="road">🛣️ Highways <span class="pill-count" id="countRoad">0</span></button>
+          <button class="filter-pill" data-filter="mall">🛍️ Commercial <span class="pill-count" id="countMall">0</span></button>
+        </div>
+
+        <div class="projects-list-toolbar">
+          <div class="search-input-wrap">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="filterProjectsInput" class="form-control form-control-sm" placeholder="Search projects by title, client, or author...">
+          </div>
+          <div class="toolbar-btns">
+            <button class="btn btn-sm btn-primary" onclick="openSaveProjectModal()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+              Save Current
+            </button>
+            <button class="btn btn-sm btn-secondary" onclick="closeModal('modalProjects'); openModal('modalNewProject');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              + New
+            </button>
+          </div>
+        </div>
+
+        <div class="saved-projects-grid" id="savedProjectsGrid">
+          <div class="empty-state" style="padding: 30px;">
+            <p>Loading saved projects...</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeModal('modalProjects')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: PRO Plans & Enterprise Tier -->
+  <div id="modalPro" class="modal-overlay">
+    <div class="modal-dialog modal-dialog-lg modal-dialog-pro">
+      <div class="modal-header pro-header-gradient">
+        <div class="modal-title-group">
+          <div class="modal-icon-badge pro-badge-icon">⚡</div>
+          <div>
+            <div class="pro-tier-pill">NEXT-GEN COMPUTATIONAL ARCHITECTURE</div>
+            <h3 class="modal-title" style="color: #fff; font-size: 1.35rem;">NeeV Pro &amp; Enterprise Suite</h3>
+            <p class="modal-subtitle" style="color: #cbd5e1;">Computational engineering, AutoCAD DXF/IFC exports, high-rise cores &amp; verified stamps</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('modalPro')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Billing Cycle Switcher -->
+        <div class="billing-switcher-container">
+          <span class="billing-label active" id="billingMonthlyLabel">Monthly Billing</span>
+          <label class="switch">
+            <input type="checkbox" id="billingCycleToggle">
+            <span class="slider round"></span>
+          </label>
+          <span class="billing-label" id="billingAnnualLabel">Annual Billing <span class="badge-save">SAVE 25%</span></span>
+        </div>
+
+        <!-- 3 Tier Pricing Cards -->
+        <div class="pricing-cards-grid">
+          <!-- Tier 1: Community Free -->
+          <div class="pricing-card">
+            <div class="card-tier-name">Free Standard</div>
+            <div class="card-tier-desc">Essential generative planning for students &amp; concept drafting</div>
+            <div class="card-price-wrap">
+              <span class="plan-price">$0</span>
+              <span class="plan-period">/ month</span>
+            </div>
+            <ul class="plan-features-list">
+              <li>✓ Procedural 2D blueprint drafting</li>
+              <li>✓ Interactive 3D WebGL preview</li>
+              <li>✓ Standard residential &amp; bridge presets</li>
+              <li>✓ Basic BOQ cost estimations</li>
+              <li class="disabled">✕ Vector AutoCAD DXF / IFC exports</li>
+              <li class="disabled">✕ Certified CAD Digital Seal Stamp</li>
+              <li class="disabled">✕ Custom Wall Textures &amp; Finishes</li>
+            </ul>
+            <button class="btn btn-secondary btn-block" disabled style="opacity:0.65; cursor:default;">Current Plan</button>
+          </div>
+
+          <!-- Tier 2: PRO Architect (Most Popular) -->
+          <div class="pricing-card card-pro featured-card">
+            <div class="featured-badge">MOST POPULAR</div>
+            <div class="card-tier-name" style="color: #ffffff;">NeeV Pro</div>
+            <div class="card-tier-desc">Complete professional tools for licensed architects &amp; BIM engineers</div>
+            <div class="card-price-wrap">
+              <span class="plan-currency">$</span>
+              <span class="plan-price" id="proPriceVal">49</span>
+              <span class="plan-period" id="proPricePeriod">/ month</span>
+            </div>
+            <ul class="plan-features-list">
+              <li>✓ <strong>All Free Features</strong> Included</li>
+              <li>✓ <strong>AutoCAD® (.DWG) Interior Layouts &amp; 4K Renders</strong></li>
+              <li>✓ <strong>Interactive AutoCAD ↔ 3D Split Comparison Slider</strong></li>
+              <li>✓ <strong>AutoCAD (.DXF) &amp; Revit (.IFC)</strong> Vector Exports</li>
+              <li>✓ <strong>Verified CAD Digital Seal</strong> Stamping</li>
+              <li>✓ <strong>Custom Wall Accent Textures</strong> &amp; Finishes</li>
+              <li>✓ <strong>Finite Element (FEA)</strong> Load Checks</li>
+              <li>✓ Priority Generative AI Response Time</li>
+            </ul>
+            <button class="btn btn-pro btn-block" id="btnActivateProCard" onclick="toggleProMembership()">
+              <span class="pro-sparkle">⚡</span> <span id="proCardBtnText">Activate PRO Pass</span>
+            </button>
+          </div>
+
+          <!-- Tier 3: Enterprise BIM -->
+          <div class="pricing-card card-enterprise">
+            <div class="card-tier-name" style="color: #ffffff;">Enterprise BIM</div>
+            <div class="card-tier-desc">Autonomous multi-firm computation &amp; high-rise generative models</div>
+            <div class="card-price-wrap">
+              <span class="plan-currency">$</span>
+              <span class="plan-price" id="enterprisePriceVal">199</span>
+              <span class="plan-period" id="enterprisePricePeriod">/ month</span>
+            </div>
+            <ul class="plan-features-list">
+              <li>✓ <strong>Everything in PRO</strong> Included</li>
+              <li>✓ <strong>50-Storey Skyscraper</strong> Core &amp; Shear Walls</li>
+              <li>✓ <strong>Multi-Firm Real-Time</strong> Redline Collaboration</li>
+              <li>✓ <strong>Daily Civil Material</strong> Price Index Feeds</li>
+              <li>✓ Unlimited Cloud Project Storage</li>
+              <li>✓ Dedicated Structural Consultant Support &amp; SLA</li>
+            </ul>
+            <button class="btn btn-secondary btn-block" onclick="showToast('Enterprise sales team notified! We will contact your firm.', 'info', '🏢')">Contact Enterprise</button>
+          </div>
+        </div>
+
+        <!-- Pro Tier Activation Banner -->
+        <div class="pro-tier-cta-box" id="proCtaBox">
+          <div class="cta-price-info">
+            <div class="cta-price-badge">INSTANT 1-CLICK DEMO ACCESS</div>
+            <div class="cta-price-title">Unlimited PRO Computational Power</div>
+            <div class="cta-price-sub">Activate your full PRO Studio license in one click (no credit card required for developer evaluation).</div>
+          </div>
+          <button class="btn btn-pro btn-lg" id="btnActivateProTrial" onclick="toggleProMembership()">
+            <span class="pro-sparkle">⚡</span> <span id="proBtnText">Activate PRO Pass Now</span>
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeModal('modalPro')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: New Project Creation Wizard -->
+  <div id="modalNewProject" class="modal-overlay">
+    <div class="modal-dialog modal-dialog-lg">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="modal-icon-badge">✨</div>
+          <div>
+            <h3 class="modal-title">Create New Architectural Project</h3>
+            <p class="modal-subtitle">Select a civil engineering domain or start from a blank canvas</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('modalNewProject')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="template-cards-grid">
+          <div class="template-card" onclick="startProjectFromTemplate('house')">
+            <div class="template-icon">🏠</div>
+            <h4 class="template-title">Residential Villa</h4>
+            <p class="template-desc">30x50 ft plot, 2 floors, 3 bedrooms, garden setback, parking and interior layout.</p>
+            <div class="template-tag">Residential CAD</div>
+          </div>
+          <div class="template-card" onclick="startProjectFromTemplate('bridge')">
+            <div class="template-icon">🌉</div>
+            <h4 class="template-title">Cable-Stayed River Bridge</h4>
+            <p class="template-desc">120m span, 4 travel lanes, concrete piers, steel stay cables, navigation clearance.</p>
+            <div class="template-tag">Civil Heavy Infrastructure</div>
+          </div>
+          <div class="template-card" onclick="startProjectFromTemplate('road')">
+            <div class="template-icon">🛣️</div>
+            <h4 class="template-title">4-Lane Express Highway</h4>
+            <p class="template-desc">5 km corridor, dual carriageways, median lighting, drainage culverts, asphalt pavement.</p>
+            <div class="template-tag">Transportation Engineering</div>
+          </div>
+          <div class="template-card" onclick="startProjectFromTemplate('mall')">
+            <div class="template-icon">🛍️</div>
+            <h4 class="template-title">Commercial Shopping Mall</h4>
+            <p class="template-desc">3 retail levels, central glass atrium, 2 anchor stores, 18 specialty boutiques, HVAC MEP.</p>
+            <div class="template-tag">Commercial Architecture</div>
+          </div>
+          <div class="template-card custom-card" onclick="startProjectBlankCanvas()">
+            <div class="template-icon">✏️</div>
+            <h4 class="template-title">Custom Blank Canvas</h4>
+            <p class="template-desc">Step-by-step interactive spatial design session with NeeV for custom dimensions.</p>
+            <div class="template-tag">Interactive Scoping</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeModal('modalNewProject')">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5: Peer & Architect Feedback / Review -->
+  <div id="modalFeedback" class="modal-overlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="modal-icon-badge" style="background: rgba(14, 165, 233, 0.15); color: #38bdf8;">💬</div>
+          <div>
+            <h3 class="modal-title">Architect &amp; Peer Feedback</h3>
+            <p class="modal-subtitle">Share your suggestions, spatial critique, or rating with the NeeV.ai creator</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('modalFeedback')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="formFeedback" onsubmit="handleFeedbackSubmit(event)">
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label class="form-label" for="feedbackName">Your Name</label>
+            <input type="text" id="feedbackName" class="form-input" placeholder="e.g. Ar. Rajesh Sharma / Alex" required />
+          </div>
+
+          <div class="form-row" style="display: flex; gap: 12px; margin-bottom: 12px;">
+            <div style="flex: 1;">
+              <label class="form-label" for="feedbackRole">Your Role</label>
+              <select id="feedbackRole" class="form-input">
+                <option value="Architect">Architect / Planner</option>
+                <option value="Civil Engineer">Civil / Structural Engineer</option>
+                <option value="Interior Designer">Interior Designer</option>
+                <option value="Homeowner">Prospective Homeowner</option>
+                <option value="Friend / Peer" selected>Friend / Peer Reviewer</option>
+                <option value="Developer">Software / AI Engineer</option>
+              </select>
+            </div>
+            <div style="flex: 1;">
+              <label class="form-label">Overall Rating</label>
+              <div class="star-rating-select" id="feedbackRatingStars">
+                <span class="star-btn active" data-val="1">★</span>
+                <span class="star-btn active" data-val="2">★</span>
+                <span class="star-btn active" data-val="3">★</span>
+                <span class="star-btn active" data-val="4">★</span>
+                <span class="star-btn active" data-val="5">★</span>
+              </div>
+              <input type="hidden" id="feedbackRatingVal" value="5" />
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label class="form-label" for="feedbackCategory">Feedback Category</label>
+            <select id="feedbackCategory" class="form-input">
+              <option value="2D CAD Blueprints & Accuracy">2D CAD Blueprints &amp; Layout Accuracy</option>
+              <option value="3D WebGL Model & Lighting">3D WebGL Realism, Finishes &amp; Lighting</option>
+              <option value="Architectural Agent Intelligence">AI Agent Dialogue &amp; Instant Modification</option>
+              <option value="Civil BOQ & Cost Estimations">Civil BOQ, Timeline &amp; MEP Wiring</option>
+              <option value="General Suggestion / Feature Request" selected>General Suggestion / Feature Request</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label class="form-label" for="feedbackText">Suggestions &amp; Critique</label>
+            <textarea id="feedbackText" class="form-input" rows="4" placeholder="What impressed you? What architectural mistakes or features would you like improved in NeeV.ai?" required></textarea>
+          </div>
+
+          <div class="feedback-modal-actions" style="display: flex; justify-content: flex-end; gap: 8px;">
+            <button type="button" class="btn btn-secondary" onclick="closeModal('modalFeedback')">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="btnSubmitFeedback">Send Feedback</button>
+          </div>
+        </form>
+
+        <div id="feedbackSuccessMsg" style="display:none; text-align:center; padding: 20px 10px;">
+          <div style="font-size: 36px; margin-bottom: 8px;">🎉</div>
+          <h4 style="color: #fff; margin-bottom: 6px;">Thank You for Reviewing NeeV.ai!</h4>
+          <p style="color: #94a3b8; font-size: 13px;">Your suggestions have been recorded and will guide our next spatial release.</p>
+          <button type="button" class="btn btn-secondary btn-sm" style="margin-top: 14px;" onclick="closeModal('modalFeedback')">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Feedback Trigger Button -->
+  <button id="floatingFeedbackBtn" class="floating-feedback-pill" onclick="openFeedbackModal()" title="Leave feedback or architectural suggestions">
+    <span>💬</span> Architect Feedback
+  </button>
+
+  <!-- Application Logic Scripts -->
+  <script src="/static/viewer3d.js?v=2.6"></script>
+  <script src="/static/app.js?v=2.6"></script>
+</body>
+</html>
