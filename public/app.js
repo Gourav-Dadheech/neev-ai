@@ -313,6 +313,17 @@ function setupMobileResponsiveController() {
     });
   }
 
+  // Auto-scroll when chat input is focused on mobile
+  const chatInput = document.getElementById('chatInput');
+  const chatViewport = document.getElementById('chatViewport');
+  if (chatInput && chatViewport) {
+    chatInput.addEventListener('focus', () => {
+      setTimeout(() => {
+        chatViewport.scrollTop = chatViewport.scrollHeight;
+      }, 300);
+    });
+  }
+
   // Auto-adapt when screen is resized
   window.addEventListener('resize', () => {
     if (window.innerWidth > 900) {
