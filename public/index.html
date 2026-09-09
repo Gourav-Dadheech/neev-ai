@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NeeV.ai — Autonomous Spatial Architecture &amp; BIM Studio</title>
   <meta name="description" content="NeeV.ai is an intelligent generative spatial CAD platform that creates 2D blueprints, interactive 3D WebGL models, and civil BOQ engineering estimations.">
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+  <meta name="theme-color" content="#09090b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -76,16 +79,49 @@
         <span class="pro-sparkle">⚡</span> <span>PRO</span>
       </button>
 
+      <!-- Mobile Menu Toggle -->
+      <button id="btnMobileMenuToggle" class="btn btn-secondary btn-sm btn-mobile-menu" title="More Tools" aria-label="Toggle Project Menu">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
+      </button>
+
       <!-- User Account / Login Button -->
       <button id="btnLogin" class="btn btn-user btn-sm" title="User Account">
         <div class="user-avatar-pill" id="userAvatarPill">NV</div>
         <span id="userAccountName">Sign In</span>
       </button>
     </div>
+
+    <!-- Mobile Quick-Actions Popover Menu -->
+    <div class="mobile-actions-popover" id="mobileActionsPopover">
+      <div class="mobile-popover-group">
+        <span class="mobile-popover-label">Project Management</span>
+        <button type="button" id="btnMobileNew" class="mobile-popover-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> New Plan</button>
+        <button type="button" id="btnMobileSave" class="mobile-popover-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg> Save Project</button>
+        <button type="button" id="btnMobileShare" class="mobile-popover-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> Share Project</button>
+        <button type="button" id="btnMobileLibrary" class="mobile-popover-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Saved Library</button>
+      </div>
+      <div class="mobile-popover-group">
+        <span class="mobile-popover-label">Community &amp; Support</span>
+        <button type="button" id="btnMobileFeedback" class="mobile-popover-item"><span style="font-size:13px;">💬</span> Architectural Feedback</button>
+      </div>
+    </div>
   </header>
 
-  <!-- Workspace Container (Split Screen) -->
-  <main class="studio-workspace">
+  <!-- Mobile Viewport Switcher Bar (Visible on screens < 900px) -->
+  <div class="mobile-mode-bar" id="mobileModeBar" role="tablist" aria-label="Mobile workspace switch">
+    <button type="button" class="mobile-mode-btn active" id="btnMobileChat" data-view="chat" role="tab" aria-selected="true">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span>AI Assistant</span>
+    </button>
+    <button type="button" class="mobile-mode-btn" id="btnMobileStudio" data-view="studio" role="tab" aria-selected="false">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      <span>CAD &amp; 3D Studio</span>
+      <span class="mobile-studio-badge" id="mobileStudioBadge" style="display:none;">Ready</span>
+    </button>
+  </div>
+
+  <!-- Workspace Container (Split Screen on Desktop, Mode-switched on Mobile) -->
+  <main class="studio-workspace mobile-view-chat">
     <!-- Left Column: Conversational AI Consultant -->
     <section class="panel panel-consultant">
       <div class="panel-header">

@@ -119,6 +119,7 @@ function setupEventListeners() {
     btnOpenFeedback.addEventListener('click', openFeedbackModal);
   }
   setupFeedbackStars();
+  setupMobileResponsiveController();
 
   const btnConfirmSaveProject = document.getElementById('btnConfirmSaveProject');
   if (btnConfirmSaveProject) {
@@ -223,6 +224,102 @@ function setupEventListeners() {
         switchDesignVariant(vKey);
       }
     });
+  });
+}
+
+function setupMobileResponsiveController() {
+  const btnMobileChat = document.getElementById('btnMobileChat');
+  const btnMobileStudio = document.getElementById('btnMobileStudio');
+  const workspace = document.querySelector('.studio-workspace');
+  const mobileStudioBadge = document.getElementById('mobileStudioBadge');
+  const btnMobileMenuToggle = document.getElementById('btnMobileMenuToggle');
+  const mobileActionsPopover = document.getElementById('mobileActionsPopover');
+
+  function setMobileView(viewMode) {
+    if (!workspace) return;
+    if (viewMode === 'studio') {
+      workspace.classList.remove('mobile-view-chat');
+      workspace.classList.add('mobile-view-studio');
+      btnMobileChat?.classList.remove('active');
+      btnMobileChat?.setAttribute('aria-selected', 'false');
+      btnMobileStudio?.classList.add('active');
+      btnMobileStudio?.setAttribute('aria-selected', 'true');
+      if (mobileStudioBadge) mobileStudioBadge.style.display = 'none';
+
+      // Ensure 3D viewport dimensions match new full screen
+      setTimeout(() => {
+        if (window.studio3D && typeof window.studio3D.onWindowResize === 'function') {
+          window.studio3D.onWindowResize();
+        }
+      }, 60);
+    } else {
+      workspace.classList.remove('mobile-view-studio');
+      workspace.classList.add('mobile-view-chat');
+      btnMobileStudio?.classList.remove('active');
+      btnMobileStudio?.setAttribute('aria-selected', 'false');
+      btnMobileChat?.classList.add('active');
+      btnMobileChat?.setAttribute('aria-selected', 'true');
+    }
+  }
+
+  // Global helper for auto-switch after design generation
+  window.switchMobileStudioView = (notifyOnly = false) => {
+    if (window.innerWidth <= 900) {
+      if (notifyOnly && workspace && workspace.classList.contains('mobile-view-chat')) {
+        if (mobileStudioBadge) mobileStudioBadge.style.display = 'inline-block';
+      } else {
+        setMobileView('studio');
+      }
+    }
+  };
+
+  btnMobileChat?.addEventListener('click', () => setMobileView('chat'));
+  btnMobileStudio?.addEventListener('click', () => setMobileView('studio'));
+
+  // Mobile menu popover toggle
+  if (btnMobileMenuToggle && mobileActionsPopover) {
+    btnMobileMenuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileActionsPopover.classList.toggle('show');
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileActionsPopover.contains(e.target) && e.target !== btnMobileMenuToggle) {
+        mobileActionsPopover.classList.remove('show');
+      }
+    });
+
+    // Hook popover items to existing modals
+    document.getElementById('btnMobileNew')?.addEventListener('click', () => {
+      mobileActionsPopover.classList.remove('show');
+      openModal('modalNewProject');
+    });
+    document.getElementById('btnMobileSave')?.addEventListener('click', () => {
+      mobileActionsPopover.classList.remove('show');
+      openSaveProjectModal();
+    });
+    document.getElementById('btnMobileShare')?.addEventListener('click', () => {
+      mobileActionsPopover.classList.remove('show');
+      shareCurrentProject();
+    });
+    document.getElementById('btnMobileLibrary')?.addEventListener('click', () => {
+      mobileActionsPopover.classList.remove('show');
+      openProjectsModal();
+    });
+    document.getElementById('btnMobileFeedback')?.addEventListener('click', () => {
+      mobileActionsPopover.classList.remove('show');
+      openFeedbackModal();
+    });
+  }
+
+  // Auto-adapt when screen is resized
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) {
+      workspace?.classList.remove('mobile-view-studio');
+      workspace?.classList.add('mobile-view-chat');
+      mobileActionsPopover?.classList.remove('show');
+    }
   });
 }
 
@@ -498,6 +595,11 @@ function renderArchitecturalSuite(layout, boq) {
   // 7. Synchronize Architectural Concept Variant Pills
   if (layout.design_variant) {
     updateVariantPillStates(layout.design_variant);
+  }
+
+  // On mobile viewports (< 900px), automatically switch to Studio view
+  if (typeof window.switchMobileStudioView === 'function') {
+    window.switchMobileStudioView(false);
   }
 }
 

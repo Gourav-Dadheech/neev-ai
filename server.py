@@ -357,6 +357,14 @@ def serve_index():
     return {"message": "NeeV.ai Studio API is running. Web UI not found in /public."}
 
 
+@app.get("/favicon.ico")
+def serve_favicon():
+    favicon_file = os.path.join(public_dir, "favicon.svg")
+    if os.path.exists(favicon_file):
+        return FileResponse(favicon_file, media_type="image/svg+xml")
+    raise HTTPException(status_code=404, detail="Favicon not found")
+
+
 if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", 8000))
