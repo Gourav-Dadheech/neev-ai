@@ -1419,6 +1419,19 @@ function setupAuthModal() {
       updateHeaderUserDisplay(userProfile.name);
       closeModal('modalLogin');
       showToast(`Welcome back, ${userProfile.name}! Studio unlocked.`, 'success', '🔐');
+
+      // Dispatch real-time user notification to backend & Telegram
+      fetch('/api/user/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          name: userProfile.name,
+          role: userProfile.role,
+          is_pro: localStorage.getItem('ai_architect_is_pro') === 'true',
+          source: 'Sign In Form'
+        })
+      }).catch(err => console.warn('User sync error:', err));
     });
   }
 
@@ -1443,6 +1456,20 @@ function setupAuthModal() {
       updateHeaderUserDisplay(regName);
       closeModal('modalLogin');
       showToast(`Account created! Welcome to NeeV, ${regName}!`, 'success', '✨');
+
+      // Dispatch real-time account creation notification to backend & Telegram
+      const regEmail = document.getElementById('regEmail')?.value.trim() || `${regName.toLowerCase().replace(/\s+/g, '')}@neev.ai`;
+      fetch('/api/user/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: regEmail,
+          name: regName,
+          role: roleLabel,
+          is_pro: false,
+          source: 'New Account Registration'
+        })
+      }).catch(err => console.warn('User registration sync error:', err));
     });
   }
 

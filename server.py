@@ -288,6 +288,135 @@ def delete_project_endpoint(project_id: str):
 
 
 # ------------------------------------------------------------------------------
+# TELEGRAM REAL-TIME ALERTS HELPER
+# ------------------------------------------------------------------------------
+def send_telegram_alert(message: str) -> bool:
+    """
+    Sends an instant push notification to the owner's Telegram whenever
+    a user signs up, logs in, or submits feedback.
+    Requires TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in environment variables.
+    """
+    bot_token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+    if not bot_token or not chat_id:
+        return False
+
+    url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+    payload = {
+        "chat_id": chat_id,
+        "text": message,
+        "parse_mode": "HTML",
+        "disable_web_page_preview": True
+    }
+    try:
+        import urllib.request
+        data = json.dumps(payload).encode("utf-8")
+        req = urllib.request.Request(
+            url,
+            data=data,
+            headers={"Content-Type": "application/json"}
+        )
+        with urllib.request.urlopen(req, timeout=6) as resp:
+            return resp.status == 200
+    except Exception as e:
+        print(f"[Telegram Notification Error] {e}")
+        return False
+
+@app.get("/api/telegram/test")
+def test_telegram_endpoint():
+    """Trigger a test message to verify Telegram bot credentials."""
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID")
+    if not token or not chat_id:
+        return {
+            "status": "not_configured",
+            "message": "TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID must be set in your Render / .env variables."
+        }
+    success = send_telegram_alert(
+        "🚀 <b>NeeV.ai Telegram Alerts Connected!</b>\n\n"
+        "Your bot is now live! You will receive instant push notifications whenever anyone:\n"
+        "• 💬 Submits architectural feedback or ratings\n"
+        "• 👤 Creates an account or signs in\n\n"
+        "Enjoy real-time monitoring!"
+    )
+    return {"status": "ok" if success else "failed", "sent": success}
+
+
+# ------------------------------------------------------------------------------
+# USER SIGNUP & REGISTRATION LOGGING
+# ------------------------------------------------------------------------------
+USERS_FILE = os.path.join(os.path.dirname(__file__), "users.json")
+
+class UserSignupRequest(BaseModel):
+    email: str
+    name: Optional[str] = "Designer"
+    role: Optional[str] = "Architect"
+    is_pro: Optional[bool] = False
+    source: Optional[str] = "Sign In"
+
+def load_users_file() -> list:
+    if os.path.exists(USERS_FILE):
+        try:
+            with open(USERS_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            return []
+    return []
+
+def save_users_file(users: list):
+    with open(USERS_FILE, "w", encoding="utf-8") as f:
+        json.dump(users, f, indent=2)
+
+@app.get("/api/users")
+def get_users_endpoint():
+    """Returns all registered users on the platform."""
+    return {"status": "ok", "users": load_users_file()}
+
+@app.post("/api/user/signup")
+def post_user_signup_endpoint(req: UserSignupRequest):
+    """Records user signup/sign-in and sends instant Telegram notification."""
+    import time
+    users = load_users_file()
+    now_str = time.strftime("%Y-%m-%d %H:%M:%S")
+    clean_email = req.email.strip().lower()
+    
+    existing = next((u for u in users if u.get("email") == clean_email), None)
+    is_new = existing is None
+
+    user_record = {
+        "id": f"usr_{int(time.time() * 1000)}",
+        "email": clean_email,
+        "name": req.name.strip() or clean_email.split("@")[0].capitalize(),
+        "role": req.role or "Architect",
+        "is_pro": bool(req.is_pro),
+        "source": req.source or "Sign In",
+        "last_active": now_str
+    }
+
+    if is_new:
+        user_record["created_at"] = now_str
+        users.insert(0, user_record)
+    else:
+        existing.update(user_record)
+
+    save_users_file(users)
+
+    # Dispatch real-time Telegram notification
+    header = "🎉 <b>New Account Created on NeeV.ai!</b>" if is_new else "👋 <b>User Signed In to NeeV.ai!</b>"
+    msg = (
+        f"{header}\n\n"
+        f"<b>Name:</b> {user_record['name']}\n"
+        f"<b>Email:</b> <code>{user_record['email']}</code>\n"
+        f"<b>Role:</b> {user_record['role']}\n"
+        f"<b>Plan:</b> {'⚡ PRO Member' if user_record['is_pro'] else 'Free Standard'}\n"
+        f"<b>Action:</b> {user_record['source']}\n\n"
+        f"📅 <i>{now_str}</i>"
+    )
+    send_telegram_alert(msg)
+    return {"status": "ok", "is_new": is_new, "user": user_record}
+
+
+# ------------------------------------------------------------------------------
 # ARCHITECT & PEER FEEDBACK SYSTEM (COLLECT CRITIQUES & SUGGESTIONS)
 # ------------------------------------------------------------------------------
 FEEDBACKS_FILE = os.path.join(os.path.dirname(__file__), "feedbacks.json")
@@ -321,7 +450,7 @@ def get_feedbacks_endpoint():
 
 @app.post("/api/feedback")
 def post_feedback_endpoint(req: FeedbackRequest):
-    """Saves a peer suggestion or architect review."""
+    """Saves a peer suggestion or architect review and sends instant Telegram alert."""
     import time
     feedbacks = load_feedbacks_file()
     item = {
@@ -336,6 +465,19 @@ def post_feedback_endpoint(req: FeedbackRequest):
     }
     feedbacks.insert(0, item)
     save_feedbacks_file(feedbacks)
+
+    # Dispatch real-time Telegram notification
+    stars = "⭐" * item["rating"]
+    msg = (
+        f"<b>💬 New Feedback on NeeV.ai!</b>\n\n"
+        f"<b>From:</b> {item['name']} (<i>{item['role']}</i>)\n"
+        f"<b>Rating:</b> {stars} ({item['rating']}/5)\n"
+        f"<b>Category:</b> {item['category']}\n"
+        f"<b>Message:</b>\n<i>\"{item['feedback']}\"</i>\n\n"
+        f"📅 <i>{item['timestamp']}</i>"
+    )
+    send_telegram_alert(msg)
+
     return {"status": "ok", "feedback": item}
 
 
