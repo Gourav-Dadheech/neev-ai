@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NeeV.ai — Autonomous Spatial Architecture &amp; BIM Studio</title>
   <meta name="description" content="NeeV.ai is an intelligent generative spatial CAD platform that creates 2D blueprints, interactive 3D WebGL models, and civil BOQ engineering estimations.">
+  <meta name="author" content="Gourav Dadheech">
+  <meta name="copyright" content="© 2026 Gourav Dadheech. All Rights Reserved.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -179,6 +181,11 @@
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
           </button>
         </form>
+      </div>
+
+      <!-- Option 1: Subtle Studio Attribution & Creator Credit -->
+      <div class="sidebar-copyright-bar">
+        <span>© 2026 <strong>NeeV.ai</strong> • Engineered by <a href="https://github.com/Gourav-Dadheech" target="_blank" rel="noopener">Gourav Dadheech</a></span>
       </div>
     </section>
 
@@ -1016,11 +1023,11 @@
           <form id="signInForm" onsubmit="return false;">
             <div class="form-group">
               <label class="form-label" for="loginEmail">Email Address</label>
-              <input type="email" id="loginEmail" class="form-control" placeholder="e.g. yourname@example.com" value="alex@neev.ai">
+              <input type="email" id="loginEmail" class="form-control" placeholder="e.g. yourname@example.com">
             </div>
             <div class="form-group">
               <label class="form-label" for="loginPassword">Password</label>
-              <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" value="••••••••">
+              <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password">
             </div>
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
               <label style="font-size:0.8rem; color:var(--text-muted); cursor:pointer; display:flex; align-items:center; gap:6px;">
@@ -1182,8 +1189,11 @@
         </div>
       </div>
 
-      <div class="modal-footer" style="display:flex; justify-content:space-between; align-items:center;">
-        <span style="font-size:0.75rem; color:var(--text-dim);">🛡️ Safe &amp; private session • All standard generative tools are free</span>
+      <div class="modal-footer" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+        <div style="display:flex; flex-direction:column; gap:3px;">
+          <span style="font-size:0.75rem; color:var(--text-dim);">🛡️ Safe &amp; private session • All standard generative tools are free</span>
+          <span style="font-size:0.72rem; color:#a1a1aa;">© 2026 <strong>NeeV.ai Spatial Engine</strong> • Created &amp; Copyrighted by <a href="https://github.com/Gourav-Dadheech" target="_blank" rel="noopener" style="color:#38bdf8; text-decoration:none; font-weight:600;">Gourav Dadheech</a></span>
+        </div>
         <button type="button" class="btn btn-secondary" onclick="closeModal('modalLogin')">Close</button>
       </div>
     </div>

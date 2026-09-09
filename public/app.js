@@ -1179,9 +1179,13 @@ function updateHeaderUserDisplay(name) {
     }
   }
   if (userAvatarPill) {
-    const cleanName = (name && name !== 'Sign In' && name !== 'Login') ? name : 'GD';
-    const initials = cleanName.replace(/[^A-Za-z ]/g, '').trim().split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
-    userAvatarPill.textContent = initials || 'GD';
+    const isGuest = !name || name === 'Sign In' || name === 'Login' || name === 'Guest Designer';
+    if (isGuest) {
+      userAvatarPill.textContent = 'NV';
+    } else {
+      const initials = name.replace(/[^A-Za-z ]/g, '').trim().split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+      userAvatarPill.textContent = initials || 'NV';
+    }
   }
 }
 
@@ -1282,7 +1286,13 @@ function setupAuthModal() {
   const btnSubmitSignIn = document.getElementById('btnSubmitSignIn');
   if (btnSubmitSignIn) {
     btnSubmitSignIn.addEventListener('click', () => {
-      const email = document.getElementById('loginEmail')?.value.trim() || 'user@aiarchitect.studio';
+      const emailInput = document.getElementById('loginEmail');
+      const email = emailInput ? emailInput.value.trim() : '';
+      if (!email) {
+        showToast('Please enter your email address to sign in.', 'warning', '⚠️');
+        if (emailInput) emailInput.focus();
+        return;
+      }
       let rawName = email.split('@')[0];
       const displayName = rawName.charAt(0).toUpperCase() + rawName.slice(1);
 
