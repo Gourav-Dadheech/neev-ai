@@ -2898,5 +2898,17 @@ function finishBootSequence(isImmediate = false) {
   }, delayBeforeFade);
 }
 
+// Dynamic Showcase link
+document.addEventListener('DOMContentLoaded', () => {
+  const btnShowcase = document.getElementById('btnOpenShowcase');
+  if (btnShowcase) {
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      btnShowcase.href = 'http://localhost:3000';
+    } else {
+      btnShowcase.href = '/home';
+    }
+  }
+});
+
 
 

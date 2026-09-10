@@ -10,7 +10,7 @@ from typing import Dict, Any, Optional, List
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, RedirectResponse
 from pydantic import BaseModel
 
 from architect_ai import ask_architect
@@ -489,6 +489,7 @@ if not os.path.exists(public_dir):
 app.mount("/static", StaticFiles(directory=public_dir), name="static")
 
 @app.get("/")
+@app.get("/studio")
 def serve_index():
     index_file = os.path.join(public_dir, "index.html")
     if os.path.exists(index_file):
@@ -497,6 +498,15 @@ def serve_index():
             headers={"Cache-Control": "no-cache, no-store, must-revalidate"}
         )
     return {"message": "NeeV.ai Studio API is running. Web UI not found in /public."}
+
+
+@app.get("/home")
+@app.get("/landing")
+def redirect_landing():
+    """Redirect to the dedicated NeeV.ai Landing Page showcase."""
+    # If custom landing URL is configured, use it; otherwise fallback to Vercel/local showcase
+    landing_url = os.environ.get("LANDING_PAGE_URL", "https://neev-ai.vercel.app")
+    return RedirectResponse(url=landing_url)
 
 
 @app.get("/favicon.ico")
