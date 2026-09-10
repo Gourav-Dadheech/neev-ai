@@ -92,6 +92,10 @@ export default function NeevLandingPage() {
 
     useEffect(() => {
         setMounted(true);
+        // Silently warm up Render instance in background so users never experience cold starts
+        try {
+            fetch('https://neev-ai-ri5z.onrender.com/api/health', { mode: 'no-cors' }).catch(() => {});
+        } catch (e) {}
     }, []);
 
     const toggleFaq = (idx: number) => {

@@ -2908,6 +2908,20 @@ document.addEventListener('DOMContentLoaded', () => {
       btnShowcase.href = '/home';
     }
   }
+
+  // Diagnostics list toggle
+  const btnToggleDiag = document.getElementById('btnToggleDiagnostics');
+  const stagesList = document.getElementById('bootStagesList');
+  const diagChevron = document.getElementById('diagChevron');
+  if (btnToggleDiag && stagesList) {
+    btnToggleDiag.addEventListener('click', () => {
+      const isHidden = stagesList.style.display === 'none';
+      stagesList.style.display = isHidden ? 'flex' : 'none';
+      const label = btnToggleDiag.querySelector('span:first-child');
+      if (label) label.textContent = isHidden ? '⚙️ Hide Startup Diagnostics' : '⚙️ Show Startup Diagnostics';
+      if (diagChevron) diagChevron.textContent = isHidden ? '▲' : '▼';
+    });
+  }
 });
 
 

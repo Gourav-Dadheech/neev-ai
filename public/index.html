@@ -271,6 +271,30 @@
       background: rgba(16, 185, 129, 0.15) !important;
       color: #34d399 !important;
     }
+    .boot-toggle-wrap {
+      display: flex !important;
+      justify-content: center !important;
+      margin-top: -4px !important;
+      margin-bottom: 2px !important;
+    }
+    .boot-btn-details {
+      background: rgba(255, 255, 255, 0.04) !important;
+      color: #94a3b8 !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      font-size: 0.72rem !important;
+      padding: 5px 14px !important;
+      border-radius: 999px !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      transition: all 0.2s ease !important;
+    }
+    .boot-btn-details:hover {
+      color: #38bdf8 !important;
+      border-color: rgba(56, 189, 248, 0.3) !important;
+      background: rgba(56, 189, 248, 0.08) !important;
+    }
     .boot-tip-box {
       display: flex !important;
       align-items: flex-start !important;
@@ -378,8 +402,15 @@
         </div>
       </div>
 
-      <!-- Live Diagnostics Checklist -->
-      <div class="boot-stages-list">
+      <!-- Expandable Diagnostics / Logs Toggle -->
+      <div class="boot-toggle-wrap">
+        <button id="btnToggleDiagnostics" type="button" class="boot-btn-details">
+          <span>⚙️ Show Startup Diagnostics</span> <span id="diagChevron">▼</span>
+        </button>
+      </div>
+
+      <!-- Live Diagnostics Checklist (Hidden by default, preserved for debugging) -->
+      <div class="boot-stages-list" id="bootStagesList" style="display: none;">
         <div class="boot-stage-item" id="stageCore">
           <div class="boot-stage-icon">
             <span class="stage-spin">⚡</span>
