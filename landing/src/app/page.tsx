@@ -29,6 +29,7 @@ import {
     Activity,
     SlidersHorizontal
 } from 'lucide-react';
+import NeevLogo from '@/components/ui/NeevLogo';
 
 // Dynamic client-side 3D modules
 const Architectural3DViewer = dynamic(
@@ -117,10 +118,8 @@ export default function NeevLandingPage() {
             <header className="sticky top-0 z-50 w-full border-b border-dashed border-border bg-background/85 backdrop-blur-md">
                 <div className="container mx-auto flex h-14 items-center justify-between px-4 sm:border-x border-dashed border-border lg:px-6">
                     {/* Brand */}
-                    <a href="#" className="flex items-center gap-2.5">
-                        <div className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600/20 to-cyan-500/20 border border-blue-500/40 text-blue-400 shadow-sm">
-                            <Building2 className="size-4.5" />
-                        </div>
+                    <a href="#" className="flex items-center gap-3 group">
+                        <NeevLogo size={36} />
                         <div className="flex items-center gap-1.5">
                             <span className="font-semibold tracking-tight text-base sm:text-lg">NeeV<span className="text-blue-500">.ai</span></span>
                             <span className="rounded-full bg-gradient-to-r from-blue-500/15 to-purple-500/15 border border-blue-500/30 px-2 py-0.5 text-[10px] font-medium text-blue-300">
@@ -753,8 +752,8 @@ export default function NeevLandingPage() {
             {/* ─── Footer ───────────────────────────────────────────────────── */}
             <footer className="relative z-10 w-full border-b border-dashed border-border py-8 text-xs text-muted-foreground">
                 <div className="container mx-auto sm:border-x border-dashed border-border px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div className="flex items-center gap-2">
-                        <Building2 className="size-4 text-blue-500" />
+                    <div className="flex items-center gap-2.5">
+                        <NeevLogo size={22} showBadge={false} />
                         <span className="font-semibold text-foreground">NeeV.ai Spatial Studio</span>
                         <span>• © 2026 All Rights Reserved</span>
                     </div>
