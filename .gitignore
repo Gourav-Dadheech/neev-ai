@@ -8,6 +8,6 @@ feedbacks.json
 dist/
 build/
 scratch/
-scratch_*.py
-
-
+landing/node_modules/
+landing/.next/
+landing/.vercel/
