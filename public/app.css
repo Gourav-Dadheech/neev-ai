@@ -4209,3 +4209,485 @@ input:checked + .slider:before {
 .btn-feedback-header:hover {
   filter: brightness(1.15);
 }
+
+/* ==========================================================================
+   NEEV.AI SPATIAL STUDIO — STARTUP BOOT SCREEN & COLD-START ENGINE
+   ========================================================================== */
+.neev-boot-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #06080e;
+  overflow-y: auto;
+  padding: 24px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.neev-boot-overlay.boot-hidden {
+  opacity: 0 !important;
+  transform: scale(1.03) !important;
+  pointer-events: none !important;
+}
+
+/* Dynamic Animated Architectural Blueprint Background Grid */
+.boot-grid-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.boot-grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
+}
+
+.boot-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.22;
+  pointer-events: none;
+  animation: bootOrbFloat 10s ease-in-out infinite alternate;
+}
+
+.boot-glow-cyan {
+  top: 15%;
+  left: 20%;
+  width: 380px;
+  height: 380px;
+  background: #38bdf8;
+}
+
+.boot-glow-indigo {
+  bottom: 15%;
+  right: 20%;
+  width: 420px;
+  height: 420px;
+  background: #6366f1;
+  animation-delay: -5s;
+}
+
+@keyframes bootOrbFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, -25px) scale(1.15); }
+}
+
+/* Central Boot Panel / Card */
+.boot-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 520px;
+  background: rgba(13, 17, 26, 0.88);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 22px;
+  padding: 32px 30px;
+  box-shadow: 
+    0 30px 80px -20px rgba(0, 0, 0, 0.85),
+    0 0 50px rgba(56, 189, 248, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  color: #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Brand Header */
+.boot-brand-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.boot-logo-wrapper {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.boot-logo-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  border: 1.5px dashed rgba(56, 189, 248, 0.5);
+  animation: bootSpinRing 12s linear infinite;
+}
+
+.boot-logo-ring-pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 18px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+  animation: bootPulseGlow 2.5s ease-in-out infinite alternate;
+}
+
+.boot-logo-icon {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0284c7, #4f46e5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.4);
+}
+
+.boot-brand-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.boot-brand-title {
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  line-height: 1.15;
+}
+
+.boot-brand-title .text-cyan {
+  color: #38bdf8;
+}
+
+.boot-brand-badge {
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  color: #38bdf8;
+  text-transform: uppercase;
+  background: rgba(56, 189, 248, 0.1);
+  padding: 3px 8px;
+  border-radius: 999px;
+  align-self: flex-start;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+/* Status Pill */
+.boot-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fbbf24;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  align-self: flex-start;
+  transition: all 0.3s ease;
+}
+
+.boot-status-pill.status-ready {
+  background: rgba(16, 185, 129, 0.14);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #34d399;
+}
+
+.boot-status-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: currentColor;
+  box-shadow: 0 0 10px currentColor;
+  animation: bootPulseDot 1.4s ease-in-out infinite;
+}
+
+.boot-subtext {
+  font-size: 0.86rem;
+  color: #94a3b8;
+  line-height: 1.45;
+  margin-top: -8px;
+}
+
+/* Progress Section */
+.boot-progress-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 14px 16px;
+  border-radius: 14px;
+}
+
+.boot-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.boot-progress-stage {
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.boot-progress-percent {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: #38bdf8;
+  font-size: 0.88rem;
+}
+
+.boot-progress-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(30, 41, 59, 0.8);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.boot-progress-bar {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #38bdf8 0%, #818cf8 60%, #34d399 100%);
+  background-size: 200% 100%;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+  transition: width 0.35s ease-out;
+  animation: bootShimmer 2.2s linear infinite;
+}
+
+.boot-time-estimate {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.boot-clock-icon {
+  font-size: 0.8rem;
+}
+
+/* Diagnostics Stage Checklist */
+.boot-stages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.boot-stage-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  transition: all 0.25s ease;
+}
+
+.boot-stage-item.stage-active {
+  background: rgba(56, 189, 248, 0.07);
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
+.boot-stage-item.stage-complete {
+  background: rgba(16, 185, 129, 0.06);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.boot-stage-icon {
+  font-size: 1rem;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.boot-stage-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.boot-stage-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.boot-stage-sub {
+  font-size: 0.7rem;
+  color: #64748b;
+}
+
+.stage-tag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(100, 116, 139, 0.2);
+  color: #94a3b8;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.stage-tag.tag-running {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.35);
+  animation: bootPulseDot 1.6s ease-in-out infinite;
+}
+
+.stage-tag.tag-done {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+/* Tip Box Carousel */
+.boot-tip-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(56, 189, 248, 0.05);
+  border: 1px dashed rgba(56, 189, 248, 0.22);
+  padding: 10px 14px;
+  border-radius: 12px;
+  min-height: 48px;
+}
+
+.boot-tip-icon {
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.boot-tip-content {
+  font-size: 0.76rem;
+  color: #cbd5e1;
+  line-height: 1.45;
+}
+
+.boot-tip-label {
+  font-weight: 700;
+  color: #38bdf8;
+  margin-right: 4px;
+}
+
+/* Boot Footer & Buttons */
+.boot-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.boot-footer-note {
+  font-size: 0.72rem;
+  color: #64748b;
+  text-align: center;
+}
+
+.boot-footer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.boot-btn-skip {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.boot-btn-skip:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  border-color: rgba(56, 189, 248, 0.4) !important;
+}
+
+.boot-btn-retry {
+  background: linear-gradient(135deg, #0284c7, #2563eb) !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Animations */
+@keyframes bootSpinRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bootPulseGlow {
+  0% { transform: scale(0.95); opacity: 0.3; }
+  100% { transform: scale(1.15); opacity: 0.75; }
+}
+
+@keyframes bootPulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+@keyframes bootShimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* Responsive Mobile Adjustments */
+@media (max-width: 640px) {
+  .neev-boot-overlay {
+    padding: 16px;
+  }
+  .boot-card {
+    padding: 22px 18px;
+    gap: 16px;
+  }
+  .boot-brand-title {
+    font-size: 1.4rem;
+  }
+  .boot-logo-wrapper {
+    width: 46px;
+    height: 46px;
+  }
+  .boot-logo-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .boot-stage-sub {
+    display: none;
+  }
+  .boot-footer-actions {
+    justify-content: stretch;
+  }
+  .boot-footer-actions button {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+  }
+}
+

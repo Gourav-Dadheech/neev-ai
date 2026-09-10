@@ -17,6 +17,141 @@
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 </head>
 <body>
+  <!-- NeeV.ai Spatial Studio Startup Boot Overlay -->
+  <div id="neevBootOverlay" class="neev-boot-overlay" role="dialog" aria-modal="true" aria-label="Initializing NeeV.ai Spatial Studio">
+    <!-- Animated Architectural Blueprint Background Grid -->
+    <div class="boot-grid-bg">
+      <div class="boot-grid-lines"></div>
+      <div class="boot-glow-orb boot-glow-cyan"></div>
+      <div class="boot-glow-orb boot-glow-indigo"></div>
+    </div>
+
+    <!-- Main Boot Card -->
+    <div class="boot-card">
+      <!-- Animated Brand Header -->
+      <div class="boot-brand-header">
+        <div class="boot-logo-wrapper">
+          <div class="boot-logo-ring"></div>
+          <div class="boot-logo-ring-pulse"></div>
+          <div class="boot-logo-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 20h16"/>
+              <path d="M6 20V5l8 15V5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="boot-brand-meta">
+          <div class="boot-brand-title">NeeV<span class="text-cyan">.ai</span></div>
+          <div class="boot-brand-badge">AUTONOMOUS SPATIAL BIM &amp; CAD</div>
+        </div>
+      </div>
+
+      <!-- Live Status Badge -->
+      <div class="boot-status-pill" id="bootStatusPill">
+        <span class="boot-status-pulse"></span>
+        <span id="bootStatusText">Waking up AI Architecture Engine...</span>
+      </div>
+
+      <div class="boot-subtext" id="bootSubText">
+        Connecting to neural cloud core &amp; calibrating generative CAD solvers.
+      </div>
+
+      <!-- Progress Meter -->
+      <div class="boot-progress-section">
+        <div class="boot-progress-header">
+          <span class="boot-progress-stage" id="bootProgressStage">Connecting to Cloud Node...</span>
+          <span class="boot-progress-percent" id="bootProgressPercent">0%</span>
+        </div>
+        <div class="boot-progress-track">
+          <div class="boot-progress-bar" id="bootProgressBar"></div>
+        </div>
+        <div class="boot-time-estimate" id="bootTimeEstimate">
+          <span class="boot-clock-icon">⏱️</span>
+          <span id="bootEstimateText">Connecting to backend instance... (~20-25s on initial spin-up)</span>
+        </div>
+      </div>
+
+      <!-- Live Diagnostics Checklist -->
+      <div class="boot-stages-list">
+        <div class="boot-stage-item" id="stageCore">
+          <div class="boot-stage-icon">
+            <span class="stage-spin">⚡</span>
+          </div>
+          <div class="boot-stage-info">
+            <div class="boot-stage-name">Cloud Neural Node Link</div>
+            <div class="boot-stage-sub">FastAPI async server initialization</div>
+          </div>
+          <div class="boot-stage-state">
+            <span class="stage-tag tag-running" id="tagStageCore">Connecting</span>
+          </div>
+        </div>
+
+        <div class="boot-stage-item" id="stageCad">
+          <div class="boot-stage-icon">
+            <span class="stage-spin">📐</span>
+          </div>
+          <div class="boot-stage-info">
+            <div class="boot-stage-name">2D CAD &amp; Vastu Matrix</div>
+            <div class="boot-stage-sub">Floor plan zoning &amp; setback rules</div>
+          </div>
+          <div class="boot-stage-state">
+            <span class="stage-tag" id="tagStageCad">Pending</span>
+          </div>
+        </div>
+
+        <div class="boot-stage-item" id="stage3d">
+          <div class="boot-stage-icon">
+            <span class="stage-spin">🏛️</span>
+          </div>
+          <div class="boot-stage-info">
+            <div class="boot-stage-name">3D WebGL Shader Pipeline</div>
+            <div class="boot-stage-sub">Three.js materials, shadows &amp; textures</div>
+          </div>
+          <div class="boot-stage-state">
+            <span class="stage-tag" id="tagStage3d">Pending</span>
+          </div>
+        </div>
+
+        <div class="boot-stage-item" id="stageBoq">
+          <div class="boot-stage-icon">
+            <span class="stage-spin">📊</span>
+          </div>
+          <div class="boot-stage-info">
+            <div class="boot-stage-name">CPWD Civil BOQ Estimator</div>
+            <div class="boot-stage-sub">Material quantities &amp; structural costing</div>
+          </div>
+          <div class="boot-stage-state">
+            <span class="stage-tag" id="tagStageBoq">Pending</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic Architecture Pro-Tip Carousel -->
+      <div class="boot-tip-box">
+        <div class="boot-tip-icon">💡</div>
+        <div class="boot-tip-content">
+          <span class="boot-tip-label">PRO TIP:</span>
+          <span class="boot-tip-text" id="bootTipText">You can type natural commands like '30x50 Modern Haveli with central courtyard' or 'Add cantilever balcony'.</span>
+        </div>
+      </div>
+
+      <!-- Action Footer -->
+      <div class="boot-footer">
+        <div class="boot-footer-note">
+          Subsequent visits within 15 min launch instantaneously.
+        </div>
+        <div class="boot-footer-actions">
+          <button type="button" id="btnSkipBoot" class="btn btn-secondary btn-sm boot-btn-skip">
+            <span>⚡ Enter Studio Now</span>
+          </button>
+          <button type="button" id="btnRetryBoot" class="btn btn-primary btn-sm boot-btn-retry" style="display:none;">
+            <span>🔄 Retry</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Main Studio Header -->
   <header class="studio-header">
     <div class="header-brand">

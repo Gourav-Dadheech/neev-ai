@@ -1,19 +1,26 @@
 {
   "version": 2,
-  "builds": [
+  "cleanUrls": true,
+  "rewrites": [
     {
-      "src": "server.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/static/(.*)",
-      "dest": "/public/$1"
+      "source": "/api/:match*",
+      "destination": "https://neev-ai-ri5z.onrender.com/api/:match*"
     },
     {
-      "src": "/(.*)",
-      "dest": "server.py"
+      "source": "/static/:match*",
+      "destination": "/public/:match*"
+    },
+    {
+      "source": "/favicon.ico",
+      "destination": "/public/favicon.svg"
+    },
+    {
+      "source": "/",
+      "destination": "/public/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/public/$1"
     }
   ]
 }

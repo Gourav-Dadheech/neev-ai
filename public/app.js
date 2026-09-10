@@ -3,6 +3,17 @@
  * Coordinates Chat, 2D Floor Plan rendering, 3D WebGL Viewer, MEP Metrics & BOQ
  */
 
+// Dynamic API Endpoint Configuration
+// Automatically adapts whether running locally, on Render, or via decoupled Vercel CDN
+const API_BASE_URL = (function() {
+  if (typeof window === 'undefined') return '';
+  const host = window.location.hostname;
+  if (host === 'localhost' || host === '127.0.0.1' || host.includes('onrender.com') || host.includes('vercel.app')) {
+    return ''; // same-origin or proxied via Vercel rewrites
+  }
+  return 'https://neev-ai-ri5z.onrender.com';
+})();
+
 // Application State
 const appState = {
   project_data: {
@@ -74,6 +85,7 @@ const btn3dResetCam = document.getElementById('btn3dResetCam');
 
 // Initialize Studio
 document.addEventListener('DOMContentLoaded', () => {
+  initNeevBootSequence();
   setupEventListeners();
   setupInteriorStudioListeners();
   setupProInteriorStudio();
@@ -2667,5 +2679,224 @@ function checkUrlParamsAndInit() {
     switchDesignVariant(variant);
   }
 }
+
+// =============================================================================
+// NEEV.AI SPATIAL STUDIO — STARTUP BOOT LOADER & COLD-START ENGINE
+// =============================================================================
+const BOOT_TIPS = [
+  "You can type natural commands like '30x50 Modern Villa with central courtyard & garden'.",
+  "NeeV generates CAD blueprints compliant with Indian Standard Building Codes & NBC.",
+  "Itemized civil BOQ calculates exact concrete volume, brickwork, and reinforcement rebar.",
+  "Use the '✨ Audit Mistakes' button to automatically detect code violations and spatial flaws.",
+  "3D orbit controls allow panning, zooming, and first-person walkthrough.",
+  "Toggle between 2D Blueprint, 3D Orbit, and BOQ Costing with 1 click in the top bar."
+];
+
+let bootElapsedSeconds = 0;
+let bootIntervalTimer = null;
+let bootProgressValue = 0;
+let bootFinished = false;
+
+function initNeevBootSequence() {
+  const overlay = document.getElementById('neevBootOverlay');
+  if (!overlay) return;
+
+  const tipText = document.getElementById('bootTipText');
+  const btnSkip = document.getElementById('btnSkipBoot');
+  const btnRetry = document.getElementById('btnRetryBoot');
+
+  // Skip button click handler
+  if (btnSkip) {
+    btnSkip.addEventListener('click', () => {
+      finishBootSequence(true); // fast exit
+    });
+  }
+
+  // Retry button click handler
+  if (btnRetry) {
+    btnRetry.addEventListener('click', () => {
+      btnRetry.style.display = 'none';
+      const statusText = document.getElementById('bootStatusText');
+      if (statusText) statusText.textContent = 'Retrying connection to AI Engine...';
+      bootElapsedSeconds = 0;
+      pollBackendHealth();
+    });
+  }
+
+  // Rotating tips carousel
+  let tipIndex = 0;
+  setInterval(() => {
+    if (bootFinished) return;
+    tipIndex = (tipIndex + 1) % BOOT_TIPS.length;
+    if (tipText) {
+      tipText.style.opacity = '0';
+      setTimeout(() => {
+        tipText.textContent = BOOT_TIPS[tipIndex];
+        tipText.style.opacity = '1';
+      }, 200);
+    }
+  }, 3800);
+
+  // Simulated progress interpolation while connecting
+  const progressTimer = setInterval(() => {
+    if (bootFinished) {
+      clearInterval(progressTimer);
+      return;
+    }
+    // Asymptotically progress up to 92% until server confirms 200 OK
+    if (bootProgressValue < 90) {
+      const step = bootProgressValue < 35 ? 2.5 : (bootProgressValue < 70 ? 1.2 : 0.5);
+      bootProgressValue = Math.min(92, bootProgressValue + step);
+      updateBootProgressUI(bootProgressValue);
+    }
+  }, 300);
+
+  // Start health check polling
+  pollBackendHealth();
+}
+
+function updateBootProgressUI(val) {
+  const progressBar = document.getElementById('bootProgressBar');
+  const progressPercent = document.getElementById('bootProgressPercent');
+  const progressStage = document.getElementById('bootProgressStage');
+
+  const rounded = Math.round(val);
+  if (progressBar) progressBar.style.width = `${rounded}%`;
+  if (progressPercent) progressPercent.textContent = `${rounded}%`;
+
+  // Update stages dynamically as progress advances
+  if (rounded >= 20) {
+    setStageState('stageCore', 'active', 'tagStageCore', 'Handshake');
+  }
+  if (rounded >= 45) {
+    setStageState('stageCore', 'done', 'tagStageCore', '✓ Connected');
+    setStageState('stageCad', 'active', 'tagStageCad', 'Compiling');
+    if (progressStage) progressStage.textContent = 'Calibrating 2D CAD layout solvers...';
+  }
+  if (rounded >= 70) {
+    setStageState('stageCad', 'done', 'tagStageCad', '✓ Ready');
+    setStageState('stage3d', 'active', 'tagStage3d', 'Allocating');
+    if (progressStage) progressStage.textContent = 'Loading 3D WebGL shader pipeline...';
+  }
+  if (rounded >= 85) {
+    setStageState('stage3d', 'done', 'tagStage3d', '✓ Ready');
+    setStageState('stageBoq', 'active', 'tagStageBoq', 'Syncing');
+    if (progressStage) progressStage.textContent = 'Synchronizing Civil BOQ matrix...';
+  }
+}
+
+function setStageState(itemId, state, tagId, tagText) {
+  const item = document.getElementById(itemId);
+  const tag = document.getElementById(tagId);
+  if (!item || !tag) return;
+
+  if (state === 'active') {
+    item.classList.add('stage-active');
+    item.classList.remove('stage-complete');
+    tag.className = 'stage-tag tag-running';
+    tag.textContent = tagText;
+  } else if (state === 'done') {
+    item.classList.remove('stage-active');
+    item.classList.add('stage-complete');
+    tag.className = 'stage-tag tag-done';
+    tag.textContent = tagText;
+  }
+}
+
+async function pollBackendHealth() {
+  const estimateText = document.getElementById('bootEstimateText');
+  const btnRetry = document.getElementById('btnRetryBoot');
+
+  // Immediate first check (in case backend is already warm!)
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/health`, { cache: 'no-store' });
+    if (res.ok) {
+      finishBootSequence(false);
+      return;
+    }
+  } catch (e) {
+    // Backend is asleep or cold, interval will poll
+  }
+
+  bootIntervalTimer = setInterval(async () => {
+    if (bootFinished) {
+      clearInterval(bootIntervalTimer);
+      return;
+    }
+
+    bootElapsedSeconds += 2;
+    if (estimateText) {
+      estimateText.textContent = `Waking up cloud neural node... (~20-25s on initial spin-up) • Elapsed: ${bootElapsedSeconds}s`;
+    }
+
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 2600);
+      
+      const healthUrl = `${API_BASE_URL}/api/health`;
+      const res = await fetch(healthUrl, { 
+        method: 'GET',
+        cache: 'no-store',
+        signal: controller.signal
+      });
+      clearTimeout(timeoutId);
+
+      if (res.ok) {
+        clearInterval(bootIntervalTimer);
+        finishBootSequence(false);
+      }
+    } catch (err) {
+      // Free cloud container cold start in progress
+      if (bootElapsedSeconds >= 45 && btnRetry) {
+        btnRetry.style.display = 'inline-flex';
+      }
+    }
+  }, 2200);
+}
+
+function finishBootSequence(isImmediate = false) {
+  if (bootFinished) return;
+  bootFinished = true;
+  if (bootIntervalTimer) clearInterval(bootIntervalTimer);
+
+  const overlay = document.getElementById('neevBootOverlay');
+  if (!overlay) return;
+
+  const progressBar = document.getElementById('bootProgressBar');
+  const progressPercent = document.getElementById('bootProgressPercent');
+  const progressStage = document.getElementById('bootProgressStage');
+  const statusPill = document.getElementById('bootStatusPill');
+  const statusText = document.getElementById('bootStatusText');
+  const subText = document.getElementById('bootSubText');
+
+  // Complete all visual steps
+  if (progressBar) progressBar.style.width = '100%';
+  if (progressPercent) progressPercent.textContent = '100%';
+  if (progressStage) progressStage.textContent = 'AI Spatial Studio is Live!';
+
+  setStageState('stageCore', 'done', 'tagStageCore', '✓ Connected');
+  setStageState('stageCad', 'done', 'tagStageCad', '✓ Ready');
+  setStageState('stage3d', 'done', 'tagStage3d', '✓ Ready');
+  setStageState('stageBoq', 'done', 'tagStageBoq', '✓ Ready');
+
+  if (statusPill) {
+    statusPill.classList.add('status-ready');
+  }
+  if (statusText) {
+    statusText.textContent = '🟢 AI Spatial Studio Ready!';
+  }
+  if (subText) {
+    subText.textContent = 'Neural core online. Entering workspace...';
+  }
+
+  const delayBeforeFade = isImmediate ? 50 : 500;
+  setTimeout(() => {
+    overlay.classList.add('boot-hidden');
+    setTimeout(() => {
+      overlay.style.display = 'none';
+    }, 600);
+  }, delayBeforeFade);
+}
+
 
 

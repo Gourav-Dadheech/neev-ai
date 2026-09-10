@@ -58,6 +58,21 @@ Render will show a configuration screen. Fill in:
 
 ---
 
+## ⚡ Option 2: Vercel Instant 0-Second CDN (Eliminates Render's Loading Screen)
+
+To prevent users from ever seeing Render's terminal/ASCII spin-up screen, deploy the frontend to **Vercel** (100% Free):
+
+1. Go to [vercel.com](https://vercel.com) and click **"Add New Project"**.
+2. Select your **`neev-ai`** GitHub repository and click **Import**.
+3. The included `vercel.json` is **pre-configured**:
+   - Serves the frontend instantly in **<300ms** with zero cold starts.
+   - Shows our custom luxury **NeeV.ai Startup Boot Screen** immediately.
+   - Automatically proxies all `/api/*` calls to your Render backend at `https://neev-ai-ri5z.onrender.com`.
+4. Click **Deploy**!
+5. 🎉 **Instant live URL**: `https://neev-ai.vercel.app`!
+
+---
+
 ## 🌐 Custom Domain: How to link `NeeV.ai`
 If you purchase or own the domain `neev.ai`:
 1. In your Render dashboard for `neev-ai`, go to **Settings** → **Custom Domains**.
