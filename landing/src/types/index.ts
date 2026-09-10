@@ -7,6 +7,7 @@ export interface Project {
     description: string;
     longDescription?: string;
     image?: string;
+    thumbnail?: string;
     techStack: string[];
     tools: string[];
     status: 'ongoing' | 'completed' | 'planned';

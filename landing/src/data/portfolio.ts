@@ -14,8 +14,8 @@ export const portfolioData: PortfolioData = {
         website: 'https://neev-ai-ri5z.onrender.com',
         languages: [
             { name: 'Architectural English', level: 'Native' },
-            { name: 'Vastu Shastra Codes', level: '100% Compliant' },
-            { name: 'NBC 2016 Bylaws', level: 'Certified' },
+            { name: 'Vastu Shastra Codes', level: 'Native' },
+            { name: 'NBC 2016 Bylaws', level: 'Professional' },
         ],
         socialLinks: [
             {
@@ -33,7 +33,7 @@ export const portfolioData: PortfolioData = {
         ],
     },
     projects: [
-                {
+        {
             id: 'project-1',
             slug: '30x50-modern-courtyard-haveli',
             title: '30×50 Modern Courtyard Haveli & Villa',
@@ -50,7 +50,7 @@ export const portfolioData: PortfolioData = {
             team: 'NeeV.ai Generative Engine',
             highlights: ['Central Courtyard Micro-Climate', '100% Vastu Compliant', 'Itemized Cement & Steel BOQ'],
             category: 'Generative Architecture & BIM',
-            thumbnail: '/renders/living_room.jpg',
+            image: '/renders/living_room.jpg',
             features: [
                 {
                     title: 'Generative 2D CAD Blueprint',
